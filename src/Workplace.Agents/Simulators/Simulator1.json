@@ -1,0 +1,10 @@
+{
+  "AlarmState": 1,
+  "CurrentToolId": "",
+  "MainProgram": "program1.nc",
+  "OperationMode": 1,
+  "OperationTime": 0,
+  "PartCounter": 56,
+  "PowerOnTime": 0,
+  "RunningState": 1
+}

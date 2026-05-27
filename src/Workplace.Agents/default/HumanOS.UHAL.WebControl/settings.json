@@ -1,0 +1,16 @@
+{
+  "Disabled": false,
+  "CertificateWhiteList": [
+  ],
+  "Devices": [
+    {
+      "MainTaskProcessor": {
+        "Name": "Main TaskProcessor",
+        "ProcessingPriority": "Normal",
+        "MaxSchedulingTimeSlice": 200,
+        "MinSchedulingTimeSlice": 10,
+        "EnableCycleTimeSurveillance": false
+      }
+    }
+  ]
+}

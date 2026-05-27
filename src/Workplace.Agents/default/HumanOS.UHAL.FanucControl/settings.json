@@ -1,0 +1,87 @@
+{
+  "Disabled": false,
+  "Devices": [
+    {
+      "MainTaskProcessor": {
+        "Name": "Main TaskProcessor",
+        "ProcessingPriority": "Normal",
+        "MaxSchedulingTimeSlice": 100,
+        "MinSchedulingTimeSlice": 10
+      },
+      "SubTaskProcessors": [
+        {
+          "Name": "DynamicDataProcessor",
+          "ProcessingPriority": "AboveNormal",
+          "MemoryMappings": [
+            {
+              "MemoryBase": "Nc1",
+              "MemoryType": "Dynamic"
+            },
+            {
+              "MemoryBase": "Nc2",
+              "MemoryType": "Dynamic"
+            },
+            {
+              "MemoryBase": "Nc1",
+              "MemoryType": "Axis"
+            },
+            {
+              "MemoryBase": "Nc1",
+              "MemoryType": "Axis"
+            }
+          ]
+        },
+        {
+          "Name": "ModalDataProcessor",
+          "ProcessingPriority": "AboveNormal",
+          "MemoryMappings": [
+            {
+              "MemoryBase": "Nc1",
+              "MemoryType": "Modal"
+            },
+            {
+              "MemoryBase": "Nc2",
+              "MemoryType": "Modal"
+            }
+          ]
+        },
+        {
+          "Name": "ToolDataProcessor",
+          "ProcessingPriority": "BelowNormal",
+          "MemoryMappings": [
+            {
+              "MemoryBase": "Nc1",
+              "MemoryType": "ToolLife"
+            },
+            {
+              "MemoryBase": "Nc2",
+              "MemoryType": "ToolLife"
+            },
+            {
+              "MemoryBase": "Nc1",
+              "MemoryType": "ToolOffset"
+            },
+            {
+              "MemoryBase": "Nc2",
+              "MemoryType": "ToolOffset"
+            }
+          ]
+        },
+        {
+          "Name": "AlarmEventProcessor",
+          "ProcessingPriority": "BelowNormal",
+          "MemoryMappings": [
+            {
+              "MemoryBase": "Nc1",
+              "MemoryType": "Alarming"
+            },
+            {
+              "MemoryBase": "Nc2",
+              "MemoryType": "Alarming"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

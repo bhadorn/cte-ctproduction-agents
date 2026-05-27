@@ -1,0 +1,116 @@
+{
+  "Id": "fdce1b26-8a99-40be-be5e-4fae372383fd",
+  "Name": "Robot",
+  "DriverId": "94cafec2-7910-41f6-8185-c35ca768faba",
+  "Address": "..\\..\\..\\Simulators\\Robot2.json",
+  "Properties": [
+    {
+      "Name": "Description",
+      "DataType": "System.String",
+      "Value": ""
+    },
+    {
+      "Name": "FacilityComponent",
+      "DataType": "System.String",
+      "Value": "$(DeviceName)"
+    },
+    {
+      "Name": "FacilityComponentType",
+      "DataType": "System.String",
+      "Value": "$(DeviceType)"
+    },
+    {
+      "Name": "MachineInventoryNumber",
+      "DataType": "System.String",
+      "Value": "A-18221"
+    },
+    {
+      "Name": "MachineName",
+      "DataType": "System.String"
+    },
+    {
+      "Name": "MachineSerialNumber",
+      "DataType": "System.String",
+      "Value": "1002-01122F"
+    },
+    {
+      "Name": "MachineType",
+      "DataType": "System.String"
+    },
+    {
+      "Name": "SupplierName",
+      "DataType": "System.String",
+      "Value": "FANUC"
+    },
+    {
+      "Name": "Type",
+      "DataType": "System.String",
+      "Value": "Robot"
+    },
+    {
+      "Name": "Revision",
+      "DataType": "System.Int32",
+      "Value": 0
+    }
+  ],
+  "DataNodes": [
+    {
+      "Id": "7c291c65-aae0-40b8-bc6f-cafcbf6abad8",
+      "Name": "Available",
+      "Address": "File:Available",
+      "DataType": "System.Int32",
+      "Unit": "",
+      "Access": {
+        "Read": true,
+        "ReadConversion": {},
+        "Receive": true,
+        "WriteConversion": {}
+      },
+      "Properties": [
+        {
+          "Name": "PortMatchId",
+          "DataType": "System.String",
+          "Value": "AvailableType"
+        }
+      ]
+    },
+    {
+      "Id": "abe99778-4195-4d29-9735-b701a01140eb",
+      "Name": "SignOfLife",
+      "Address": "File:SignOfLife",
+      "DataType": "System.Int32",
+      "Unit": "",
+      "Access": {
+        "Read": true,
+        "ReadConversion": {},
+        "Receive": true,
+        "WriteConversion": {}
+      },
+      "Properties": []
+    }
+  ],
+  "ConstantNodes": [],
+  "Commands": [],
+  "Groups": [],
+  "AlarmEventPool": {
+    "Id": "9ec94fbd-95ed-4cda-8278-b8cbf57805c6",
+    "Name": "AlarmEventPool",
+    "Disabled": true,
+    "Tasks": [
+      {
+        "Id": "16c4e206-42e3-4f66-bdb6-bbcb72629c87",
+        "Name": "AlarmTask",
+        "Address": "",
+        "Properties": []
+      }
+    ],
+    "Properties": []
+  },
+  "Agents": [],
+  "Skills": [],
+  "TaskProcessors": [],
+  "EntityTypes": [],
+  "ProcessingNetworks": [],
+  "Rules": [],
+  "SubDevices": []
+}

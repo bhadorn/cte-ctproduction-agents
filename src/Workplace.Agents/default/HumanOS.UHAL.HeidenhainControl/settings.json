@@ -1,0 +1,20 @@
+{
+  "Disabled": false,
+  "AlarmStateMachine": {
+    "AdditionalAlarmErrors": [],
+    "AdditionalEmergencyErrors": [],
+    "IgnoredAlarmErrors": [ 938 ],
+    "IgnoredEmergencyErrors": []
+  },
+  "Devices": [
+    {
+      "MainTaskProcessor": {
+        "Name": "Main TaskProcessor",
+        "ProcessingPriority": "Normal",
+        "MaxSchedulingTimeSlice": 200,
+        "MinSchedulingTimeSlice": 10,
+        "EnableCycleTimeSurveillance": true
+      }
+    }
+  ]
+}
