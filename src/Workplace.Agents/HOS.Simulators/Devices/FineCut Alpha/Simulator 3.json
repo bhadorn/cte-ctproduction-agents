@@ -5,11 +5,6 @@
   "Address": "..\\..\\..\\Simulators\\Simulator3.json",
   "Properties": [
     {
-      "Name": "Description",
-      "DataType": "System.String",
-      "Value": ""
-    },
-    {
       "Name": "FacilityComponent",
       "DataType": "System.String",
       "Value": "$(DeviceName)"
@@ -20,7 +15,17 @@
       "Value": "$(DeviceType)"
     },
     {
-      "Name": "MachineInventoryNumber",
+      "Name": "Revision",
+      "DataType": "System.Int32",
+      "Value": 0
+    },
+    {
+      "Name": "Type",
+      "DataType": "System.String",
+      "Value": "Controller"
+    },
+    {
+      "Name": "MachineType",
       "DataType": "System.String"
     },
     {
@@ -32,22 +37,17 @@
       "DataType": "System.String"
     },
     {
-      "Name": "MachineType",
+      "Name": "MachineInventoryNumber",
       "DataType": "System.String"
+    },
+    {
+      "Name": "Description",
+      "DataType": "System.String",
+      "Value": ""
     },
     {
       "Name": "SupplierName",
       "DataType": "System.String"
-    },
-    {
-      "Name": "Type",
-      "DataType": "System.String",
-      "Value": "Controller"
-    },
-    {
-      "Name": "Revision",
-      "DataType": "System.Int32",
-      "Value": 0
     }
   ],
   "DataNodes": [
@@ -84,6 +84,26 @@
         "WriteConversion": {}
       },
       "Properties": []
+    },
+    {
+      "Id": "6b916056-a3be-4955-9bdb-f91befa549b1",
+      "Name": "MaintenanceState",
+      "DataType": "System.Int32",
+      "Unit": "",
+      "Access": {
+        "Read": true,
+        "ReadConversion": {},
+        "Receive": true,
+        "Write": true,
+        "WriteConversion": {}
+      },
+      "Properties": [
+        {
+          "Name": "PortMatchId",
+          "DataType": "System.String",
+          "Value": "$(DeviceName).MaintenanceStateType"
+        }
+      ]
     }
   ],
   "ConstantNodes": [],
@@ -111,7 +131,7 @@
             {
               "Name": "PortMatchId",
               "DataType": "System.String",
-              "Value": "AlarmStateType"
+              "Value": "$(DeviceName).AlarmStateType"
             }
           ]
         },
@@ -265,6 +285,41 @@
       "ConstantNodes": [],
       "Commands": [],
       "Groups": []
+    },
+    {
+      "Id": "dd287ae8-c0b2-41ab-90a1-2ef8adbdf865",
+      "Name": "Streams",
+      "Properties": [],
+      "DataNodes": [
+        {
+          "Id": "37bc4c42-a943-444a-bddd-d52980a5b1d3",
+          "Name": "FacilityComponentStream",
+          "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
+          "Unit": "",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "Write": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "EnableFacilityComponentStream",
+              "DataType": "System.Boolean",
+              "Value": "true"
+            },
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "$(DeviceName).FacilityComponentStreamType"
+            }
+          ]
+        }
+      ],
+      "ConstantNodes": [],
+      "Commands": [],
+      "Groups": []
     }
   ],
   "AlarmEventPool": {
@@ -356,7 +411,7 @@
                 {
                   "Name": "PortMatchId",
                   "DataType": "System.String",
-                  "Value": "AlarmStateType"
+                  "Value": "$(DeviceName).AlarmStateType"
                 }
               ]
             },
@@ -439,7 +494,7 @@
                 {
                   "Name": "PortMatchId",
                   "DataType": "System.String",
-                  "Value": "ControllerMaintenanceStateType"
+                  "Value": "$(DeviceName).MaintenanceStateType"
                 }
               ]
             },
@@ -452,7 +507,7 @@
                 {
                   "Name": "PortMatchId",
                   "DataType": "System.String",
-                  "Value": "AlarmStateType"
+                  "Value": "$(DeviceName).AlarmStateType"
                 }
               ]
             }
@@ -464,6 +519,40 @@
               "Value": 200
             }
           ]
+        },
+        {
+          "Id": "613b6b7e-6cf1-43fd-846b-42e29c8b7da6",
+          "Name": "FacilityComponentStreamProcessor",
+          "InitialData": [],
+          "Type": "DataAggregator",
+          "Ports": [
+            {
+              "Name": "MaintenanceState",
+              "DataType": "System.Int32",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).MaintenanceStateType"
+                }
+              ]
+            },
+            {
+              "Name": "OutputPort",
+              "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
+              "FlowDirection": "Output",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).FacilityComponentStreamType"
+                }
+              ]
+            }
+          ],
+          "Properties": []
         }
       ],
       "Properties": []

@@ -1,5 +1,5 @@
 {
-  "FileName": "C:\\Projects\\Public\\cte-ctproduction-agents\\src\\Workplace.Agents\\globalids.json",
+  "FileName": "c:\\projects\\public\\cte-ctproduction-agents\\src\\workplace.agents\\globalids.json",
   "Ids": {
     "ece37fdf-4862-4543-af23-48ffdb8203c7/FanucControl_v1": "521f7450-eeee-4efc-9ee0-a5e6b71f9687",
     "ece37fdf-4862-4543-af23-48ffdb8203c7/FanucControl_v1/Available": "4f11d7d5-3d30-4ffb-95d5-59069b854d6c",
@@ -630,6 +630,30 @@
     "ce75e009-133e-4038-b050-cc773b919029/ctProduction_v2/StreamProcessors/FacilityComponentStreamProcessor": "7bfa6d3a-a8d0-4f1b-8c3e-1e7cfc3bfcac",
     "5300c261-6443-4d85-9b8d-6fb34a6576de/SimulatorControl_v1/ControllerProcessors/ConditionMonitorProcessor": "8abfd686-8b45-4ea3-8d1e-a7e5a6a94813",
     "e6feed00-4d49-475f-9476-9d98a2af4733/SimulatorControl_v1/ControllerProcessors/ConditionMonitorProcessor": "6df89586-b268-431c-92c7-d5e656a0c966",
-    "0fcfaf16-ff76-4ae7-a123-4ed6f155b7d6/SimulatorControl_v1/ControllerProcessors/ConditionMonitorProcessor": "814edcba-be00-4055-9f25-fd89c88157aa"
+    "0fcfaf16-ff76-4ae7-a123-4ed6f155b7d6/SimulatorControl_v1/ControllerProcessors/ConditionMonitorProcessor": "814edcba-be00-4055-9f25-fd89c88157aa",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/FacilityComponentStream": "0e772ee0-0270-46b9-91e5-9f7696930cbb",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/MaintenanceState": "bc34445b-ff39-4eb7-afba-f6cce389f984",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/Controller": "17bb9913-e07c-4e6a-bf9a-5366025714f1",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/Controller/AlarmState": "a4628352-1654-4427-903b-bb9a461521ff",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/ControllerProcessors": "dbb45898-b1c3-46df-9db5-15ea9536c966",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/ControllerProcessors/ConditionMonitorProcessor": "73dc786e-2b22-4a82-94e3-6a5e307d0826",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/ControllerProcessors/FacilityComponentStreamProcessor": "519ce97f-188c-406f-894a-16c53407b542",
+    "0fcfaf16-ff76-4ae7-a123-4ed6f155b7d6/SimulatorControl_v1/MaintenanceState": "6b916056-a3be-4955-9bdb-f91befa549b1",
+    "0fcfaf16-ff76-4ae7-a123-4ed6f155b7d6/SimulatorControl_v1/FacilityComponentStream": "e8dfc8f7-8e26-4f41-8e91-a323ffb304af",
+    "0fcfaf16-ff76-4ae7-a123-4ed6f155b7d6/SimulatorControl_v1/ControllerProcessors/FacilityComponentStreamProcessor": "613b6b7e-6cf1-43fd-846b-42e29c8b7da6",
+    "e6feed00-4d49-475f-9476-9d98a2af4733/SimulatorControl_v1/MaintenanceState": "770112bb-38ae-4f47-be3e-5c6b5a289486",
+    "e6feed00-4d49-475f-9476-9d98a2af4733/SimulatorControl_v1/FacilityComponentStream": "42e69028-1739-4c14-866c-a7b8ca0e6c19",
+    "e6feed00-4d49-475f-9476-9d98a2af4733/SimulatorControl_v1/ControllerProcessors/FacilityComponentStreamProcessor": "c1c4c8d5-69a5-4bde-9567-69b32ad3c268",
+    "5300c261-6443-4d85-9b8d-6fb34a6576de/SimulatorControl_v1/MaintenanceState": "205669ad-0955-4e49-b55b-f8e76579ab1f",
+    "5300c261-6443-4d85-9b8d-6fb34a6576de/SimulatorControl_v1/FacilityComponentStream": "ea4c7861-46a6-4faf-ac8b-c82194a25d1d",
+    "5300c261-6443-4d85-9b8d-6fb34a6576de/SimulatorControl_v1/ControllerProcessors/FacilityComponentStreamProcessor": "b473f58b-2766-4364-b5f1-47f8c3b30216",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/Streams": "8491fe26-24ec-4e7c-a4a9-89e2be7166c7",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/Streams/FacilityComponentStream": "c074ca67-37ca-4e51-bd0a-3413f3ed1bf4",
+    "0fcfaf16-ff76-4ae7-a123-4ed6f155b7d6/SimulatorControl_v1/Streams": "dd287ae8-c0b2-41ab-90a1-2ef8adbdf865",
+    "0fcfaf16-ff76-4ae7-a123-4ed6f155b7d6/SimulatorControl_v1/Streams/FacilityComponentStream": "37bc4c42-a943-444a-bddd-d52980a5b1d3",
+    "e6feed00-4d49-475f-9476-9d98a2af4733/SimulatorControl_v1/Streams": "2d938665-4096-4298-b2c9-5920a3f243cc",
+    "e6feed00-4d49-475f-9476-9d98a2af4733/SimulatorControl_v1/Streams/FacilityComponentStream": "f9bbeafa-7a72-4788-8569-94166d155758",
+    "5300c261-6443-4d85-9b8d-6fb34a6576de/SimulatorControl_v1/Streams": "529e01a9-231b-4ac3-af58-3c5e1967270d",
+    "5300c261-6443-4d85-9b8d-6fb34a6576de/SimulatorControl_v1/Streams/FacilityComponentStream": "2f2ed34f-20c6-48fc-a6e0-a6e7a50fa991"
   }
 }

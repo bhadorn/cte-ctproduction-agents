@@ -55,6 +55,26 @@
         "WriteConversion": {}
       },
       "Properties": []
+    },
+    {
+      "Id": "10899e59-4af5-47ff-b98f-1925cd285e6d",
+      "Name": "MaintenanceState",
+      "DataType": "System.Int32",
+      "Unit": "",
+      "Access": {
+        "Read": true,
+        "ReadConversion": {},
+        "Receive": true,
+        "Write": true,
+        "WriteConversion": {}
+      },
+      "Properties": [
+        {
+          "Name": "PortMatchId",
+          "DataType": "System.String",
+          "Value": "$(DeviceName).MaintenanceStateType"
+        }
+      ]
     }
   ],
   "ConstantNodes": [],
@@ -82,7 +102,7 @@
             {
               "Name": "PortMatchId",
               "DataType": "System.String",
-              "Value": "AlarmStateType"
+              "Value": "$(DeviceName).AlarmStateType"
             }
           ]
         },
@@ -236,6 +256,41 @@
       "ConstantNodes": [],
       "Commands": [],
       "Groups": []
+    },
+    {
+      "Id": "fbdf813e-dd00-4092-aeaa-487684cebf93",
+      "Name": "Streams",
+      "Properties": [],
+      "DataNodes": [
+        {
+          "Id": "82c1244e-4031-43e9-98d6-74ffaab4869e",
+          "Name": "FacilityComponentStream",
+          "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
+          "Unit": "",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "Write": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "EnableFacilityComponentStream",
+              "DataType": "System.Boolean",
+              "Value": "true"
+            },
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "$(DeviceName).FacilityComponentStreamType"
+            }
+          ]
+        }
+      ],
+      "ConstantNodes": [],
+      "Commands": [],
+      "Groups": []
     }
   ],
   "AlarmEventPool": {
@@ -327,7 +382,7 @@
                 {
                   "Name": "PortMatchId",
                   "DataType": "System.String",
-                  "Value": "AlarmStateType"
+                  "Value": "$(DeviceName).AlarmStateType"
                 }
               ]
             },
@@ -410,7 +465,7 @@
                 {
                   "Name": "PortMatchId",
                   "DataType": "System.String",
-                  "Value": "ControllerMaintenanceStateType"
+                  "Value": "$(DeviceName).MaintenanceStateType"
                 }
               ]
             },
@@ -423,7 +478,7 @@
                 {
                   "Name": "PortMatchId",
                   "DataType": "System.String",
-                  "Value": "AlarmStateType"
+                  "Value": "$(DeviceName).AlarmStateType"
                 }
               ]
             }
@@ -435,6 +490,40 @@
               "Value": 200
             }
           ]
+        },
+        {
+          "Id": "9eeb326f-9bef-4fd4-8eb6-157d488177a0",
+          "Name": "FacilityComponentStreamProcessor",
+          "InitialData": [],
+          "Type": "DataAggregator",
+          "Ports": [
+            {
+              "Name": "MaintenanceState",
+              "DataType": "System.Int32",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).MaintenanceStateType"
+                }
+              ]
+            },
+            {
+              "Name": "OutputPort",
+              "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
+              "FlowDirection": "Output",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).FacilityComponentStreamType"
+                }
+              ]
+            }
+          ],
+          "Properties": []
         }
       ],
       "Properties": []
