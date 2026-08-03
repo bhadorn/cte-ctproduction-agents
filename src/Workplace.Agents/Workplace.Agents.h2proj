@@ -4,12 +4,15 @@
   "Description": "",
   "Author": "",
   "AutoIncrementPublishNumber": true,
-  "PlatformURL": "",
+  "PlatformIgnoreCertificateErrors": true,
+  "PlatformPublishTokenSecret": "PlatformToken",
+  "PlatformURL": "https://localhost:8080",
   "ProductLicenseId": "bf28dd1c-7589-4903-b11e-2e9a249ce5a6",
   "ProjectVaultKey": "uRNSgLTCTUjcyT2W1ecXv/3wBjiZLlzrZIoYzh10jsOmg70Clh0fZyCb2hPXVThJGATBPReTmQMgAfrffqv299VTJtg1PLByuP9xXgEKe1Q=",
+  "PublishNumber": 9,
   "SecurityMode": "StoreKeyInProject",
   "SyntaxVersion": "2.0",
-  "Version": "",
+  "Version": "1.1",
   "DeviceTemplates": [
     {
       "DriverId": "b3ccd1a7-a49b-46fc-b983-5284992f6444",
@@ -68,6 +71,14 @@
         "Expiration": "9999-12-31T23:59:59.9999999",
         "KeyName": "ProjectVaultKey",
         "Vault": "$ANSIBLE_VAULT;1.1;AES256\r\n30393161343138333634333365393564373164343561616436373932646530353264383562393833\r\n6531346338613830383639613830386434643831656463350a663734343938343336623961376131\r\n36653565666135663535336564646632383733663736653062336362323530643663653362643931\r\n3963623233313964310a626563633066393662353861393638363961336664393934323366643632\r\n38363261386231613338393863383834343336313866333963386338303562343561353939383762\r\n3539303337356365323865396230623337653039666333626435\r\n"
+      },
+      {
+        "Expiration": "9999-12-31T23:59:59.9999999",
+        "Id": "e1b08975-e2bb-4b73-808e-3dab34f67412",
+        "KeyName": "PlatformToken",
+        "Type": "ApiToken",
+        "UserName": "",
+        "Vault": "$ANSIBLE_VAULT;1.1;AES256\r\n63323961623733626461316230323866373032646461386461393131323233663533323231653435\r\n6364353761383338613635626266623937616438323561620a383230303630366261316361613461\r\n65336639613661326662626635376634363662626131336439623734616665613666383863373266\r\n3333376136653061370a313438356537666565333832323234336131633665353533636664633339\r\n39623833386137373535373734633537323936306564316430646531363739663235383530616334\r\n3738663366336431313363653930653537653166646437396636\r\n"
       }
     ],
     "Id": "8d165116-ab6c-4caa-8a07-96228b3918b9",
@@ -85,6 +96,7 @@
       "DirectoryPublishPath": "",
       "OutPath": "$(Project.Directory)\\Build\\$(Target.Name)\\",
       "Protected": true,
+      "PublishDestination": "Platform",
       "PublishScript": "",
       "PublishScriptArguments": "",
       "Runtime": "HumanOS.IoT.Runtime win-x86",
@@ -263,11 +275,11 @@
       "DataBasePluginId": "a3b98ddf-93fb-42a4-9de3-f711cce42011",
       "DirectoryPublishPath": "C:\\ProgramData\\CyberTech\\HumanOS.IoT.Gateways\\$(Target.Name)\\Updates",
       "OutPath": "$(Project.Directory)\\Build\\$(Target.Name)\\",
-      "PublishDestination": "Directory",
+      "PublishDestination": "Platform",
       "PublishScript": "",
       "PublishScriptArguments": "",
       "Runtime": "HumanOS.IoT.Runtime win-x64",
-      "RuntimeVersion": "2.10",
+      "RuntimeVersion": "2.11",
       "ServiceDescription": "",
       "ServiceDisplayName": "$(Target.Name)",
       "ServiceName": "$(Target.Name)",
@@ -285,7 +297,7 @@
         "SecretManager.Path": "$(AppSettingsDir)Secrets\\",
         "HumanOS.ServiceId": "c8e18241-0ac6-45e5-a209-940ef2f9f5b2",
         "HumanOS.ServiceName": "$(Target.Name)",
-        "HumanOS.RuntimeVersion": "2.10",
+        "HumanOS.RuntimeVersion": "2.11",
         "HumanOS.SharedNodeSpace.MasterSystemControllerId": "150023f1-2619-450a-a3ea-df47be294799",
         "HumanOS.SharedNodeSpace.MasterAgentOrchestratorId": "150023f1-2619-450a-a3ea-df47be294799"
       },
@@ -407,7 +419,16 @@
           "Description": ""
         }
       ],
-      "Plugins": [],
+      "Plugins": [
+        {
+          "CustomFiles": [],
+          "ScriptFiles": [],
+          "Path": "HumanOS.PeSeL.OPCUAServer",
+          "Id": "3b3421cb-92e5-4d51-b172-33a180f21824",
+          "Name": "HumanOS.PeSeL.OPCUAServer",
+          "Description": ""
+        }
+      ],
       "Scripts": {
         "Commands": [],
         "Processing": [],

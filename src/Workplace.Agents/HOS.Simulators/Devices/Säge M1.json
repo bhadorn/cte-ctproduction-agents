@@ -896,7 +896,7 @@
                 {
                   "Name": "PortMatchId",
                   "DataType": "System.String",
-                  "Value": "ControllerMaintenanceStateType"
+                  "Value": "MaintenanceStateType"
                 }
               ]
             },

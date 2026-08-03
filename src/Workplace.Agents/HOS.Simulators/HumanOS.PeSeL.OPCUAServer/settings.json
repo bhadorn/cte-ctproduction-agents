@@ -1,0 +1,21 @@
+{
+  "Disabled": false,
+  "UaServer": {
+    "Id": "{63C13A9D-A866-4D11-B1AA-BE13133FB135}",
+    "Name": "OPC-UA Server",
+    "Port": 4840,
+    "ServerUri": "urn:localhost:HumanOS:OpcUaServer",
+    
+    "ServiceRule": {
+      "BindingRuleId": "{24A5D9E9-5F48-4E42-8050-F3C985A15097}",
+      "UnbindingRuleId": "{09FDA84C-575F-48BF-B228-1611F0AA7A6E}",
+      "Type": "All"
+    },
+    "Models": [
+      {
+        "Name": "Default",
+        "RootBrowseName": "HumanOS"
+      }
+    ]
+  }
+}

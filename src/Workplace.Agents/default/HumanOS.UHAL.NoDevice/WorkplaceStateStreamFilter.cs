@@ -37,9 +37,9 @@ namespace HumanOS.IoT.Designer.Library.Scripts
       }
     
       TGenericEntity Entity = Processor.getProperty<TGenericEntity>("WorkplaceStateStreamFilter_InputPort");
-      if (Entity.Id != LastEntityId)
+      if (Entity.getValue<Guid>("Id") != LastEntityId)
       {
-        LastEntityId = Entity.Id;
+        LastEntityId = Entity.getValue<Guid>("Id");
       
         bool bSendState = true;
         int iCurrentMachineState = Entity.getValue<int>("MachineState");
