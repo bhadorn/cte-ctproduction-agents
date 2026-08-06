@@ -354,6 +354,7 @@
             "MaintenanceState == 1                    => OutputMachineState=400; OutputMachineStateName=\"Maintenance\"",
             "AvailableState <= 0                      => OutputMachineState=900; OutputMachineStateName=\"Power Off\"",
             "AlarmState != 0                          => OutputMachineState=1;   OutputMachineStateName=\"Disturbance\"",
+            "OperationMode != 1 && AfterWorkShift     => OutputMachineState=900; OutputMachineStateName=\"Power Off\"",
             "OperationMode != 1                       => OutputMachineState=100; OutputMachineStateName=\"Setup\"",
             "JobState >= 300 and JobState <= 399      => OutputMachineState=100; OutputMachineStateName=\"Setup\"",
             "OperationMode == 1 and RunningState == 3 => OutputMachineState=200; OutputMachineStateName=\"Production\"",
@@ -464,6 +465,19 @@
                   "Name": "PortMatchId",
                   "DataType": "System.String",
                   "Value": "JobStateType"
+                }
+              ]
+            },
+            {
+              "Id": "be3846f6-9e06-4538-83b0-5cca58f8e6d9",
+              "Name": "AfterWorkShift",
+              "DataType": "System.Boolean",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "AfterWorkShiftType"
                 }
               ]
             }

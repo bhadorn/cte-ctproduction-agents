@@ -1,5 +1,5 @@
 {
-  "FileName": "C:\\Projects\\Public\\cte-ctproduction-agents\\src\\Workplace.Agents\\globalids.json",
+  "FileName": "c:\\projects\\public\\cte-ctproduction-agents\\src\\workplace.agents\\globalids.json",
   "Ids": {
     "ece37fdf-4862-4543-af23-48ffdb8203c7/FanucControl_v1": "521f7450-eeee-4efc-9ee0-a5e6b71f9687",
     "ece37fdf-4862-4543-af23-48ffdb8203c7/FanucControl_v1/Available": "4f11d7d5-3d30-4ffb-95d5-59069b854d6c",
@@ -654,6 +654,21 @@
     "e6feed00-4d49-475f-9476-9d98a2af4733/SimulatorControl_v1/Streams": "2d938665-4096-4298-b2c9-5920a3f243cc",
     "e6feed00-4d49-475f-9476-9d98a2af4733/SimulatorControl_v1/Streams/FacilityComponentStream": "f9bbeafa-7a72-4788-8569-94166d155758",
     "5300c261-6443-4d85-9b8d-6fb34a6576de/SimulatorControl_v1/Streams": "529e01a9-231b-4ac3-af58-3c5e1967270d",
-    "5300c261-6443-4d85-9b8d-6fb34a6576de/SimulatorControl_v1/Streams/FacilityComponentStream": "2f2ed34f-20c6-48fc-a6e0-a6e7a50fa991"
+    "5300c261-6443-4d85-9b8d-6fb34a6576de/SimulatorControl_v1/Streams/FacilityComponentStream": "2f2ed34f-20c6-48fc-a6e0-a6e7a50fa991",
+    "bc0c0b38-b239-4a65-9c01-f10ff821d330/ctProduction_v2/MachineState/WorkplaceShift": "4fc20d25-1f24-4a1e-b058-0369831fab98",
+    "f8cfdafe-7082-4c9a-b36d-d76b22062a78/ctProduction_v2/MachineState/WorkplaceShift": "c3e64f57-6a0d-445b-aa5a-a9fc1ac0aca7",
+    "99dfa3aa-4dbd-40f5-99c8-519532d2bc63/ctProduction_v2/MachineState/WorkplaceShift": "b30139b1-9806-4146-b2b6-62c66b2d3fa5",
+    "bc0c0b38-b239-4a65-9c01-f10ff821d330/ctProduction_v2/MachineState/IsWorkplaceShiftActive": "35617741-1ab2-4222-a5c9-243cc636454b",
+    "bc0c0b38-b239-4a65-9c01-f10ff821d330/ctProduction_v2/JobProcessors/WorkplaceShiftProcessor": "5b55f09c-4839-4c50-a1a6-142854dfcb17",
+    "f8cfdafe-7082-4c9a-b36d-d76b22062a78/ctProduction_v2/MachineState/IsWorkplaceShiftActive": "dbc7c2a2-368c-457c-ac3b-1b98e70525a0",
+    "f8cfdafe-7082-4c9a-b36d-d76b22062a78/ctProduction_v2/JobProcessors/WorkplaceShiftProcessor": "63bb37fb-4354-4f0e-8d6d-29dd28cdda12",
+    "99dfa3aa-4dbd-40f5-99c8-519532d2bc63/ctProduction_v2/MachineState/IsWorkplaceShiftActive": "fd5ba8a5-4b31-4192-9290-739e854f654c",
+    "99dfa3aa-4dbd-40f5-99c8-519532d2bc63/ctProduction_v2/JobProcessors/WorkplaceShiftProcessor": "73946391-842e-414c-a1b9-33a65a7dc61c",
+    "bc0c0b38-b239-4a65-9c01-f10ff821d330/ctProduction_v2/MachineState/WorkShiftSetting": "08179e65-c97b-4632-9040-72063dce6c87",
+    "bc0c0b38-b239-4a65-9c01-f10ff821d330/ctProduction_v2/MachineState/AfterWorkShift": "7c623368-b067-4705-b479-7d3c1b71cf02",
+    "f8cfdafe-7082-4c9a-b36d-d76b22062a78/ctProduction_v2/MachineState/WorkShiftSetting": "a87492bc-b3f5-42d8-a4e4-07cf60ffaa86",
+    "f8cfdafe-7082-4c9a-b36d-d76b22062a78/ctProduction_v2/MachineState/AfterWorkShift": "dd526171-dc05-4b77-b38f-ada877ec76a2",
+    "99dfa3aa-4dbd-40f5-99c8-519532d2bc63/ctProduction_v2/MachineState/WorkShiftSetting": "d2c82f6b-d797-42e2-b62b-0617b0fc3e47",
+    "99dfa3aa-4dbd-40f5-99c8-519532d2bc63/ctProduction_v2/MachineState/AfterWorkShift": "cd618c79-8318-4e9d-b8d2-52dd17c83573"
   }
 }

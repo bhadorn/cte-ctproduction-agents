@@ -2,7 +2,7 @@
   "AlarmState": 0,
   "CurrentToolId": "",
   "MainProgram": "program1.nc",
-  "OperationMode": 1,
+  "OperationMode": 0,
   "OperationTime": 0,
   "PartCounter": 56,
   "PowerOnTime": 0,

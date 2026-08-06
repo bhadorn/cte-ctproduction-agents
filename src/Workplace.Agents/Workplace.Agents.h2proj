@@ -9,10 +9,10 @@
   "PlatformURL": "https://localhost:8080",
   "ProductLicenseId": "bf28dd1c-7589-4903-b11e-2e9a249ce5a6",
   "ProjectVaultKey": "uRNSgLTCTUjcyT2W1ecXv/3wBjiZLlzrZIoYzh10jsOmg70Clh0fZyCb2hPXVThJGATBPReTmQMgAfrffqv299VTJtg1PLByuP9xXgEKe1Q=",
-  "PublishNumber": 9,
+  "PublishNumber": 13,
   "SecurityMode": "StoreKeyInProject",
   "SyntaxVersion": "2.0",
-  "Version": "1.1",
+  "Version": "1.2",
   "DeviceTemplates": [
     {
       "DriverId": "b3ccd1a7-a49b-46fc-b983-5284992f6444",
@@ -205,6 +205,12 @@
               "Id": "faa34cab-c267-4982-abff-794e76458e90",
               "Name": "PerformanceProcessor.cs",
               "Description": ""
+            },
+            {
+              "Path": "WorkplaceShiftProcessor.cs",
+              "Id": "c0e1c41b-c33d-4ac7-892d-4a91a877798a",
+              "Name": "WorkplaceShiftProcessor.cs",
+              "Description": ""
             }
           ],
           "Path": "HumanOS.UHAL.NoDevice",
@@ -260,6 +266,12 @@
             "Id": "5eda8faa-65d0-4cd6-8ca5-c8a3dfbb59b5",
             "Name": "Platform.MaintenanceJob.cs",
             "Description": ""
+          },
+          {
+            "Path": "Platform.WorkplaceShift.cs",
+            "Id": "45fd2c49-c3f9-4cbb-bc0a-8f411f6dc4a3",
+            "Name": "Platform.WorkplaceShift.cs",
+            "Description": ""
           }
         ],
         "Path": "Scripts",
@@ -279,7 +291,7 @@
       "PublishScript": "",
       "PublishScriptArguments": "",
       "Runtime": "HumanOS.IoT.Runtime win-x64",
-      "RuntimeVersion": "2.11",
+      "RuntimeVersion": "2.12",
       "ServiceDescription": "",
       "ServiceDisplayName": "$(Target.Name)",
       "ServiceName": "$(Target.Name)",
@@ -291,13 +303,13 @@
         "HumanOS.Repository.Connection": "",
         "HumanOS.SharedNodeSpace.Type": "HumanOS.PeMiL.MQTTMessageBus.TSharedNodeSpaceHub, HumanOS.PeMiL.MQTTMessageBus",
         "HumanOS.SharedNodeSpace.Address": "localhost",
-        "AppConfig.LogMinimumLevel": "Information",
+        "AppConfig.LogMinimumLevel": "Debug",
         "Serilog.WriteTo[?(@.Name == 'File')].Args.path": "$(AppConfig:CommonAppPath)Logs\\$(HumanOS:ServiceName)-.log",
         "AppConfig.LogRetentionDays": "7",
         "SecretManager.Path": "$(AppSettingsDir)Secrets\\",
         "HumanOS.ServiceId": "c8e18241-0ac6-45e5-a209-940ef2f9f5b2",
         "HumanOS.ServiceName": "$(Target.Name)",
-        "HumanOS.RuntimeVersion": "2.11",
+        "HumanOS.RuntimeVersion": "2.12",
         "HumanOS.SharedNodeSpace.MasterSystemControllerId": "150023f1-2619-450a-a3ea-df47be294799",
         "HumanOS.SharedNodeSpace.MasterAgentOrchestratorId": "150023f1-2619-450a-a3ea-df47be294799"
       },

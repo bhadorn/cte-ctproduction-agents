@@ -390,6 +390,46 @@
               "Value": "MaintenanceJobIdType"
             }
           ]
+        },
+        {
+          "Id": "aeba96c3-324a-4ac1-a7cf-06e17e5efd2c",
+          "Name": "WorkShiftSetting",
+          "DataType": "System.String",
+          "Unit": "",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "Write": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "WorkShiftSettingType"
+            }
+          ]
+        },
+        {
+          "Id": "4183bf92-ad6e-4bc8-a0b1-69829e75a9ec",
+          "Name": "AfterWorkShift",
+          "DataType": "System.Boolean",
+          "Unit": "",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "Write": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "AfterWorkShiftType"
+            }
+          ]
         }
       ],
       "ConstantNodes": [],
@@ -1035,6 +1075,49 @@
                   "Name": "PortMatchId",
                   "DataType": "System.String",
                   "Value": "MachinePerformanceType"
+                }
+              ]
+            }
+          ],
+          "Properties": [
+            {
+              "Name": "DelayTime",
+              "DataType": "System.Int32",
+              "Value": 0
+            }
+          ]
+        },
+        {
+          "Id": "369e8624-09bc-4e34-afcb-735d22b8db31",
+          "Name": "WorkplaceShiftProcessor",
+          "InitialData": [
+            "WorkplaceShiftProcessor.cs"
+          ],
+          "SamplingRate": 60.0,
+          "Type": "CSharpScriptProcessingNode",
+          "Ports": [
+            {
+              "Name": "WorkShiftSetting",
+              "DataType": "System.String",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "WorkShiftSettingType"
+                }
+              ]
+            },
+            {
+              "Name": "AfterWorkShift",
+              "DataType": "System.Boolean",
+              "FlowDirection": "Output",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "AfterWorkShiftType"
                 }
               ]
             }
