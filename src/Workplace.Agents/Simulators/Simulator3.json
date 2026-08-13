@@ -1,10 +1,15 @@
 {
-  "AlarmState": 0,
+  "AlarmState": 1,
   "CurrentToolId": "",
   "MainProgram": "program1.nc",
   "OperationMode": 1,
   "OperationTime": 0,
   "PartCounter": 3,
   "PowerOnTime": 0,
-  "RunningState": 0
+  "RunningState": 0,
+  "Spindle1":{
+    "Load": 0,
+    "Temperature": 20,
+    "State": 100
+  }
 }

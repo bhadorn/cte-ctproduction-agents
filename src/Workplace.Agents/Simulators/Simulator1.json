@@ -6,5 +6,10 @@
   "OperationTime": 0,
   "PartCounter": 56,
   "PowerOnTime": 0,
-  "RunningState": 1
+  "RunningState": 1,
+  "Spindle1":{
+    "Load": 0,
+    "Temperature": 20,
+    "State": 200
+  }
 }
