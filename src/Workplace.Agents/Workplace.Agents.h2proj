@@ -311,7 +311,7 @@
         "HumanOS.Repository.Connection": "",
         "HumanOS.SharedNodeSpace.Type": "HumanOS.PeMiL.MQTTMessageBus.TSharedNodeSpaceHub, HumanOS.PeMiL.MQTTMessageBus",
         "HumanOS.SharedNodeSpace.Address": "localhost",
-        "AppConfig.LogMinimumLevel": "Verbose",
+        "AppConfig.LogMinimumLevel": "Information",
         "Serilog.WriteTo[?(@.Name == 'File')].Args.path": "$(AppConfig:CommonAppPath)Logs\\$(HumanOS:ServiceName)-.log",
         "AppConfig.LogRetentionDays": "7",
         "SecretManager.Path": "$(AppSettingsDir)Secrets\\",

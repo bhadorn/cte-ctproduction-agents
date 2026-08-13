@@ -240,6 +240,7 @@
       "PayloadScriptFile": "TFacilityComponentPayload_v2.cs",
       "SamplerType": "AllData",
       "SamplingRate": 30.0,
+      "StartingSecond": 30,
       "ProcessOnlyValidData": true,
       "Properties": {},
       "ServiceRule": {
