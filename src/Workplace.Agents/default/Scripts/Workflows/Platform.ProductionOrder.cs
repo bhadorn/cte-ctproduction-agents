@@ -119,6 +119,7 @@ namespace HumanOS.IoT.Designer.Library.Scripts
       Guid ProductionJobId = JobData.Id;
       
       (IDataNode<Guid> ProductionJob, 
+       IDataNode<Guid> LastProductionJob,
        IDataNode<Guid> ProductionOrder,
        IDataNode<double> ProducedQuantity,
        IDataNode<double> BadQuantity,
@@ -129,7 +130,8 @@ namespace HumanOS.IoT.Designer.Library.Scripts
       
       //Pause the previous job before starting the new job
       // All data are written back to this job
-      if (ProductionJob.Value != Guid.Empty)
+      Guid PreviousJobId = ProductionJob.Value;
+      if (PreviousJobId != Guid.Empty)
       {
         //Stops the job on the workplace
         JobState.passValue(JobState_Ready);
@@ -146,7 +148,10 @@ namespace HumanOS.IoT.Designer.Library.Scripts
         writeInfo($"Production job '{ProductionJob.Value}' paused.");
       }
       
-      //Write the new job data
+      //Write the new job data. A job that held the workplace is named as the one that left, so the
+      // sample this batch produces closes its time - starting a job over a running one is the second
+      // way a job leaves a workplace, next to stopAsync. Guid.Empty when the workplace was free.
+      LastProductionJob.passValue(PreviousJobId);
       ProductionJob.passValue(ProductionJobId);
       ProductionOrder.passValue(ProductionOrderId);
       ProducedQuantity.passValue(JobData.readField<double>("ProducedQuantity", 0));
@@ -185,6 +190,7 @@ namespace HumanOS.IoT.Designer.Library.Scripts
       Retval.Fields["State"] = bPauseOnly ? JobState_Ready : JobState_Done;
       Retval.Fields["Action"] = bPauseOnly ? JobAction_Paused : JobAction_Done;
       (IDataNode<Guid> ProductionJob, 
+       IDataNode<Guid> LastProductionJob,
        IDataNode<Guid> ProductionOrder,
        IDataNode<double> ProducedQuantity,
        IDataNode<double> BadQuantity,
@@ -193,8 +199,11 @@ namespace HumanOS.IoT.Designer.Library.Scripts
        IDataNode<double> MaxChangeOverTime,
        IDataNode<int> JobState) = getJobDataNodesGroup(Device);
 
-      //Stops the job on the workplace
-      JobState.passValue(0);
+      //Stops the job on the workplace. The job state distinguishes a pause from a stop, and the
+      // ending job's id moves to LastProductionJob so the sample this batch produces still names it
+      // once ProductionJob is cleared below.
+      JobState.passValue(bPauseOnly ? JobState_Ready : JobState_Done);
+      LastProductionJob.passValue(JobData.Id);
       
       //Only write back if the job matches
       if (ProductionJob.Value == JobData.Id)
@@ -240,6 +249,7 @@ namespace HumanOS.IoT.Designer.Library.Scripts
 
     //Gets the current job relation
     private static (IDataNode<Guid> ProductionJob, 
+                    IDataNode<Guid> LastProductionJob,
                     IDataNode<Guid> ProductionOrder,
                     IDataNode<double> ProducedQuantity,
                     IDataNode<double> BadQuantity,
@@ -255,6 +265,7 @@ namespace HumanOS.IoT.Designer.Library.Scripts
       }
       
       return ((IDataNode<Guid>)nCurrentJobGroup.queryNode(n => n.Name == "ProductionJob"), 
+              (IDataNode<Guid>)nCurrentJobGroup.queryNode(n => n.Name == "LastProductionJob"),
               (IDataNode<Guid>)nCurrentJobGroup.queryNode(n => n.Name == "ProductionOrder"),
               (IDataNode<double>)nCurrentJobGroup.queryNode(n => n.Name == "ProducedQuantity"),
               (IDataNode<double>)nCurrentJobGroup.queryNode(n => n.Name == "BadQuantity"),
