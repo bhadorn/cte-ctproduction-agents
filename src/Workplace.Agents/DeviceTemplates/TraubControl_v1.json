@@ -3,7 +3,28 @@
   "Name": "TraubControl_v1",
   "DriverId": "f022ee3c-a2a5-428a-b588-46abacae39ee",
   "Address": "",
-  "Variables": [],
+  "Variables": [
+    {
+      "Name": "DeviceName",
+      "DataType": "System.String",
+      "Value": "Traub NCControl0/"
+    },
+    {
+      "Name": "NameSpaceTypePrefix",
+      "DataType": "System.String",
+      "Value": "s="
+    },
+    {
+      "Name": "OpcUaNameSpace",
+      "DataType": "System.String",
+      "Value": "ns=2"
+    },
+    {
+      "Name": "RootDeviceNode",
+      "DataType": "System.String",
+      "Value": "Objects/Devices/"
+    }
+  ],
   "Properties": [
     {
       "Name": "Description",
@@ -636,10 +657,9 @@
             "AvailableState <= 0                          => OutputMachineState=900; OutputMachineStateName=\"Power Off\"",
             "AlarmState == true                           => OutputMachineState=1;   OutputMachineStateName=\"Disturbance\"",
             "OperationMode != 7                           => OutputMachineState=100; OutputMachineStateName=\"Setup\"",
-            "OperationMode == 7 and RunningState == false => OutputMachineState=300; OutputMachineStateName=\"Production Stopped\"",
-            "OperationMode == 7 and RunningState == true and AutoCycle == true and AutomaticStop == true => OutputMachineState=300; OutputMachineStateName=\"Production Stopped\"",
+            "OperationMode == 7 and RunningState == true and AutomaticStop == true and AutoCycle == true => OutputMachineState=310; OutputMachineStateName=\"Stop: Missing Material\"",
             "OperationMode == 7 and RunningState == true  => OutputMachineState=200; OutputMachineStateName=\"Production\"",
-            "OperationMode == 7                           => OutputMachineState=320; OutputMachineStateName=\"Stopped: Missing Personal\""
+            "=> OutputMachineState=300; OutputMachineStateName=\"Production Stopped\""
           ],
           "Type": "SituationProcessingNode",
           "Ports": [
