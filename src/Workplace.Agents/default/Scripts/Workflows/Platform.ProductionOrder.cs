@@ -150,8 +150,9 @@ namespace HumanOS.IoT.Designer.Library.Scripts
       
       //Write the new job data. A job that held the workplace is named as the one that left, so the
       // sample this batch produces closes its time - starting a job over a running one is the second
-      // way a job leaves a workplace, next to stopAsync. Guid.Empty when the workplace was free.
-      LastProductionJob.passValue(PreviousJobId);
+      // way a job leaves a workplace, next to stopAsync. Guid.Empty when the workplace was free, and
+      // also when this same job is being promoted from setup to production: it is not leaving.
+      LastProductionJob.passValue(PreviousJobId != ProductionJobId ? PreviousJobId : Guid.Empty);
       ProductionJob.passValue(ProductionJobId);
       ProductionOrder.passValue(ProductionOrderId);
       ProducedQuantity.passValue(JobData.readField<double>("ProducedQuantity", 0));
