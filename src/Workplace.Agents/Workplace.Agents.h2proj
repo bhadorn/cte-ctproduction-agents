@@ -319,7 +319,8 @@
         "HumanOS.ServiceName": "$(Target.Name)",
         "HumanOS.RuntimeVersion": "2.12",
         "HumanOS.SharedNodeSpace.MasterSystemControllerId": "150023f1-2619-450a-a3ea-df47be294799",
-        "HumanOS.SharedNodeSpace.MasterAgentOrchestratorId": "150023f1-2619-450a-a3ea-df47be294799"
+        "HumanOS.SharedNodeSpace.MasterAgentOrchestratorId": "150023f1-2619-450a-a3ea-df47be294799",
+        "CertificateManager.Path": "$(AppSettingsDir)Config\\CertificateSources\\"
       },
       "VaultKeyEnvironmentVariableName": "HumanOSVaultKey",
       "DataModel": {

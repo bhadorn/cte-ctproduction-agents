@@ -85,6 +85,26 @@
           ]
         },
         {
+          "Id": "8fd2bc8d-4fcf-4c5f-9add-3df2040bd776",
+          "Name": "LastProductionJob",
+          "DataType": "System.Guid",
+          "Unit": "",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "Write": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "LastProductionJobIdType"
+            }
+          ]
+        },
+        {
           "Id": "2bfb0582-a4dd-4954-9b9e-aa30766edc2b",
           "Name": "ProductionOrder",
           "DataType": "System.Guid",
@@ -680,6 +700,33 @@
                   "Name": "PortMatchId",
                   "DataType": "System.String",
                   "Value": "ProductionJobIdType"
+                }
+              ]
+            },
+            {
+              "Id": "c47b8e12-6a30-4f9d-92c5-1e8b3d70a5f4",
+              "Name": "JobState",
+              "DataType": "System.Int32",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "JobStateType"
+                }
+              ]
+            },
+            {
+              "Id": "5e6d2c80-9b14-4a73-8f2e-c0a71d539e8b",
+              "Name": "LastJobId",
+              "DataType": "System.Guid",
+              "Public": true,
+              "TriggerType": "None",
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "LastProductionJobIdType"
                 }
               ]
             },

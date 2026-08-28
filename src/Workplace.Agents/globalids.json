@@ -1,5 +1,5 @@
 {
-  "FileName": "c:\\projects\\public\\cte-ctproduction-agents\\src\\workplace.agents\\globalids.json",
+  "FileName": "C:\\Projects\\cte-ctproduction\\src\\Platform.Agents\\cte-ctproduction-agents\\src\\Workplace.Agents\\globalids.json",
   "Ids": {
     "ece37fdf-4862-4543-af23-48ffdb8203c7/FanucControl_v1": "521f7450-eeee-4efc-9ee0-a5e6b71f9687",
     "ece37fdf-4862-4543-af23-48ffdb8203c7/FanucControl_v1/Available": "4f11d7d5-3d30-4ffb-95d5-59069b854d6c",
@@ -669,6 +669,9 @@
     "f8cfdafe-7082-4c9a-b36d-d76b22062a78/ctProduction_v2/MachineState/WorkShiftSetting": "a87492bc-b3f5-42d8-a4e4-07cf60ffaa86",
     "f8cfdafe-7082-4c9a-b36d-d76b22062a78/ctProduction_v2/MachineState/AfterWorkShift": "dd526171-dc05-4b77-b38f-ada877ec76a2",
     "99dfa3aa-4dbd-40f5-99c8-519532d2bc63/ctProduction_v2/MachineState/WorkShiftSetting": "d2c82f6b-d797-42e2-b62b-0617b0fc3e47",
-    "99dfa3aa-4dbd-40f5-99c8-519532d2bc63/ctProduction_v2/MachineState/AfterWorkShift": "cd618c79-8318-4e9d-b8d2-52dd17c83573"
+    "99dfa3aa-4dbd-40f5-99c8-519532d2bc63/ctProduction_v2/MachineState/AfterWorkShift": "cd618c79-8318-4e9d-b8d2-52dd17c83573",
+    "bc0c0b38-b239-4a65-9c01-f10ff821d330/ctProduction_v2/CurrentJob/LastProductionJob": "e41643c5-cccb-4fc9-861d-fbb5de8e1ccc",
+    "f8cfdafe-7082-4c9a-b36d-d76b22062a78/ctProduction_v2/CurrentJob/LastProductionJob": "42128627-ac34-4991-92bf-c8376c5f1012",
+    "99dfa3aa-4dbd-40f5-99c8-519532d2bc63/ctProduction_v2/CurrentJob/LastProductionJob": "8fd2bc8d-4fcf-4c5f-9add-3df2040bd776"
   }
 }
