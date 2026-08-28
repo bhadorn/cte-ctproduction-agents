@@ -9,10 +9,10 @@
   "PlatformURL": "https://localhost:8080",
   "ProductLicenseId": "bf28dd1c-7589-4903-b11e-2e9a249ce5a6",
   "ProjectVaultKey": "uRNSgLTCTUjcyT2W1ecXv/3wBjiZLlzrZIoYzh10jsOmg70Clh0fZyCb2hPXVThJGATBPReTmQMgAfrffqv299VTJtg1PLByuP9xXgEKe1Q=",
-  "PublishNumber": 33,
+  "PublishNumber": 36,
   "SecurityMode": "StoreKeyInProject",
   "SyntaxVersion": "2.0",
-  "Version": "1.2.1",
+  "Version": "1.2.3",
   "DeviceTemplates": [
     {
       "DriverId": "b3ccd1a7-a49b-46fc-b983-5284992f6444",
@@ -295,7 +295,7 @@
       "PublishScriptArguments": "",
       "PlatformLogEnabled": true,
       "PlatformLogIgnoreCertificateErrors": true,
-      "PlatformLogMinimumLevel": "Information",
+      "PlatformLogMinimumLevel": "Warning",
       "PlatformLogSecretId": "PlatformToken",
       "PlatformLogUrl": "https://localhost:8080/api/v2/streams/CreateStreamData",
       "Runtime": "HumanOS.IoT.Runtime win-x64",

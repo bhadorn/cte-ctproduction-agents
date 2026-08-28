@@ -21,6 +21,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -73,50 +74,65 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
         Logger.writeInfo("...scanning the facility components done.");
         Watch.Reset();
         Watch.Restart();
-      }
+      } //Watch.ElapsedMilliseconds > 120000 || m_bFirstCall
 
       //Processes the stream data
       foreach (TDataSet DataSet in lstData) 
       {
-        Guid DeviceId = DataSet.getFieldValue<Guid>("DeviceId");
-        string strStreamModelName = DataSet.Name;
-
-        if (!dicMessages.ContainsKey(DeviceId)) 
+        //Gets the Id of the stream data node
+        Guid Id = DataSet.getFieldValue<Guid>("Id");
+        Guid FacilityComponentId = Guid.Empty;
+        
+        if (m_dicStreams.TryGetValue(Id, out FacilityComponentId))
         {
-          if (Kernel.NodeSpace.tryGetNodeLocally(DeviceId, out INode DeviceNode) && DeviceNode.hasProperty("FacilityComponentType"))
+          string strStreamModelName = DataSet.Name;
+          if (!dicMessages.ContainsKey(FacilityComponentId)) 
           {
-            Guid FacilityComponentId = DeviceNode.GlobalId;
-            DateTime TimeStamp = DataSet.getFieldValue<DateTime>("TimeStamp");
-            if (Context.LastTimeStamp > TimeStamp)
+            if (Kernel.NodeSpace.tryGetNodeLocally(FacilityComponentId, out INode DeviceNode) && DeviceNode.hasProperty("FacilityComponentType"))
             {
-              TimeStamp = Context.LastTimeStamp;
-            }
-            dicMessages[DeviceId] = new JObject();
-            dicMessages[DeviceId].Add("Stream", strStreamModelName);
-            dicMessages[DeviceId].Add("RefId", FacilityComponentId);
-            dicMessages[DeviceId].Add("TimeStamp", TimeStamp.ToString("o"));
-            dicMessages[DeviceId].Add("State", DataSet.getFieldValue<int>("State"));
-            dicMessages[DeviceId].Add("Fields", new JObject());
-          }
-        }
-        if (dicMessages.ContainsKey(DeviceId))
-        {
-          JObject jDevice = dicMessages[DeviceId];
-          if (DataSet.Type == EDataSetType.DataNode)
-          {
-            // Add platform data
-            TGenericEntity nEntity = DataSet.getFieldValue<TGenericEntity>("Value");
-            if (nEntity != null)
-            {
-              JObject jData = (JObject)jDevice.GetValue("Fields");
-              foreach(KeyValuePair<string, object> FieldValue in DataSet.getFieldValue<TGenericEntity>("Value").getFieldValues())
+              DateTime TimeStamp = DataSet.getFieldValue<DateTime>("TimeStamp");
+              if (Context.LastTimeStamp > TimeStamp)
               {
-                jData.Add(FieldValue.Key, FieldValue.Value != null ? JToken.FromObject(FieldValue.Value): null);
+                TimeStamp = Context.LastTimeStamp;
               }
+              dicMessages[FacilityComponentId] = new JObject();
+              dicMessages[FacilityComponentId].Add("Stream", strStreamModelName);
+              dicMessages[FacilityComponentId].Add("RefId", FacilityComponentId);
+              dicMessages[FacilityComponentId].Add("TimeStamp", TimeStamp.ToString("o"));
+              dicMessages[FacilityComponentId].Add("State", DataSet.getFieldValue<int>("State"));
+              dicMessages[FacilityComponentId].Add("Fields", new JObject());
             }
           }
+          if (dicMessages.ContainsKey(FacilityComponentId))
+          {
+            JObject jDevice = dicMessages[FacilityComponentId];
+            if (DataSet.Type == EDataSetType.DataNode)
+            {
+              // Add platform data
+              TGenericEntity nEntity = DataSet.getFieldValue<TGenericEntity>("Value");
+              if (nEntity != null)
+              {
+                JObject jData = (JObject)jDevice.GetValue("Fields");
+                foreach(KeyValuePair<string, object> FieldValue in DataSet.getFieldValue<TGenericEntity>("Value").getFieldValues())
+                {
+                  try
+                  {
+                    jData.Add(FieldValue.Key, FieldValue.Value != null ? JToken.FromObject(FieldValue.Value): null);
+                  }
+                  catch (Exception Exc)
+                  {
+                    Logger.writeWarning($"Failed to add '{FieldValue.Key}'. {Exc.Message}");
+                  }
+                }
+              } //nEntity != null
+            } //DataSet.Type == EDataSetType.DataNode
+          } //dicMessages.ContainsKey(FacilityComponentId)
+        } // m_dicStreams.TryGetValue(Id, out FacilityComponentId)
+        else
+        {
+          Logger.writeWarning($"Streaming node '{Id}' not registered to a facility component id. Check the device data structure. Streams must be a subnode of the facility component.");
         }
-      }
+      } //end foreach
       
       foreach(KeyValuePair<Guid, JObject> Message in dicMessages)
       {
@@ -126,6 +142,7 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
       JObject jRoot = new JObject();
       jRoot.Add("Messages", jMessages);
       
+      Logger.writeVerbose(jRoot.ToString());
       return new string[]{jRoot.ToString()};
     }
     
@@ -155,6 +172,12 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
         jCollection.Add(jObject);
         jCollection = new JArray();
         jObject["Components"] = jCollection;
+        
+        //Register all streams of the facility component
+        foreach(INode StreamNode in Group.queryNodesLocally(n => n.hasProperty("EnableFacilityComponentStream") && n is IDataNode))
+        {
+          m_dicStreams[StreamNode.GlobalId] = Group.GlobalId;
+        }
       }
       foreach(IGroupRelation SubGroup in Group.queryNodesLocally(n => n.hasProperty("DeviceId") && n is IGroupRelation))
       {
@@ -167,5 +190,8 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
     
     ///Flag is this is the first call
     private bool m_bFirstCall = false;
+    
+    //Mapping of streams (datanodes) to facility components
+    private ConcurrentDictionary<Guid, Guid> m_dicStreams = new ConcurrentDictionary<Guid, Guid>();
   }
 }

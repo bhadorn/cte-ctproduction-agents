@@ -86,8 +86,8 @@
       "Properties": []
     },
     {
-      "Id": "770112bb-38ae-4f47-be3e-5c6b5a289486",
-      "Name": "MaintenanceState",
+      "Id": "f0ec2926-0af2-49dc-a066-a6092b1532e9",
+      "Name": "FacilityState",
       "DataType": "System.Int32",
       "Unit": "",
       "Access": {
@@ -101,7 +101,32 @@
         {
           "Name": "PortMatchId",
           "DataType": "System.String",
-          "Value": "$(DeviceName).MaintenanceStateType"
+          "Value": "$(DeviceName).FacilityStateType"
+        }
+      ]
+    },
+    {
+      "Id": "42e69028-1739-4c14-866c-a7b8ca0e6c19",
+      "Name": "FacilityComponentStream",
+      "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
+      "Unit": "",
+      "Access": {
+        "Read": true,
+        "ReadConversion": {},
+        "Receive": true,
+        "Write": true,
+        "WriteConversion": {}
+      },
+      "Properties": [
+        {
+          "Name": "EnableFacilityComponentStream",
+          "DataType": "System.Boolean",
+          "Value": "true"
+        },
+        {
+          "Name": "PortMatchId",
+          "DataType": "System.String",
+          "Value": "$(DeviceName).FacilityComponentStreamType"
         }
       ]
     }
@@ -287,13 +312,84 @@
       "Groups": []
     },
     {
-      "Id": "2d938665-4096-4298-b2c9-5920a3f243cc",
-      "Name": "Streams",
-      "Properties": [],
+      "Id": "bc70be4f-36a5-45c5-bd98-c45e60d9d8c7",
+      "Name": "Spindle",
+      "Properties": [
+        {
+          "Name": "FacilityComponent",
+          "DataType": "System.String",
+          "Value": "Spindle 1"
+        },
+        {
+          "Name": "FacilityComponentType",
+          "DataType": "System.String",
+          "Value": "Spindle"
+        }
+      ],
       "DataNodes": [
         {
-          "Id": "f9bbeafa-7a72-4788-8569-94166d155758",
-          "Name": "FacilityComponentStream",
+          "Id": "bbef7e1c-c8ee-474b-b796-471f4bfe21c8",
+          "Name": "Temperature",
+          "Address": "$.Spindle1.Temperature",
+          "DataType": "System.Double",
+          "Unit": "",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "$(DeviceName).SpindleTemperatureType"
+            }
+          ]
+        },
+        {
+          "Id": "af56f331-ee43-4b3d-880a-6be90a5a0244",
+          "Name": "Load",
+          "Address": "$.Spindle1.Load",
+          "DataType": "System.Double",
+          "Unit": "",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "$(DeviceName).SpindleLoadType"
+            }
+          ]
+        },
+        {
+          "Id": "647abe89-b7ee-4239-9a5b-a7fbcfafeb48",
+          "Name": "FacilityState",
+          "Address": "$.Spindle1.State",
+          "DataType": "System.Int32",
+          "Unit": "",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "$(DeviceName).SpindleFacilityStateType"
+            }
+          ]
+        },
+        {
+          "Id": "c6b43231-ce58-4280-b49e-7f414f830613",
+          "Name": "SpindleComponentStream",
           "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
           "Unit": "",
           "Access": {
@@ -312,7 +408,7 @@
             {
               "Name": "PortMatchId",
               "DataType": "System.String",
-              "Value": "$(DeviceName).FacilityComponentStreamType"
+              "Value": "$(DeviceName).SpindleComponentStreamType"
             }
           ]
         }
@@ -500,7 +596,7 @@
           "Type": "SituationProcessingNode",
           "Ports": [
             {
-              "Name": "MaintenanceState",
+              "Name": "FacilityState",
               "DataType": "System.Int32",
               "FlowDirection": "Output",
               "Public": true,
@@ -508,7 +604,7 @@
                 {
                   "Name": "PortMatchId",
                   "DataType": "System.String",
-                  "Value": "$(DeviceName).MaintenanceStateType"
+                  "Value": "$(DeviceName).FacilityStateType"
                 }
               ]
             },
@@ -541,14 +637,14 @@
           "Type": "DataAggregator",
           "Ports": [
             {
-              "Name": "MaintenanceState",
+              "Name": "FacilityState",
               "DataType": "System.Int32",
               "Public": true,
               "Properties": [
                 {
                   "Name": "PortMatchId",
                   "DataType": "System.String",
-                  "Value": "$(DeviceName).MaintenanceStateType"
+                  "Value": "$(DeviceName).FacilityStateType"
                 }
               ]
             },
@@ -567,6 +663,72 @@
             }
           ],
           "Properties": []
+        },
+        {
+          "Id": "d7b31526-1888-4de5-9c08-ac37dc34c32c",
+          "Name": "SpindleComponentStreamProcessor",
+          "InitialData": [],
+          "Type": "DataAggregator",
+          "Ports": [
+            {
+              "Name": "FacilityState",
+              "DataType": "System.Int32",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).SpindleFacilityStateType"
+                }
+              ]
+            },
+            {
+              "Name": "OutputPort",
+              "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
+              "FlowDirection": "Output",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).SpindleComponentStreamType"
+                }
+              ]
+            },
+            {
+              "Id": "150e116a-7371-480b-a2e6-681f5d1a6b04",
+              "Name": "Temperature",
+              "DataType": "System.Double",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).SpindleTemperatureType"
+                }
+              ]
+            },
+            {
+              "Id": "f1dd3889-7e67-46c0-bec3-1dee363510e8",
+              "Name": "Load",
+              "DataType": "System.Double",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).SpindleLoadType"
+                }
+              ]
+            }
+          ],
+          "Properties": [
+            {
+              "Name": "DelayTime",
+              "DataType": "System.Int32",
+              "Value": 0
+            }
+          ]
         }
       ],
       "Properties": []
