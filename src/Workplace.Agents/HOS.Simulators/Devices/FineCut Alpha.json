@@ -57,7 +57,7 @@
   ],
   "DataNodes": [
     {
-      "Id": "e75c21e7-b3b0-48cc-9305-3bc9cdd45615",
+      "Id": "b6b02313-1577-4320-8e5b-5f72b161a0f0",
       "Name": "FacilityComponentStream",
       "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
       "Unit": "",
@@ -82,7 +82,7 @@
       ]
     },
     {
-      "Id": "9a392888-ac2e-4c62-8e05-ed049e895bf1",
+      "Id": "e23f6367-07eb-4bc0-877c-9e373f406514",
       "Name": "WorkplaceMdaStream",
       "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
       "Unit": "",
@@ -107,7 +107,7 @@
       ]
     },
     {
-      "Id": "54782ce4-353b-44b7-8d9f-6efe5aa81cb3",
+      "Id": "83a0f384-3a0e-4b4e-a913-2762ee27f3cb",
       "Name": "WorkplaceStateStream",
       "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
       "Unit": "",
@@ -143,12 +143,12 @@
   "Commands": [],
   "Groups": [
     {
-      "Id": "56c62c45-8522-4b02-b385-cd559eea6b34",
+      "Id": "3f96aece-76cc-450f-b40a-1987356a2188",
       "Name": "CurrentJob",
       "Properties": [],
       "DataNodes": [
         {
-          "Id": "8659ba51-af1d-45a3-9b68-b0138851aac4",
+          "Id": "467f1628-75e9-41f3-898d-0a85bfb92efc",
           "Name": "ProductionJob",
           "DataType": "System.Guid",
           "Unit": "",
@@ -168,7 +168,7 @@
           ]
         },
         {
-          "Id": "e41643c5-cccb-4fc9-861d-fbb5de8e1ccc",
+          "Id": "f2106b36-b6cf-4741-8135-593a8b9fecb5",
           "Name": "LastProductionJob",
           "DataType": "System.Guid",
           "Unit": "",
@@ -188,7 +188,7 @@
           ]
         },
         {
-          "Id": "4805e7cb-299b-4801-83ff-071e189c7581",
+          "Id": "6b192bc1-f695-4b02-b0f9-4a211edf1031",
           "Name": "ProductionOrder",
           "DataType": "System.Guid",
           "Unit": "",
@@ -208,7 +208,7 @@
           ]
         },
         {
-          "Id": "ac4389bf-1663-44c1-98cb-5ca08b81d06c",
+          "Id": "82ea5b50-d349-4c50-9548-b6a213dbf888",
           "Name": "ProductionStep",
           "DataType": "System.String",
           "Unit": "",
@@ -228,7 +228,7 @@
           ]
         },
         {
-          "Id": "61db8226-f2d7-4312-b73e-0cd19fb6f3d4",
+          "Id": "d83e1f6a-2e5d-48e7-8eb8-d6c0b3f416e9",
           "Name": "ProductName",
           "DataType": "System.String",
           "Unit": "",
@@ -248,7 +248,7 @@
           ]
         },
         {
-          "Id": "56bd15f8-4e29-4d33-8087-f8744051371b",
+          "Id": "e8983766-a107-4101-a66e-7f87f1141cd0",
           "Name": "ProducedQuantity",
           "DataType": "System.Double",
           "Unit": "",
@@ -268,7 +268,7 @@
           ]
         },
         {
-          "Id": "fbd07146-fe90-4cbc-bf9d-2a9ab822c33b",
+          "Id": "caa18d97-92a2-4181-96ef-feb202342f6a",
           "Name": "TotalQuantity",
           "DataType": "System.Double",
           "Unit": "",
@@ -288,7 +288,7 @@
           ]
         },
         {
-          "Id": "b89f27f7-836c-4402-b1c8-cd7bb697f897",
+          "Id": "ed5022ce-0d71-4986-bb8e-9c7b02db6b97",
           "Name": "BadQuantity",
           "DataType": "System.Double",
           "Unit": "",
@@ -308,7 +308,7 @@
           ]
         },
         {
-          "Id": "964d6df4-b008-470e-b155-e75f3c9b23d6",
+          "Id": "3a553573-b3c3-4cd1-9d12-e6a753860178",
           "Name": "JobState",
           "DataType": "System.Int32",
           "Unit": "",
@@ -328,7 +328,7 @@
           ]
         },
         {
-          "Id": "a368bfcf-66d0-442a-8048-a12874d55048",
+          "Id": "5317c98b-149a-460d-b345-fadd314e3547",
           "Name": "LastCycleTime",
           "DataType": "System.Double",
           "Unit": "min",
@@ -348,7 +348,7 @@
           ]
         },
         {
-          "Id": "df87ea64-820d-4f5c-8ec6-3d43be167457",
+          "Id": "56dafb62-c6ca-45d3-82d4-05f2e406546f",
           "Name": "CurrentCycleTime",
           "DataType": "System.Double",
           "Unit": "min",
@@ -368,7 +368,7 @@
           ]
         },
         {
-          "Id": "153eae31-e74c-4919-8ca9-ef98afeac311",
+          "Id": "d62a0a09-eb14-4bbf-a9e0-380fa17359d7",
           "Name": "SetCycleTime",
           "DataType": "System.Double",
           "Unit": "min",
@@ -388,7 +388,7 @@
           ]
         },
         {
-          "Id": "235967dc-adc1-41d6-b7b4-485cd6a3bd26",
+          "Id": "769def0f-d5b1-4762-bd9c-3f827d8a146c",
           "Name": "MaxChangeOverTime",
           "DataType": "System.Double",
           "Unit": "min",
@@ -413,12 +413,12 @@
       "Groups": []
     },
     {
-      "Id": "00481e56-11ff-4dc9-b146-c93ae95fb025",
+      "Id": "1432308c-15cd-4e28-9b3f-104d098cc373",
       "Name": "MachineState",
       "Properties": [],
       "DataNodes": [
         {
-          "Id": "9aaf5dd9-f570-425c-8673-ae937b82644a",
+          "Id": "9400fec7-db63-4556-9a2b-ae89af16fe1c",
           "Name": "MachineStateName",
           "DataType": "System.String",
           "Unit": "",
@@ -438,7 +438,7 @@
           ]
         },
         {
-          "Id": "e21372d9-0fda-4126-b49f-eb6d8c7d833e",
+          "Id": "fd725f69-5987-4696-a2ad-736de1de964a",
           "Name": "MachineState",
           "DataType": "System.Int32",
           "Unit": "",
@@ -458,7 +458,7 @@
           ]
         },
         {
-          "Id": "8138b2c1-6b2c-4eb3-bcf8-026236394876",
+          "Id": "8fd3ce0e-675e-4097-83b3-e35ba3a17ddf",
           "Name": "MaintenanceState",
           "DataType": "System.Int32",
           "Unit": "",
@@ -478,7 +478,7 @@
           ]
         },
         {
-          "Id": "faa754f5-06c7-4cd9-adfe-8f31afd3885e",
+          "Id": "4974cd25-6522-406f-af8c-53755d57072a",
           "Name": "MachinePerformance",
           "DataType": "System.Double",
           "Unit": "",
@@ -498,7 +498,7 @@
           ]
         },
         {
-          "Id": "69d069a2-e539-4b3e-afab-88f6f2af30a8",
+          "Id": "5f764607-4358-412e-b9e2-e5e60a7839fe",
           "Name": "MaintenanceJob",
           "DataType": "System.Guid",
           "Unit": "",
@@ -518,7 +518,7 @@
           ]
         },
         {
-          "Id": "08179e65-c97b-4632-9040-72063dce6c87",
+          "Id": "afc845fd-90f4-465f-a693-b243199f61cd",
           "Name": "WorkShiftSetting",
           "DataType": "System.String",
           "Unit": "",
@@ -538,7 +538,7 @@
           ]
         },
         {
-          "Id": "7c623368-b067-4705-b479-7d3c1b71cf02",
+          "Id": "d3b1ee6e-9f5d-4b86-9a90-2fbaae6e3f55",
           "Name": "AfterWorkShift",
           "DataType": "System.Boolean",
           "Unit": "",
@@ -558,7 +558,7 @@
           ]
         },
         {
-          "Id": "a2adf18d-a16a-405f-9b3c-80a2dd83dc6c",
+          "Id": "432ed4cc-f8a8-4c4e-9f18-e16d7d90883c",
           "Name": "FacilityState",
           "DataType": "System.Int32",
           "Unit": "",
@@ -585,7 +585,7 @@
   ],
   "Agents": [
     {
-      "Id": "7de09b91-c3cc-452f-857d-5a4c5001b5b6",
+      "Id": "14e353a9-2cf7-42bb-9565-03f2e5353df1",
       "Name": "Actor",
       "Type": "GenericActor",
       "Skills": [],
@@ -608,7 +608,7 @@
   "EntityTypes": [],
   "ProcessingNetworks": [
     {
-      "Id": "d1ab99a7-d6f6-448c-8fb3-6feca45db86b",
+      "Id": "644053ee-75d1-4d7f-9cbb-8e1c9e08e125",
       "Name": "StreamProcessors",
       "DataNodes": [],
       "Links": [
@@ -623,7 +623,7 @@
       ],
       "Processors": [
         {
-          "Id": "da89565c-79cd-4092-8f5d-1e6e16320b02",
+          "Id": "3707a597-c616-4619-87b0-8af03aec8b5b",
           "Name": "WorkplaceStateStreamAggregator",
           "InitialData": [],
           "Type": "DataAggregator",
@@ -777,7 +777,7 @@
           ]
         },
         {
-          "Id": "f5eba0d7-b8c8-47c8-b5df-26a3f7392810",
+          "Id": "18137228-bf76-463c-98ed-e0073e9374ac",
           "Name": "WorkplaceMdaStreamAggregator",
           "InitialData": [],
           "SamplingRate": 5.0,
@@ -929,7 +929,7 @@
           ]
         },
         {
-          "Id": "6e9c6983-37ae-4e16-bf83-cd0be77a5955",
+          "Id": "1b41c42d-f732-45b0-9380-e92a1f69b851",
           "Name": "WorkplaceStateStreamFilter",
           "InitialData": [
             "WorkplaceStateStreamFilter.cs"
@@ -981,7 +981,7 @@
           ]
         },
         {
-          "Id": "88cf20e9-ff66-44ad-955d-6c151b251d6c",
+          "Id": "d3b097cf-58bd-481d-9262-320e3956a223",
           "Name": "FacilityComponentStreamProcessor",
           "InitialData": [],
           "Type": "DataAggregator",
@@ -1015,7 +1015,7 @@
           "Properties": []
         },
         {
-          "Id": "2aeb0b9d-a671-4ca0-b879-42864b617264",
+          "Id": "2fedff11-66aa-4e45-8504-729564c50d7f",
           "Name": "MachineStateToFacilityStateProcessor",
           "InitialData": [
             "MachineState == 400 => 400",
@@ -1068,13 +1068,13 @@
       ]
     },
     {
-      "Id": "42fea16a-4323-4fa3-a41f-2e5a97e8f42a",
+      "Id": "b4bd8437-7d00-4a5e-8f86-46cf16993cda",
       "Name": "JobProcessors",
       "DataNodes": [],
       "Links": [],
       "Processors": [
         {
-          "Id": "ba78fd7a-7166-4ed5-990b-4cac245dd6c1",
+          "Id": "9d5e5e75-de50-41c5-8e21-4b89939f95e2",
           "Name": "PerformanceProcessor",
           "InitialData": [
             "PerformanceProcessor.cs"
@@ -1213,7 +1213,7 @@
           ]
         },
         {
-          "Id": "5b55f09c-4839-4c50-a1a6-142854dfcb17",
+          "Id": "d8e8cf8c-8f03-4c07-9425-80b3ba29bf3a",
           "Name": "WorkplaceShiftProcessor",
           "InitialData": [
             "WorkplaceShiftProcessor.cs"
@@ -1267,7 +1267,7 @@
   ],
   "Rules": [
     {
-      "Id": "f1944500-ff2d-463d-844b-522f26f71436",
+      "Id": "4f74dec8-7be0-437b-af11-e260c290c372",
       "Name": "PortMatchingRule",
       "Type": "PortMatchingRule",
       "Properties": [
