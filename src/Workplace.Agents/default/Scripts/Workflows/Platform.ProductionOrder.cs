@@ -202,11 +202,13 @@ namespace HumanOS.IoT.Designer.Library.Scripts
 
       //Stops the job on the workplace. The job state distinguishes a pause from a stop, and the
       // ending job's id moves to LastProductionJob so the sample this batch produces still names it
-      // once ProductionJob is cleared below. The job named is the one the workplace actually holds,
-      // not the one the command carries: a stop for a job that is not on this workplace must not
-      // close its time here, and must not rob the running job of its own closing sample.
+      // once ProductionJob is cleared below.
+      // The id comes from the platform, not from ProductionJob.Value: the platform is the system of
+      // record for which job runs where. An agent that lost its memory holds no job id, and the
+      // recovery is exactly to interrupt and restart the job - reading the id off the workplace
+      // would emit a closing sample naming nothing and lose the job's last segment.
       JobState.passValue(bPauseOnly ? JobState_Ready : JobState_Done);
-      LastProductionJob.passValue(ProductionJob.Value);
+      LastProductionJob.passValue(JobData.Id);
       
       //Only write back if the job matches
       if (ProductionJob.Value == JobData.Id)
