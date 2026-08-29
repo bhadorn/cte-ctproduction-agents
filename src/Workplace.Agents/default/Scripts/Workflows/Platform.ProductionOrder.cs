@@ -202,9 +202,11 @@ namespace HumanOS.IoT.Designer.Library.Scripts
 
       //Stops the job on the workplace. The job state distinguishes a pause from a stop, and the
       // ending job's id moves to LastProductionJob so the sample this batch produces still names it
-      // once ProductionJob is cleared below.
+      // once ProductionJob is cleared below. The job named is the one the workplace actually holds,
+      // not the one the command carries: a stop for a job that is not on this workplace must not
+      // close its time here, and must not rob the running job of its own closing sample.
       JobState.passValue(bPauseOnly ? JobState_Ready : JobState_Done);
-      LastProductionJob.passValue(JobData.Id);
+      LastProductionJob.passValue(ProductionJob.Value);
       
       //Only write back if the job matches
       if (ProductionJob.Value == JobData.Id)
