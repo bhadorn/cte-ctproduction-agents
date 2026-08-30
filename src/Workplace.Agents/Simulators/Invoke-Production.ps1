@@ -54,6 +54,10 @@
   the job, only the machine.
 
   The run rewrites the simulator file many times, so it will show up as a local modification.
+
+  A stop only shows up as a production stop on the platform if it outlasts the workplace's
+  MaxChangeOverTime - a longer one is taken for a change-over. A workplace left at 01:00:00 swallows
+  every stop this script makes.
 #>
 [CmdletBinding()]
 param(
@@ -94,6 +98,40 @@ if (-not (Test-Path $strPath))
 }
 
 <#
+  Writes the file in a way the agent can live with. The agent opens a simulator file with
+  FileAccess.ReadWrite and FileShare.ReadWrite (TFileHandler), so it holds write access for as long
+  as it reads. Set-Content asks for FileShare.Read, which denies exactly that access - the write
+  then fails with an IOException whenever the agent happens to be reading, and the run dies with it.
+  Sharing read and write in both directions lets the two coexist.
+
+  UTF-8 without a BOM, which is how the simulator files are written today.
+#>
+function Write-SharedText
+{
+  param(
+    [Parameter(Mandatory = $true)] [string] $Path,
+    [Parameter(Mandatory = $true)] [string] $Text
+  )
+
+  $Stream = [System.IO.File]::Open($Path,
+                                   [System.IO.FileMode]::OpenOrCreate,
+                                   [System.IO.FileAccess]::Write,
+                                   [System.IO.FileShare]::ReadWrite -bor [System.IO.FileShare]::Delete)
+  try
+  {
+    #The file is rewritten in full, so anything left over from a longer previous content has to go
+    $Stream.SetLength(0)
+    $Bytes = (New-Object System.Text.UTF8Encoding $false).GetBytes($Text)
+    $Stream.Write($Bytes, 0, $Bytes.Length)
+    $Stream.Flush()
+  }
+  finally
+  {
+    $Stream.Dispose()
+  }
+}
+
+<#
   Reads the file, applies the given fields and writes it back. A full rewrite is what the agent's
   file watcher reacts to, and Depth 10 keeps nested objects such as Spindle1 intact - the default
   depth of 2 would flatten them into type names.
@@ -110,7 +148,7 @@ function Set-SimulatorState
   {
     $Json.$Key = $Fields[$Key]
   }
-  $Json | ConvertTo-Json -Depth 10 | Set-Content -Path $Path -Encoding UTF8
+  Write-SharedText -Path $Path -Text ($Json | ConvertTo-Json -Depth 10)
 }
 
 $Json = Get-Content -Path $strPath -Raw | ConvertFrom-Json
