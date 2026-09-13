@@ -150,26 +150,38 @@
           "Name": "OperationTime",
           "Address": "Nc1.ProcessData.Float64:3",
           "DataType": "System.Double",
-          "Unit": "min",
+          "Unit": "h",
           "DataClass": "Stream",
           "Access": {
             "Read": true,
-            "ReadConversion": {},
+            "ReadConversion": {
+              "Instruction": "Value/60",
+              "Type": "SimpleExpression"
+            },
             "Receive": true,
             "WriteConversion": {}
           },
-          "Properties": []
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "OperationTimeType"
+            }
+          ]
         },
         {
           "Id": "76253532-ff4c-4f9f-9e58-d969fc3ff91c",
           "Name": "PowerOnTime",
           "Address": "Nc1.ProcessData.Float64:1",
           "DataType": "System.Double",
-          "Unit": "min",
+          "Unit": "h",
           "DataClass": "Stream",
           "Access": {
             "Read": true,
-            "ReadConversion": {},
+            "ReadConversion": {
+              "Instruction": "Value/60",
+              "Type": "SimpleExpression"
+            },
             "Receive": true,
             "WriteConversion": {}
           },

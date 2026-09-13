@@ -987,6 +987,44 @@
                   "Value": "FacilityComponentStreamType"
                 }
               ]
+            },
+            {
+              "Id": "0ec58a34-12a3-45b8-ace2-7c4ba3af6559",
+              "Name": "TotalOperationTime",
+              "DataType": "System.Double",
+              "Protocol": "Streaming",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "Description",
+                  "DataType": "System.String",
+                  "Value": "Value must be in hours"
+                },
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "OperationTimeType"
+                }
+              ]
+            },
+            {
+              "Id": "6ccf3e12-de1b-49f8-bd6a-149a5f203b1d",
+              "Name": "EnergyConsumption",
+              "DataType": "System.Double",
+              "Protocol": "Streaming",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "Description",
+                  "DataType": "System.String",
+                  "Value": "Value must be in kWh"
+                },
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "EnergyConsumptionType"
+                }
+              ]
             }
           ],
           "Properties": []

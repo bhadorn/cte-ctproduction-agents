@@ -52,7 +52,7 @@
   ],
   "DataNodes": [
     {
-      "Id": "33c79d2f-1002-4179-8508-aa3aa66f5340",
+      "Id": "f07fc24e-88f0-4df0-b59e-d9f965c11f48",
       "Name": "Available",
       "Address": "File:Available",
       "DataType": "System.Int32",
@@ -72,7 +72,7 @@
       ]
     },
     {
-      "Id": "8656875b-252c-4fab-800f-1d1d366e3e89",
+      "Id": "b2c86f92-346e-458c-98fe-7de18ba3d2fd",
       "Name": "SignOfLife",
       "Address": "File:SignOfLife",
       "DataType": "System.Int32",
@@ -86,7 +86,7 @@
       "Properties": []
     },
     {
-      "Id": "f0ec2926-0af2-49dc-a066-a6092b1532e9",
+      "Id": "f48fb7c1-948c-4dd4-b6cf-edc8c891ae2a",
       "Name": "FacilityState",
       "DataType": "System.Int32",
       "Unit": "",
@@ -106,7 +106,7 @@
       ]
     },
     {
-      "Id": "42e69028-1739-4c14-866c-a7b8ca0e6c19",
+      "Id": "c68af7bb-dd98-4e8b-9fbb-cd3d296a7668",
       "Name": "FacilityComponentStream",
       "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
       "Unit": "",
@@ -135,12 +135,12 @@
   "Commands": [],
   "Groups": [
     {
-      "Id": "d0e09cd4-9900-45e8-b264-a228ec14ca64",
+      "Id": "b133485d-63cd-4681-8d5d-037119f5c2fd",
       "Name": "Controller",
       "Properties": [],
       "DataNodes": [
         {
-          "Id": "cc90431a-6473-4b97-9114-cac9a46bf285",
+          "Id": "e9f2b41d-d305-4011-a2bb-9fe5cb1bda43",
           "Name": "AlarmState",
           "Address": "$.AlarmState",
           "DataType": "System.Int32",
@@ -161,7 +161,7 @@
           ]
         },
         {
-          "Id": "6534201a-ed85-4891-8775-5a4ee0efffc4",
+          "Id": "84f40eb6-4893-4ef6-9b4b-3a8a6cdacb29",
           "Name": "OperationMode",
           "Address": "$.OperationMode",
           "DataType": "System.Int32",
@@ -182,7 +182,7 @@
           ]
         },
         {
-          "Id": "cae53683-e96e-493d-be64-92f11bfc1393",
+          "Id": "52eecf3f-c27d-45d1-9cf2-6365c12926f1",
           "Name": "RunningState",
           "Address": "$.RunningState",
           "DataType": "System.Int32",
@@ -202,7 +202,7 @@
           ]
         },
         {
-          "Id": "fdc2d274-66f9-4480-b65c-09f369279953",
+          "Id": "9cc23e27-318c-450f-8bdc-1f911d4f7bc1",
           "Name": "PartCounter",
           "Address": "$.PartCounter",
           "DataType": "System.Int32",
@@ -223,7 +223,7 @@
           ]
         },
         {
-          "Id": "a2612a68-36f5-4c27-9cfe-2c2828a586bd",
+          "Id": "a39d5b33-ca47-4e1a-ab0a-48a6e7baa2dc",
           "Name": "CurrentToolId",
           "Address": "$.CurrentToolId",
           "DataType": "System.String",
@@ -244,7 +244,7 @@
           ]
         },
         {
-          "Id": "16e1fedc-fbf0-4a66-8186-526ac56abc39",
+          "Id": "93ba8066-2b5b-4ef0-a9ef-90a289aeb629",
           "Name": "MainProgram",
           "Address": "$.MainProgram",
           "DataType": "System.String",
@@ -265,11 +265,11 @@
           ]
         },
         {
-          "Id": "8cf0a869-055a-4ee8-83d4-35e4bb6916a6",
+          "Id": "b18fe396-9d6d-4d11-8001-ee3715643b6f",
           "Name": "OperationTime",
           "Address": "$.OperationTime",
           "DataType": "System.Double",
-          "Unit": "min",
+          "Unit": "h",
           "DataClass": "Stream",
           "Access": {
             "Read": true,
@@ -286,11 +286,11 @@
           ]
         },
         {
-          "Id": "44772352-7a0e-4489-b8cf-e2dcc5970542",
+          "Id": "ec9dcf54-4e66-4c94-a093-794fbd5146ec",
           "Name": "PowerOnTime",
           "Address": "$.PowerOnTime",
           "DataType": "System.Double",
-          "Unit": "min",
+          "Unit": "h",
           "DataClass": "Stream",
           "Access": {
             "Read": true,
@@ -305,6 +305,27 @@
               "Value": "PowerOnTimeType"
             }
           ]
+        },
+        {
+          "Id": "22e2d232-59fc-4815-935c-069c268f573b",
+          "Name": "EnergyConsumption",
+          "Address": "$.EnergyConsumption",
+          "DataType": "System.Double",
+          "Unit": "kWh",
+          "DataClass": "Stream",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "EnergyConsumptionType"
+            }
+          ]
         }
       ],
       "ConstantNodes": [],
@@ -312,7 +333,7 @@
       "Groups": []
     },
     {
-      "Id": "bc70be4f-36a5-45c5-bd98-c45e60d9d8c7",
+      "Id": "3b67e37f-0df2-4069-9292-dc4f663b811f",
       "Name": "Spindle",
       "Properties": [
         {
@@ -328,7 +349,7 @@
       ],
       "DataNodes": [
         {
-          "Id": "bbef7e1c-c8ee-474b-b796-471f4bfe21c8",
+          "Id": "f755f1cb-263d-4eba-aa5e-2300f98bbe67",
           "Name": "Temperature",
           "Address": "$.Spindle1.Temperature",
           "DataType": "System.Double",
@@ -348,7 +369,7 @@
           ]
         },
         {
-          "Id": "af56f331-ee43-4b3d-880a-6be90a5a0244",
+          "Id": "8afebdb6-2cc2-4a02-a757-840236a0829b",
           "Name": "Load",
           "Address": "$.Spindle1.Load",
           "DataType": "System.Double",
@@ -368,7 +389,7 @@
           ]
         },
         {
-          "Id": "647abe89-b7ee-4239-9a5b-a7fbcfafeb48",
+          "Id": "5030e3d5-71ee-41c1-ba58-88ac1d0106a2",
           "Name": "FacilityState",
           "Address": "$.Spindle1.State",
           "DataType": "System.Int32",
@@ -388,7 +409,7 @@
           ]
         },
         {
-          "Id": "c6b43231-ce58-4280-b49e-7f414f830613",
+          "Id": "35916654-0176-4a34-850f-3963d22be35d",
           "Name": "SpindleComponentStream",
           "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
           "Unit": "",
@@ -419,7 +440,7 @@
     }
   ],
   "AlarmEventPool": {
-    "Id": "486ec828-9b55-4acb-b5e5-9a644bf45c36",
+    "Id": "0c4312f5-1dae-4864-8698-9251c4482c17",
     "Name": "AlarmEventPool",
     "Disabled": true,
     "Tasks": [
@@ -438,13 +459,13 @@
   "EntityTypes": [],
   "ProcessingNetworks": [
     {
-      "Id": "8595e12f-505a-4440-a150-523f99549bcb",
+      "Id": "8d01e8ad-7950-4d13-aa70-b5525877c6d2",
       "Name": "ControllerProcessors",
       "DataNodes": [],
       "Links": [],
       "Processors": [
         {
-          "Id": "18626ac2-daee-4e39-a34a-30c04f62deed",
+          "Id": "b9f2ebac-ffd6-40e5-909f-7cdd7030ca35",
           "Name": "MachineStateProcessor",
           "InitialData": [
             "MaintenanceState == 1                    => OutputMachineState=400; OutputMachineStateName=\"Maintenance\"",
@@ -587,7 +608,7 @@
           ]
         },
         {
-          "Id": "6df89586-b268-431c-92c7-d5e656a0c966",
+          "Id": "e2023585-30fb-4a43-988b-0e28b2224cae",
           "Name": "ConditionMonitorProcessor",
           "InitialData": [
             "AlarmState != 0 => 1",
@@ -631,7 +652,7 @@
           ]
         },
         {
-          "Id": "c1c4c8d5-69a5-4bde-9567-69b32ad3c268",
+          "Id": "a10e3f74-ab80-47ff-b4e1-e31d563afea1",
           "Name": "FacilityComponentStreamProcessor",
           "InitialData": [],
           "Type": "DataAggregator",
@@ -665,7 +686,7 @@
           "Properties": []
         },
         {
-          "Id": "d7b31526-1888-4de5-9c08-ac37dc34c32c",
+          "Id": "55c89131-6f8e-4d70-b6ff-e7e405fd1bd0",
           "Name": "SpindleComponentStreamProcessor",
           "InitialData": [],
           "Type": "DataAggregator",

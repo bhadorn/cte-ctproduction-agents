@@ -240,7 +240,7 @@
           "Name": "OperationTime",
           "Address": "$.OperationTime",
           "DataType": "System.Double",
-          "Unit": "min",
+          "Unit": "h",
           "DataClass": "Stream",
           "Access": {
             "Read": true,
@@ -261,7 +261,7 @@
           "Name": "PowerOnTime",
           "Address": "$.PowerOnTime",
           "DataType": "System.Double",
-          "Unit": "min",
+          "Unit": "h",
           "DataClass": "Stream",
           "Access": {
             "Read": true,
@@ -274,6 +274,27 @@
               "Name": "PortMatchId",
               "DataType": "System.String",
               "Value": "PowerOnTimeType"
+            }
+          ]
+        },
+        {
+          "Id": "b0257f6f-797c-4b82-93cb-bfbd7c4fb5e9",
+          "Name": "EnergyConsumption",
+          "Address": "$.EnergyConsumption",
+          "DataType": "System.Double",
+          "Unit": "kWh",
+          "DataClass": "Stream",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "EnergyConsumptionType"
             }
           ]
         }

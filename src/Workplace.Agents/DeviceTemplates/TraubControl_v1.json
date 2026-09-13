@@ -245,12 +245,12 @@
           "Name": "OperationTime",
           "Address": "$(OpcUaNameSpace);$(NameSpaceTypePrefix)892",
           "DataType": "System.Double",
-          "Unit": "min",
+          "Unit": "h",
           "DataClass": "Stream",
           "Access": {
             "Read": true,
             "ReadConversion": {
-              "Instruction": "Value/60",
+              "Instruction": "Value/3600",
               "Type": "SimpleExpression"
             },
             "Receive": true,
@@ -289,12 +289,12 @@
           "Name": "PowerOnTime",
           "Address": "$(OpcUaNameSpace);$(NameSpaceTypePrefix)889",
           "DataType": "System.Double",
-          "Unit": "min",
+          "Unit": "h",
           "DataClass": "Stream",
           "Access": {
             "Read": true,
             "ReadConversion": {
-              "Instruction": "Value/60",
+              "Instruction": "Value/3600",
               "Type": "SimpleExpression"
             },
             "Receive": true,
