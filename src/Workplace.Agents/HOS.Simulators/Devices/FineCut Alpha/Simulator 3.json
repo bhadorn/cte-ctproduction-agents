@@ -48,6 +48,16 @@
     {
       "Name": "SupplierName",
       "DataType": "System.String"
+    },
+    {
+      "Name": "MachineYearOfConstruction",
+      "DataType": "System.String",
+      "Value": "1900"
+    },
+    {
+      "Name": "MachineCriticality",
+      "DataType": "System.String",
+      "Value": "10"
     }
   ],
   "DataNodes": [

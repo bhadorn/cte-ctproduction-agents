@@ -43,7 +43,8 @@
     },
     {
       "Name": "MachineInventoryNumber",
-      "DataType": "System.String"
+      "DataType": "System.String",
+      "Value": ""
     },
     {
       "Name": "Description",
@@ -53,6 +54,16 @@
     {
       "Name": "SupplierName",
       "DataType": "System.String"
+    },
+    {
+      "Name": "MachineYearOfConstruction",
+      "DataType": "System.String",
+      "Value": "2026"
+    },
+    {
+      "Name": "MachineCriticality",
+      "DataType": "System.String",
+      "Value": "7"
     }
   ],
   "DataNodes": [

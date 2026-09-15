@@ -158,8 +158,8 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
         jObject["SerialNumber"] = Group.getProperty<string>("MachineSerialNumber", "");
         jObject["InventoryNumber"] = Group.getProperty<string>("MachineInventoryNumber", "");
         jObject["SupplierName"] = Group.getProperty<string>("SupplierName", "");
-        jObject["YearOfConstruction"] = Group.getProperty<int>("MachineYearOfConstruction", 0);
-        jObject["Criticality"] = Group.getProperty<int>("MachineCriticality", 0);
+        jObject["YearOfConstruction"] = parseIntProperty(Group.getProperty<string>("MachineYearOfConstruction", ""));
+        jObject["Criticality"] = parseIntProperty(Group.getProperty<string>("MachineCriticality", ""));
         
         if (Group.getProperty<string>("FacilityComponentType") == "Workplace")
         {
@@ -186,7 +186,18 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
         addFacilityComponents(SubGroup, jCollection);
       }
     }
-    
+
+    ///Parses a machine property configured as free text in the Designer into an int, defaulting to 0 when absent or not a valid number
+    private int parseIntProperty(string strValue)
+    {
+      int iRetval = 0;
+      if (!string.IsNullOrWhiteSpace(strValue))
+      {
+        int.TryParse(strValue, out iRetval);
+      }
+      return iRetval;
+    }
+
     ///Stopwatch to reduce registration messages
     private Stopwatch Watch {get;} = new Stopwatch();
     
