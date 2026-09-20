@@ -56,6 +56,10 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
       if (Watch.ElapsedMilliseconds > 120000 || m_bFirstCall)
       {
         Logger.writeInfo("Scanning the facility components for registration/updates...");
+        //The scan repopulates both mappings completely, so stale entries of detached stream
+        //nodes or of groups that lost their FacilityComponentType must not survive it.
+        m_dicStreams.Clear();
+        m_dicRefIds.Clear();
         JArray jComponents = new JArray();
         foreach(IGroupRelation DeviceGroup in Kernel.NodeSpace.queryNodesLocally(n => n.hasProperty("WorkplaceId") && n.hasProperty("DeviceId") && n is IGroupRelation))
         {
@@ -81,31 +85,36 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
       {
         //Gets the Id of the stream data node
         Guid Id = DataSet.getFieldValue<Guid>("Id");
-        Guid FacilityComponentId = Guid.Empty;
+        Guid ComponentNodeId = Guid.Empty;
         
-        if (m_dicStreams.TryGetValue(Id, out FacilityComponentId))
+        if (m_dicStreams.TryGetValue(Id, out ComponentNodeId))
         {
-          string strStreamModelName = DataSet.Name;
-          if (!dicMessages.ContainsKey(FacilityComponentId)) 
+          //The reference id may be overridden by the WorkplaceId and is therefore not unique
+          //across device groups. The messages are grouped by the node id of the facility
+          //component instead, so two groups sharing a WorkplaceId keep their own message.
+          Guid FacilityComponentId;
+          if (!m_dicRefIds.TryGetValue(ComponentNodeId, out FacilityComponentId))
           {
-            if (Kernel.NodeSpace.tryGetNodeLocally(FacilityComponentId, out INode DeviceNode) && DeviceNode.hasProperty("FacilityComponentType"))
-            {
-              DateTime TimeStamp = DataSet.getFieldValue<DateTime>("TimeStamp");
-              if (Context.LastTimeStamp > TimeStamp)
-              {
-                TimeStamp = Context.LastTimeStamp;
-              }
-              dicMessages[FacilityComponentId] = new JObject();
-              dicMessages[FacilityComponentId].Add("Stream", strStreamModelName);
-              dicMessages[FacilityComponentId].Add("RefId", FacilityComponentId);
-              dicMessages[FacilityComponentId].Add("TimeStamp", TimeStamp.ToString("o"));
-              dicMessages[FacilityComponentId].Add("State", DataSet.getFieldValue<int>("State"));
-              dicMessages[FacilityComponentId].Add("Fields", new JObject());
-            }
+            FacilityComponentId = ComponentNodeId;
           }
-          if (dicMessages.ContainsKey(FacilityComponentId))
+          string strStreamModelName = DataSet.Name;
+          if (!dicMessages.ContainsKey(ComponentNodeId))
           {
-            JObject jDevice = dicMessages[FacilityComponentId];
+            DateTime TimeStamp = DataSet.getFieldValue<DateTime>("TimeStamp");
+            if (Context.LastTimeStamp > TimeStamp)
+            {
+              TimeStamp = Context.LastTimeStamp;
+            }
+            dicMessages[ComponentNodeId] = new JObject();
+            dicMessages[ComponentNodeId].Add("Stream", strStreamModelName);
+            dicMessages[ComponentNodeId].Add("RefId", FacilityComponentId);
+            dicMessages[ComponentNodeId].Add("TimeStamp", TimeStamp.ToString("o"));
+            dicMessages[ComponentNodeId].Add("State", DataSet.getFieldValue<int>("State"));
+            dicMessages[ComponentNodeId].Add("Fields", new JObject());
+          }
+          if (dicMessages.ContainsKey(ComponentNodeId))
+          {
+            JObject jDevice = dicMessages[ComponentNodeId];
             if (DataSet.Type == EDataSetType.DataNode)
             {
               // Add platform data
@@ -126,8 +135,8 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
                 }
               } //nEntity != null
             } //DataSet.Type == EDataSetType.DataNode
-          } //dicMessages.ContainsKey(FacilityComponentId)
-        } // m_dicStreams.TryGetValue(Id, out FacilityComponentId)
+          } //dicMessages.ContainsKey(ComponentNodeId)
+        } // m_dicStreams.TryGetValue(Id, out ComponentNodeId)
         else
         {
           Logger.writeWarning($"Streaming node '{Id}' not registered to a facility component id. Check the device data structure. Streams must be a subnode of the facility component.");
@@ -151,8 +160,8 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
     {
       if (Group.hasProperty("FacilityComponentType"))
       {
+        Guid FacilityComponentId = Group.GlobalId;
         JObject jObject = new JObject();
-        jObject["Id"] = Group.GlobalId;
         jObject["Name"] = Group.getProperty<string>("FacilityComponent");
         jObject["Type"] = Group.getProperty<string>("FacilityComponentType");
         jObject["SerialNumber"] = Group.getProperty<string>("MachineSerialNumber", "");
@@ -161,6 +170,10 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
         jObject["YearOfConstruction"] = parseIntProperty(Group.getProperty<string>("MachineYearOfConstruction", ""));
         jObject["Criticality"] = parseIntProperty(Group.getProperty<string>("MachineCriticality", ""));
         
+        //Special case Workplace: 
+        // 1. a workplace is typically the root facility component in ctProduction
+        // 2. if a WorkplaceId property is given (mapping to a dedicated workplace in the platform)
+        //    then the facility component id equals that workplace id too
         if (Group.getProperty<string>("FacilityComponentType") == "Workplace")
         {
           Guid WorkplaceId = Group.getProperty<Guid>("WorkplaceId", Guid.Empty);
@@ -169,13 +182,17 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
             WorkplaceId = Group.GlobalId;
           }
           jObject["WorkplaceId"] = WorkplaceId;
+          FacilityComponentId = WorkplaceId;
         }
+        jObject["Id"] = FacilityComponentId;
         
         jCollection.Add(jObject);
         jCollection = new JArray();
         jObject["Components"] = jCollection;
         
-        //Register all streams of the facility component
+        //Register all streams of the facility component. The streams are mapped to the node id
+        //of the group, which stays unique even when the reference id is overridden.
+        m_dicRefIds[Group.GlobalId] = FacilityComponentId;
         foreach(INode StreamNode in Group.queryNodesLocally(n => n.hasProperty("EnableFacilityComponentStream") && n is IDataNode))
         {
           m_dicStreams[StreamNode.GlobalId] = Group.GlobalId;
@@ -204,7 +221,11 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
     ///Flag is this is the first call
     private bool m_bFirstCall = false;
     
-    //Mapping of streams (datanodes) to facility components
+    //Mapping of streams (datanodes) to the node id of their facility component group
     private ConcurrentDictionary<Guid, Guid> m_dicStreams = new ConcurrentDictionary<Guid, Guid>();
+    
+    //Mapping of facility component group node ids to their reference id, which is the
+    //WorkplaceId for a workplace component and the node id itself for all others
+    private ConcurrentDictionary<Guid, Guid> m_dicRefIds = new ConcurrentDictionary<Guid, Guid>();
   }
 }
