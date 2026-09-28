@@ -73,6 +73,7 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
         jComponentMessage.Add("State", 1);
         JObject jFields = new JObject();
         jFields.Add("Components", jComponents);
+        jFields.Add("SessionId", m_SessionId);
         jComponentMessage.Add("Fields", jFields);
         jMessages.Add(jComponentMessage);
         Logger.writeInfo("...scanning the facility components done.");
@@ -164,6 +165,7 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
         JObject jObject = new JObject();
         jObject["Name"] = Group.getProperty<string>("FacilityComponent");
         jObject["Type"] = Group.getProperty<string>("FacilityComponentType");
+        jObject["DeviceId"] = Group.getProperty<Guid>("DeviceId");
         jObject["SerialNumber"] = Group.getProperty<string>("MachineSerialNumber", "");
         jObject["InventoryNumber"] = Group.getProperty<string>("MachineInventoryNumber", "");
         jObject["SupplierName"] = Group.getProperty<string>("SupplierName", "");
@@ -227,5 +229,9 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
     //Mapping of facility component group node ids to their reference id, which is the
     //WorkplaceId for a workplace component and the node id itself for all others
     private ConcurrentDictionary<Guid, Guid> m_dicRefIds = new ConcurrentDictionary<Guid, Guid>();
+
+    //Id of this agent session: a new process (or script instance) gets a new id, so the platform can
+    // tell an agent restart from a platform restart or a periodic scan
+    private readonly Guid m_SessionId = Guid.NewGuid();
   }
 }

@@ -65,24 +65,28 @@ namespace HumanOS.IoT.Designer.Library.Scripts
         IGroupRelation Device = await getDeviceAsync(Kernel, n => n.GlobalId == WorkplaceId || n.hasProperty("WorkplaceId", WorkplaceId), Token).ConfigureAwait(false);
         writeInfo($"Device found '{Device.Name}' ({Device.GlobalId})");
         
-        TEntityDataJM JobData = JsonConvert.DeserializeObject<List<TEntityDataJM>>(PipelineContext.DataInput).First();
+        List<TEntityDataJM> lstJobData = JsonConvert.DeserializeObject<List<TEntityDataJM>>(PipelineContext.DataInput) ?? new List<TEntityDataJM>();
 
         switch (PipelineContext.TriggerAction)
         {
+          case "initialize":
+            initialize(Device, lstJobData.FirstOrDefault());
+            break;
+
           case "start":
-            Retval.Data.AddRange(await startAsync(WorkplaceId, Device, JobData, false, Token).ConfigureAwait(false));
+            Retval.Data.AddRange(await startAsync(WorkplaceId, Device, lstJobData.First(), false, Token).ConfigureAwait(false));
             break;
 
           case "startSetup":
-            Retval.Data.AddRange(await startAsync(WorkplaceId, Device, JobData, true, Token).ConfigureAwait(false));
+            Retval.Data.AddRange(await startAsync(WorkplaceId, Device, lstJobData.First(), true, Token).ConfigureAwait(false));
             break;
 
           case "stop":
-            Retval.Data.Add(await stopAsync(Device, JobData, false, Token).ConfigureAwait(false));
+            Retval.Data.Add(await stopAsync(Device, lstJobData.First(), false, Token).ConfigureAwait(false));
             break;
 
           case "pause":
-            Retval.Data.Add(await stopAsync(Device, JobData, true, Token).ConfigureAwait(false));
+            Retval.Data.Add(await stopAsync(Device, lstJobData.First(), true, Token).ConfigureAwait(false));
             break;
 
           default:
@@ -250,6 +254,45 @@ namespace HumanOS.IoT.Designer.Library.Scripts
         writeInfo($"Production job '{JobData.readField<string>("Name", "")}' stopped.");
       }
       return await Task.FromResult(Retval).ConfigureAwait(false);
+    }
+
+    //Restores the job data nodes after an agent restart. Sets only what the agent has lost: a workplace that still
+    // holds a job keeps it, because its counters are newer than the platform's. Writes nothing back.
+    private void initialize(IGroupRelation Device, TEntityDataJM nJobData)
+    {
+      (IDataNode<Guid> ProductionJob,
+       IDataNode<Guid> LastProductionJob,
+       IDataNode<Guid> ProductionOrder,
+       IDataNode<double> ProducedQuantity,
+       IDataNode<double> BadQuantity,
+       IDataNode<double> TotalQuantity,
+       IDataNode<double> SetCycleTime,
+       IDataNode<double> MaxChangeOverTime,
+       IDataNode<int> JobState) = getJobDataNodesGroup(Device);
+
+      if (ProductionJob.Value != Guid.Empty)
+      {
+        writeInfo($"Production job '{ProductionJob.Value}' still present. Initialization skipped.");
+        return;
+      }
+      if (nJobData == null)
+      {
+        writeInfo("No running production job. Nothing to initialize.");
+        return;
+      }
+
+      LastProductionJob.passValue(Guid.Empty);
+      ProductionJob.passValue(nJobData.Id);
+      ProductionOrder.passValue(nJobData.readField<Guid>("ProductionOrder", Guid.Empty));
+      ProducedQuantity.passValue(nJobData.readField<double>("ProducedQuantity", 0));
+      BadQuantity.passValue(nJobData.readField<double>("BadQuantity", 0));
+      TotalQuantity.passValue(nJobData.readField<double>("TotalQuantity", 0));
+      SetCycleTime.passValue(nJobData.readField<double>("SetCycleTime", 0));
+      MaxChangeOverTime.passValue(nJobData.readField<TimeSpan>("MaxChangeOverTime", TimeSpan.Zero).TotalMinutes);
+
+      //The state last, as in startAsync
+      JobState.passValue(nJobData.readField<int>("State", JobState_Production));
+      writeInfo($"Production job '{nJobData.Id}' initialized with state {JobState.Value}.");
     }
 
     //Gets the current job relation
