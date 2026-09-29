@@ -39,19 +39,39 @@ namespace HumanOS.IoT.Designer.Library.Scripts
       TPipelineOutputJM Retval = new TPipelineOutputJM();
       try
       {
-        TEntityDataJM JobData = JsonConvert.DeserializeObject<List<TEntityDataJM>>(PipelineContext.DataInput).First();
+        List<TEntityDataJM> lstJobData = JsonConvert.DeserializeObject<List<TEntityDataJM>>(PipelineContext.DataInput) ?? new List<TEntityDataJM>();
+        TEntityDataJM nJobData = lstJobData.FirstOrDefault();
 
-        Guid WorkplaceId = JobData.readField<Guid>("WorkplaceId", Guid.Empty);
-        
+        //initialize passes the workplace as argument, create/update carry it in the shift data
+        Guid WorkplaceId = nJobData != null ? nJobData.readField<Guid>("WorkplaceId", Guid.Empty) : Guid.Empty;
+        if (WorkplaceId == Guid.Empty)
+        {
+          Dictionary<string, object> dicArguments = JsonConvert.DeserializeObject<Dictionary<string, object>>(PipelineContext.TriggerActionArguments ?? "{}");
+          if (dicArguments != null && dicArguments.TryGetValue("WorkplaceId", out object WorkplaceIdObject))
+          {
+            WorkplaceId = Guid.Parse(WorkplaceIdObject.ToString());
+          }
+        }
+
         IGroupRelation Device = await getDeviceAsync(Kernel, n => n.GlobalId == WorkplaceId || n.hasProperty("WorkplaceId", WorkplaceId), Token).ConfigureAwait(false);
         writeInfo($"Device found '{Device.Name}' ({Device.GlobalId})");
 
-
         switch (PipelineContext.TriggerAction)
         {
+          case "initialize":
+            if (nJobData != null)
+            {
+              await setWorkplaceShiftSettingsAsync(Kernel, Device, nJobData, Token).ConfigureAwait(false);
+            }
+            else
+            {
+              writeInfo("No shift plan valid today. WorkShiftSetting left unchanged.");
+            }
+            break;
+
           case "create": //fall through
           case "update":
-            await setWorkplaceShiftSettingsAsync(Kernel, Device, JobData, Token).ConfigureAwait(false);
+            await setWorkplaceShiftSettingsAsync(Kernel, Device, lstJobData.First(), Token).ConfigureAwait(false);
             break;
 
           default:
@@ -84,7 +104,7 @@ namespace HumanOS.IoT.Designer.Library.Scripts
         jTimeShifts.Add("Tuesday",   JobData.readField<JArray>("ShiftOnTuesdayExt", null));
         jTimeShifts.Add("Wednesday", JobData.readField<JArray>("ShiftOnWednesdayExt", null));
         jTimeShifts.Add("Thursday",  JobData.readField<JArray>("ShiftOnThursdayExt", null));
-        jTimeShifts.Add("Firday",    JobData.readField<JArray>("ShiftOnFridayExt", null));
+        jTimeShifts.Add("Friday",    JobData.readField<JArray>("ShiftOnFridayExt", null));
         jTimeShifts.Add("Saturday",  JobData.readField<JArray>("ShiftOnSaturdayExt", null));
         jTimeShifts.Add("Sunday",    JobData.readField<JArray>("ShiftOnSundayExt", null));
         nWorkplaceShift.passValue($"{jTimeShifts}");

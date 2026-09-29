@@ -63,20 +63,24 @@ namespace HumanOS.IoT.Designer.Library.Scripts
         IGroupRelation Device = await getDeviceAsync(Kernel, n => n.GlobalId == WorkplaceId || n.hasProperty("WorkplaceId", WorkplaceId), Token).ConfigureAwait(false);
         writeInfo($"Device found '{Device.Name}' ({Device.GlobalId})");
         
-        TEntityDataJM JobData = JsonConvert.DeserializeObject<List<TEntityDataJM>>(PipelineContext.DataInput).First();
+        List<TEntityDataJM> lstJobData = JsonConvert.DeserializeObject<List<TEntityDataJM>>(PipelineContext.DataInput) ?? new List<TEntityDataJM>();
 
         switch (PipelineContext.TriggerAction)
         {
+          case "initialize":
+            initialize(Device, lstJobData.FirstOrDefault());
+            break;
+
           case "start":
-            Retval.Data.AddRange(await startAsync(WorkplaceId, Device, JobData, Token).ConfigureAwait(false));
+            Retval.Data.AddRange(await startAsync(WorkplaceId, Device, lstJobData.First(), Token).ConfigureAwait(false));
             break;
 
           case "stop":
-            Retval.Data.Add(await stopAsync(Device, JobData, false, Token).ConfigureAwait(false));
+            Retval.Data.Add(await stopAsync(Device, lstJobData.First(), false, Token).ConfigureAwait(false));
             break;
 
           case "pause":
-            Retval.Data.Add(await stopAsync(Device, JobData, true, Token).ConfigureAwait(false));
+            Retval.Data.Add(await stopAsync(Device, lstJobData.First(), true, Token).ConfigureAwait(false));
             break;
 
           default:
@@ -169,6 +173,29 @@ namespace HumanOS.IoT.Designer.Library.Scripts
         writeInfo($"Maintenance job '{JobData.readField<string>("Name", "")}' stopped.");
       }
       return await Task.FromResult(Retval).ConfigureAwait(false);
+    }
+
+    //Restores the maintenance data nodes after an agent restart. A workplace that still holds a
+    // maintenance job keeps it. Writes nothing back.
+    private void initialize(IGroupRelation Device, TEntityDataJM nJobData)
+    {
+      (IDataNode<Guid> MaintenanceJob,
+       IDataNode<int> MaintenanceState) = getMachineStateNodesGroup(Device);
+
+      if (MaintenanceJob.Value != Guid.Empty)
+      {
+        writeInfo($"Maintenance job '{MaintenanceJob.Value}' still present. Initialization skipped.");
+        return;
+      }
+      if (nJobData == null)
+      {
+        writeInfo("No running maintenance job. Nothing to initialize.");
+        return;
+      }
+
+      MaintenanceJob.passValue(nJobData.Id);
+      MaintenanceState.passValue(1);
+      writeInfo($"Maintenance job '{nJobData.Id}' initialized.");
     }
 
     //Gets the machine state relation
