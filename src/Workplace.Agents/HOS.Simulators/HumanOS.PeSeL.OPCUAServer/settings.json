@@ -1,21 +1,51 @@
 {
-  "Disabled": false,
   "UaServer": {
-    "Id": "{63C13A9D-A866-4D11-B1AA-BE13133FB135}",
+    "Id": "63c13a9d-a866-4d11-b1aa-be13133fb135",
     "Name": "OPC-UA Server",
+    "CertificateIssuerPath": "",
+    "CertificatePath": "CertificateStores",
+    "CertificateRejectedPath": "",
+    "CertificateSourceName": "",
+    "CertificateSubject": "",
+    "CertificateTrustedPath": "",
+    "MaxSubscriptions": 10,
+    "MaxSubscriptionsPerSession": 10,
+    "MaxNotificationsPerPublish": 10000,
+    "MaxPublishRequestCount": 100,
+    "MaxPublishingInterval": 600000,
+    "MinPublishingInterval": 100,
+    "PublishingIntervalResolution": 100,
+    "MaxKeepAliveInterval": 3600000,
+    "MinKeepAliveInterval": 1000,
+    "MaxLifetime": 3600000,
+    "MinLifetime": 20000,
+    "MaxMessageQueueSize": 100,
+    "MaxDataValueQueueSize": 1000,
+    "MinEventQueueSize": 1000,
+    "MaxEventQueueSize": 10000,
+    "MaxMonitoredItemsPerSubscription": 4294967295,
     "Port": 4840,
+    "RootBrowseName": "",
     "ServerUri": "urn:localhost:HumanOS:OpcUaServer",
-    
-    "ServiceRule": {
-      "BindingRuleId": "{24A5D9E9-5F48-4E42-8050-F3C985A15097}",
-      "UnbindingRuleId": "{09FDA84C-575F-48BF-B228-1611F0AA7A6E}",
-      "Type": "All"
-    },
+    "StoreType": "",
+    "TraceLogLevel": "Info",
     "Models": [
       {
         "Name": "Default",
-        "RootBrowseName": "HumanOS"
+        "DeviceFilter": "",
+        "RootBrowseName": "HumanOS",
+        "Properties": {}
       }
-    ]
-  }
+    ],
+    "Secrets": [],
+    "Properties": {},
+    "ServiceRule": {
+      "BindingRuleId": "24a5d9e9-5f48-4e42-8050-f3c985a15097",
+      "Devices": [],
+      "Drivers": [],
+      "UnbindingRuleId": "09fda84c-575f-48bf-b228-1611f0aa7a6e",
+      "Properties": {}
+    }
+  },
+  "Properties": {}
 }
