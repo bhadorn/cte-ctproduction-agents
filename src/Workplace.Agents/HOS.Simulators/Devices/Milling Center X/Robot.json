@@ -48,7 +48,7 @@
       "Value": ""
     },
     {
-      "Name": "SupplierName",
+      "Name": "Manufacturer",
       "DataType": "System.String",
       "Value": "FANUC"
     }

@@ -393,7 +393,7 @@
               "MachineInventoryNumber": "A-18221",
               "MachineSerialNumber": "1002-01122F",
               "SubDevices": [],
-              "SupplierName": "FANUC",
+              "Manufacturer": "FANUC",
               "Type": "Robot",
               "Variables": [],
               "Path": "Robot.json",

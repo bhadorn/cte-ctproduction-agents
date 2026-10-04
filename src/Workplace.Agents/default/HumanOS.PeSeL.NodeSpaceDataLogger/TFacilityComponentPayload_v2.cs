@@ -168,7 +168,7 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
         jObject["DeviceId"] = Group.getProperty<Guid>("DeviceId");
         jObject["SerialNumber"] = Group.getProperty<string>("MachineSerialNumber", "");
         jObject["InventoryNumber"] = Group.getProperty<string>("MachineInventoryNumber", "");
-        jObject["SupplierName"] = Group.getProperty<string>("SupplierName", "");
+        jObject["Manufacturer"] = Group.getProperty<string>("Manufacturer", "");
         jObject["YearOfConstruction"] = parseIntProperty(Group.getProperty<string>("MachineYearOfConstruction", ""));
         jObject["Criticality"] = parseIntProperty(Group.getProperty<string>("MachineCriticality", ""));
         
