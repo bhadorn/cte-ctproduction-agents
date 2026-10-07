@@ -51,6 +51,19 @@
       "Name": "Manufacturer",
       "DataType": "System.String",
       "Value": "FANUC"
+    },
+    {
+      "Name": "MachineYearOfConstruction",
+      "DataType": "System.String"
+    },
+    {
+      "Name": "MachineCriticality",
+      "DataType": "System.String"
+    },
+    {
+      "Name": "SupplierName",
+      "DataType": "System.String",
+      "Value": "FANUC"
     }
   ],
   "DataNodes": [

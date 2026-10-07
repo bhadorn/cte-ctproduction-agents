@@ -60,6 +60,51 @@
         "WriteConversion": {}
       },
       "Properties": []
+    },
+    {
+      "Id": "a9d88c2f-57b1-4e2e-984e-edb24b7f8df9",
+      "Name": "FacilityState",
+      "DataType": "System.Int32",
+      "Unit": "",
+      "Access": {
+        "Read": true,
+        "ReadConversion": {},
+        "Receive": true,
+        "Write": true,
+        "WriteConversion": {}
+      },
+      "Properties": [
+        {
+          "Name": "PortMatchId",
+          "DataType": "System.String",
+          "Value": "$(DeviceName).FacilityStateType"
+        }
+      ]
+    },
+    {
+      "Id": "5ff10969-7c01-48ac-af37-396a26bd42ab",
+      "Name": "FacilityComponentStream",
+      "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
+      "Unit": "",
+      "Access": {
+        "Read": true,
+        "ReadConversion": {},
+        "Receive": true,
+        "Write": true,
+        "WriteConversion": {}
+      },
+      "Properties": [
+        {
+          "Name": "EnableFacilityComponentStream",
+          "DataType": "System.Boolean",
+          "Value": "true"
+        },
+        {
+          "Name": "PortMatchId",
+          "DataType": "System.String",
+          "Value": "$(DeviceName).FacilityComponentStreamType"
+        }
+      ]
     }
   ],
   "ConstantNodes": [],
@@ -98,13 +143,15 @@
           "Unit": "",
           "Access": {
             "Read": true,
-            "Receive": true
+            "ReadConversion": {},
+            "Receive": true,
+            "WriteConversion": {}
           },
           "Properties": [
             {
               "Name": "PortMatchId",
               "DataType": "System.String",
-              "Value": "AlarmStateType"
+              "Value": "$(DeviceName).AlarmStateType"
             }
           ]
         },
@@ -629,7 +676,7 @@
                 {
                   "Name": "PortMatchId",
                   "DataType": "System.String",
-                  "Value": "AlarmStateType"
+                  "Value": "$(DeviceName).AlarmStateType"
                 }
               ]
             },
@@ -831,6 +878,84 @@
               "Value": "0"
             }
           ]
+        },
+        {
+          "Id": "d9b5c4cd-9d4a-485d-9bd0-6203965e9cfb",
+          "Name": "ConditionMonitorProcessor",
+          "InitialData": [
+            "AlarmState != 0 => 1",
+            "=> 200"
+          ],
+          "Type": "SituationProcessingNode",
+          "Ports": [
+            {
+              "Name": "FacilityState",
+              "DataType": "System.Int32",
+              "FlowDirection": "Output",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).FacilityStateType"
+                }
+              ]
+            },
+            {
+              "Id": "41b1d8e9-c42d-4342-9221-7a702635b0fd",
+              "Name": "AlarmState",
+              "DataType": "System.Int32",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).AlarmStateType"
+                }
+              ]
+            }
+          ],
+          "Properties": [
+            {
+              "Name": "DelayTime",
+              "DataType": "System.Int32",
+              "Value": 200
+            }
+          ]
+        },
+        {
+          "Id": "9a1f2236-9007-4025-9cd1-dbe12f9d9f9b",
+          "Name": "FacilityComponentStreamProcessor",
+          "InitialData": [],
+          "Type": "DataAggregator",
+          "Ports": [
+            {
+              "Name": "FacilityState",
+              "DataType": "System.Int32",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).FacilityStateType"
+                }
+              ]
+            },
+            {
+              "Name": "OutputPort",
+              "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
+              "FlowDirection": "Output",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).FacilityComponentStreamType"
+                }
+              ]
+            }
+          ],
+          "Properties": []
         }
       ],
       "Properties": [

@@ -62,6 +62,13 @@
       "Id": "ceb75b00-a500-484b-a258-b242fede6361",
       "Name": "SimulatorRobot_v1",
       "Description": ""
+    },
+    {
+      "DriverId": "f022ee3c-a2a5-428a-b588-46abacae39ee",
+      "Path": "Chiron.Micro5.Control_v1",
+      "Id": "887370c9-aa4d-4a46-bee0-437d76814cc1",
+      "Name": "Chiron.Micro5.Control_v1",
+      "Description": ""
     }
   ],
   "SecretDatabase": {
@@ -393,7 +400,7 @@
               "MachineInventoryNumber": "A-18221",
               "MachineSerialNumber": "1002-01122F",
               "SubDevices": [],
-              "Manufacturer": "FANUC",
+              "SupplierName": "FANUC",
               "Type": "Robot",
               "Variables": [],
               "Path": "Robot.json",

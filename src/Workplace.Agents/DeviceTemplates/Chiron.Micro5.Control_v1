@@ -1,0 +1,616 @@
+{
+  "Id": "887370c9-aa4d-4a46-bee0-437d76814cc1",
+  "Name": "Chiron.Micro5.Control_v1",
+  "DriverId": "f022ee3c-a2a5-428a-b588-46abacae39ee",
+  "Address": "",
+  "Variables": [
+    {
+      "Name": "Chiron.Micro5.UserSecret",
+      "DataType": "System.String",
+      "Value": ""
+    },
+    {
+      "Name": "Client.CertificateSubject",
+      "DataType": "System.String",
+      "Value": "CN=Micro5/O=UnifiedAutomation/DC=localhost"
+    }
+  ],
+  "Properties": [
+    {
+      "Name": "FacilityComponent",
+      "DataType": "System.String",
+      "Value": "$(DeviceName)"
+    },
+    {
+      "Name": "FacilityComponentType",
+      "DataType": "System.String",
+      "Value": "$(DeviceType)"
+    },
+    {
+      "Name": "opc:AllowInsecureCredentials",
+      "DataType": "System.Boolean",
+      "Value": "False"
+    },
+    {
+      "Name": "opc:AutoGenerateClientCertificate",
+      "DataType": "System.Boolean",
+      "Value": "True"
+    },
+    {
+      "Name": "opc:CertificateHandling",
+      "DataType": "System.String",
+      "Value": "Strict"
+    },
+    {
+      "Name": "opc:CertificateIssuerPath",
+      "DataType": "System.String",
+      "Value": ""
+    },
+    {
+      "Name": "opc:CertificatePath",
+      "DataType": "System.String",
+      "Value": ""
+    },
+    {
+      "Name": "opc:CertificateRejectedPath",
+      "DataType": "System.String",
+      "Value": ""
+    },
+    {
+      "Name": "opc:CertificateSubject",
+      "DataType": "System.String",
+      "Value": "$(Client.CertiicateSubject)"
+    },
+    {
+      "Name": "opc:CertificateTrustedPath",
+      "DataType": "System.String",
+      "Value": ""
+    },
+    {
+      "Name": "opc:ClientCertificate",
+      "DataType": "System.String",
+      "Value": ""
+    },
+    {
+      "Name": "opc:ClientCertificatePassword",
+      "DataType": "System.String",
+      "Value": ""
+    },
+    {
+      "Name": "opc:SecuritySelection",
+      "DataType": "System.String",
+      "Value": "BestAvailable"
+    },
+    {
+      "Name": "opc:StoreType",
+      "DataType": "System.String",
+      "Value": "Directory"
+    },
+    {
+      "Name": "SecretName",
+      "DataType": "System.String",
+      "Value": "$(Chiron.Micro5.UserSecret)"
+    },
+    {
+      "Name": "Revision",
+      "DataType": "System.Int32",
+      "Value": 0
+    }
+  ],
+  "DataNodes": [
+    {
+      "Id": "80e86ed7-6406-44f1-88c1-670ea91a5a39",
+      "Name": "Available",
+      "Address": "opc:Available",
+      "DataType": "System.Int32",
+      "Unit": "",
+      "Access": {
+        "Read": true,
+        "Receive": true
+      },
+      "Properties": [
+        {
+          "Name": "EnableAzureIoT",
+          "DataType": "System.Boolean",
+          "Value": "true"
+        },
+        {
+          "Name": "EnableInflux",
+          "DataType": "System.Boolean",
+          "Value": "true"
+        },
+        {
+          "Name": "EnableMqtt",
+          "DataType": "System.Boolean",
+          "Value": "true"
+        },
+        {
+          "Name": "mtc:DataItemId",
+          "DataType": "System.String",
+          "Value": "Lavail"
+        },
+        {
+          "Name": "mtc:InformationType",
+          "DataType": "System.String",
+          "Value": "AVAILABILITY"
+        },
+        {
+          "Name": "mtc:Values",
+          "DataType": "System.String",
+          "Value": "1=AVAILABLE;*=NOT_AVAILABLE"
+        },
+        {
+          "Name": "PortMatchId",
+          "DataType": "System.String",
+          "Value": "AvailableType"
+        },
+        {
+          "Name": "EnableRest",
+          "DataType": "System.Boolean",
+          "Value": "true"
+        },
+        {
+          "Name": "EnableRmq",
+          "DataType": "System.Boolean",
+          "Value": "true"
+        }
+      ]
+    },
+    {
+      "Id": "acb513b3-f4bd-4be4-8dd8-c4628cf8fd07",
+      "Name": "SignOfLife",
+      "Address": "opc:SignOfLife",
+      "DataType": "System.Int32",
+      "Unit": "",
+      "Access": {
+        "Read": true,
+        "Receive": true
+      },
+      "Properties": [
+        {
+          "Name": "EnableAzureIoT",
+          "DataType": "System.Boolean",
+          "Value": "true"
+        },
+        {
+          "Name": "EnableInflux",
+          "DataType": "System.Boolean",
+          "Value": "true"
+        },
+        {
+          "Name": "EnableMqtt",
+          "DataType": "System.Boolean",
+          "Value": "true"
+        },
+        {
+          "Name": "EnableRest",
+          "DataType": "System.Boolean",
+          "Value": "true"
+        },
+        {
+          "Name": "EnableRmq",
+          "DataType": "System.Boolean",
+          "Value": "true"
+        }
+      ]
+    },
+    {
+      "Id": "0b0d9046-3b08-4873-a1c6-862ab8cbddb9",
+      "Name": "FacilityState",
+      "DataType": "System.Int32",
+      "Unit": "",
+      "Access": {
+        "Read": true,
+        "ReadConversion": {},
+        "Receive": true,
+        "Write": true,
+        "WriteConversion": {}
+      },
+      "Properties": [
+        {
+          "Name": "PortMatchId",
+          "DataType": "System.String",
+          "Value": "$(DeviceName).FacilityStateType"
+        }
+      ]
+    },
+    {
+      "Id": "c3be08ff-8c58-4996-a2c6-642919081f00",
+      "Name": "FacilityComponentStream",
+      "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
+      "Unit": "",
+      "Access": {
+        "Read": true,
+        "ReadConversion": {},
+        "Receive": true,
+        "Write": true,
+        "WriteConversion": {}
+      },
+      "Properties": [
+        {
+          "Name": "EnableFacilityComponentStream",
+          "DataType": "System.Boolean",
+          "Value": "true"
+        },
+        {
+          "Name": "PortMatchId",
+          "DataType": "System.String",
+          "Value": "$(DeviceName).FacilityComponentStreamType"
+        }
+      ]
+    }
+  ],
+  "ConstantNodes": [],
+  "Commands": [],
+  "Groups": [
+    {
+      "Id": "aa05fd86-e5e8-40e5-a951-c825df85d680",
+      "Name": "Controller",
+      "Properties": [],
+      "DataNodes": [
+        {
+          "Id": "ce874974-161f-4471-a5c1-b25a7661f388",
+          "Name": "NCProgramRun",
+          "Address": "ns=4;s=Global_DATA.bProgramRun",
+          "DataType": "System.Boolean",
+          "Unit": "",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "NCProgramRunType"
+            }
+          ]
+        },
+        {
+          "Id": "9aad50e1-0976-4f6f-94c3-651b2aed96f7",
+          "Name": "NCProgramStop",
+          "Address": "ns=4;s=Global_DATA.bProgramStop",
+          "DataType": "System.Boolean",
+          "Unit": "",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "NCProgramStopType"
+            }
+          ]
+        },
+        {
+          "Id": "46c4bfd6-2ce9-4041-b860-37c5960578c3",
+          "Name": "NCProgramError",
+          "Address": "ns=4;s=Global_DATA.bProgramError",
+          "DataType": "System.Boolean",
+          "Unit": "",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "NCProgramErrorType"
+            }
+          ]
+        },
+        {
+          "Id": "d2646d4a-a766-49b0-866f-87d899d53728",
+          "Name": "SpindleWarmupActive",
+          "Address": "ns=4;s=Global_DATA.bSpindleWarmUp",
+          "DataType": "System.Boolean",
+          "Unit": "",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "SpindleWarmupActiveType"
+            }
+          ]
+        },
+        {
+          "Id": "d4813aab-bafa-4ec3-8362-d77f68e47977",
+          "Name": "ProtectionDoorsOpen",
+          "Address": "ns=4;s=Global_DATA.bWorkingAreaDoorsOpen",
+          "DataType": "System.Boolean",
+          "Unit": "",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "ProtectionDoorsOpenType"
+            }
+          ]
+        },
+        {
+          "Id": "83917bd6-e5db-4377-b326-0ab6fbca0eb3",
+          "Name": "EmergencyStopActive",
+          "Address": "ns=4;s=Global_DATA.bEmergencyStopPressed",
+          "DataType": "System.Boolean",
+          "Unit": "",
+          "Access": {
+            "Read": true,
+            "ReadConversion": {},
+            "Receive": true,
+            "WriteConversion": {}
+          },
+          "Properties": [
+            {
+              "Name": "PortMatchId",
+              "DataType": "System.String",
+              "Value": "EmergencyStopActiveType"
+            }
+          ]
+        }
+      ],
+      "ConstantNodes": [],
+      "Commands": [],
+      "Groups": []
+    }
+  ],
+  "Agents": [],
+  "Skills": [],
+  "TaskProcessors": [],
+  "EntityTypes": [],
+  "ProcessingNetworks": [
+    {
+      "Id": "7963f1ff-2b35-4088-8298-07f240a32a7b",
+      "Name": "ControllerProcessors",
+      "DataNodes": [],
+      "Links": [],
+      "Processors": [
+        {
+          "Id": "beca84f7-4b74-4543-a707-786032b5a088",
+          "Name": "MachineStateProcessor",
+          "InitialData": [
+            "AvailableState <= 0 => OutputMachineState=900; OutputMachineStateName=\"Power Off\"",
+            "EmergencyStopActive == true => OutputMachineState=900; OutputMachineStateName=\"Power Off\"",
+            "ProtectionDoorsOpen == true => OutputMachineState=100; OutputMachineStateName=\"Setup\"",
+            "SpindleWarmupActive == true => OutputMachineState=110; OutputMachineStateName=\"Warmup\"",
+            "NCProgramError == true => OutputMachineState=1; OutputMachineStateName=\"Disturbance\"",
+            "NCProgramRun == true => OutputMachineState=200; OutputMachineStateName=\"Production\"",
+            "NCProgramStop == true => OutputMachineState=300; OutputMachineStateName=\"Production Stopped\"",
+            " => OutputMachineState=100; OutputMachineStateName=\"Setup\""
+          ],
+          "Type": "SituationProcessingNode",
+          "Ports": [
+            {
+              "Id": "b5d27e59-db01-4c38-8952-4e75ab231795",
+              "Name": "AvailableState",
+              "DataType": "System.Int32",
+              "Public": true,
+              "Necessity": "Mandatory",
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "AvailableType"
+                }
+              ]
+            },
+            {
+              "Id": "0ea3d67e-ee8a-449d-b340-18863ef7e494",
+              "Name": "OutputMachineState",
+              "DataType": "System.Int32",
+              "FlowDirection": "Output",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "MachineStateType"
+                }
+              ]
+            },
+            {
+              "Id": "2d46805b-b806-4d47-835c-25ef07171294",
+              "Name": "OutputMachineStateName",
+              "DataType": "System.String",
+              "FlowDirection": "Output",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "MachineStateNameType"
+                }
+              ]
+            },
+            {
+              "Id": "c1898c73-70cd-4443-8f72-e6ad6d07ad7a",
+              "Name": "NCProgramRun",
+              "DataType": "System.Boolean",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "NCProgramRunType"
+                }
+              ]
+            },
+            {
+              "Id": "59462543-721b-47d5-8699-8f2d5f477f0a",
+              "Name": "NCProgramStop",
+              "DataType": "System.Boolean",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "NCProgramStopType"
+                }
+              ]
+            },
+            {
+              "Id": "fea7a0c5-5485-40dd-be5c-2ce11b6bb6b0",
+              "Name": "NCProgramError",
+              "DataType": "System.Boolean",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "NCProgramErrorType"
+                }
+              ]
+            },
+            {
+              "Id": "9b458fda-b5db-435c-9e85-ad03246380f0",
+              "Name": "SpindleWarmupActive",
+              "DataType": "System.Boolean",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "SpindleWarmupActiveType"
+                }
+              ]
+            },
+            {
+              "Id": "eefd66a3-caaf-4b59-a3b7-72f5a2bb5560",
+              "Name": "ProtectionDoorsOpen",
+              "DataType": "System.Boolean",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "ProtectionDoorsOpenType"
+                }
+              ]
+            },
+            {
+              "Id": "4354be9d-4ddb-4631-aeb5-6501c1898a75",
+              "Name": "EmergencyStopActive",
+              "DataType": "System.Boolean",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "EmergencyStopActiveType"
+                }
+              ]
+            }
+          ],
+          "Properties": [
+            {
+              "Name": "DelayTime",
+              "DataType": "System.Int32",
+              "Value": 1000
+            }
+          ]
+        },
+        {
+          "Id": "c45681e3-5158-4ef9-9fd6-61e0df3a27e6",
+          "Name": "ConditionMonitorProcessor",
+          "InitialData": [
+            "AlarmState != 0 => 1",
+            "=> 200"
+          ],
+          "Type": "SituationProcessingNode",
+          "Ports": [
+            {
+              "Name": "FacilityState",
+              "DataType": "System.Int32",
+              "FlowDirection": "Output",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).FacilityStateType"
+                }
+              ]
+            },
+            {
+              "Id": "41b1d8e9-c42d-4342-9221-7a702635b0fd",
+              "Name": "AlarmState",
+              "DataType": "System.Int32",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "NCProgramErrorType"
+                }
+              ]
+            }
+          ],
+          "Properties": [
+            {
+              "Name": "DelayTime",
+              "DataType": "System.Int32",
+              "Value": 200
+            }
+          ]
+        },
+        {
+          "Id": "c04e1bde-5d23-4819-92cc-938a05a9b8be",
+          "Name": "FacilityComponentStreamProcessor",
+          "InitialData": [],
+          "Type": "DataAggregator",
+          "Ports": [
+            {
+              "Name": "FacilityState",
+              "DataType": "System.Int32",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).FacilityStateType"
+                }
+              ]
+            },
+            {
+              "Name": "OutputPort",
+              "DataType": "HumanOS.Kernel.DataModel.Entity.TGenericEntity, HumanOS.Kernel.Base",
+              "FlowDirection": "Output",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).FacilityComponentStreamType"
+                }
+              ]
+            }
+          ],
+          "Properties": []
+        }
+      ],
+      "Properties": []
+    }
+  ],
+  "Rules": [],
+  "SubDevices": []
+}
