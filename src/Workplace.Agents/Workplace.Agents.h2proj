@@ -1,5 +1,5 @@
 {
-  "Path": "Workplace.Agents.h2proj",
+  "Path": "workplace.agents.h2proj",
   "Name": "Workplace.Agents",
   "Description": "",
   "Author": "",
@@ -65,7 +65,7 @@
     },
     {
       "DriverId": "f022ee3c-a2a5-428a-b588-46abacae39ee",
-      "Path": "Chiron.Micro5.Control_v1",
+      "Path": "Chiron.Micro5.Control_v1.json",
       "Id": "887370c9-aa4d-4a46-bee0-437d76814cc1",
       "Name": "Chiron.Micro5.Control_v1",
       "Description": ""
@@ -400,7 +400,7 @@
               "MachineInventoryNumber": "A-18221",
               "MachineSerialNumber": "1002-01122F",
               "SubDevices": [],
-              "SupplierName": "FANUC",
+              "Manufacturer": "FANUC",
               "Type": "Robot",
               "Variables": [],
               "Path": "Robot.json",

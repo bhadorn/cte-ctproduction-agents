@@ -5,6 +5,11 @@
   "Address": "..\\..\\..\\Simulators\\Simulator3.json",
   "Properties": [
     {
+      "Name": "Description",
+      "DataType": "System.String",
+      "Value": ""
+    },
+    {
       "Name": "FacilityComponent",
       "DataType": "System.String",
       "Value": "$(DeviceName)"
@@ -15,17 +20,12 @@
       "Value": "$(DeviceType)"
     },
     {
-      "Name": "Revision",
-      "DataType": "System.Int32",
-      "Value": 0
-    },
-    {
-      "Name": "Type",
+      "Name": "MachineCriticality",
       "DataType": "System.String",
-      "Value": "Controller"
+      "Value": "10"
     },
     {
-      "Name": "MachineType",
+      "Name": "MachineInventoryNumber",
       "DataType": "System.String"
     },
     {
@@ -37,18 +37,8 @@
       "DataType": "System.String"
     },
     {
-      "Name": "MachineInventoryNumber",
+      "Name": "MachineType",
       "DataType": "System.String"
-    },
-    {
-      "Name": "Description",
-      "DataType": "System.String",
-      "Value": ""
-    },
-    {
-      "Name": "Manufacturer",
-      "DataType": "System.String",
-      "Value": ""
     },
     {
       "Name": "MachineYearOfConstruction",
@@ -56,13 +46,19 @@
       "Value": "1900"
     },
     {
-      "Name": "MachineCriticality",
+      "Name": "Manufacturer",
       "DataType": "System.String",
-      "Value": "10"
+      "Value": ""
     },
     {
-      "Name": "SupplierName",
-      "DataType": "System.String"
+      "Name": "Type",
+      "DataType": "System.String",
+      "Value": "Controller"
+    },
+    {
+      "Name": "Revision",
+      "DataType": "System.Int32",
+      "Value": 0
     }
   ],
   "DataNodes": [

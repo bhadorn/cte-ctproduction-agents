@@ -5,9 +5,9 @@
   "Address": "",
   "Variables": [
     {
-      "Name": "DeviceName",
+      "Name": "Client.CertificateSubject",
       "DataType": "System.String",
-      "Value": "Traub NCControl0/"
+      "Value": "CN=$(DeviceName)/O=UnifiedAutomation/DC=localhost"
     },
     {
       "Name": "NameSpaceTypePrefix",
@@ -32,6 +32,16 @@
       "Value": "Generic OPC UA Client"
     },
     {
+      "Name": "FacilityComponent",
+      "DataType": "System.String",
+      "Value": "$(DeviceName)"
+    },
+    {
+      "Name": "FacilityComponentType",
+      "DataType": "System.String",
+      "Value": "$(DeviceType)"
+    },
+    {
       "Name": "opc:AllowInsecureCredentials",
       "DataType": "System.Boolean",
       "Value": "false"
@@ -49,27 +59,27 @@
     {
       "Name": "opc:CertificateIssuerPath",
       "DataType": "System.String",
-      "Value": "LocalMachine\\Root"
+      "Value": ""
     },
     {
       "Name": "opc:CertificatePath",
       "DataType": "System.String",
-      "Value": "LocalMachine\\My"
+      "Value": ""
     },
     {
       "Name": "opc:CertificateRejectedPath",
       "DataType": "System.String",
-      "Value": "LocalMachine\\Disallowed"
+      "Value": ""
     },
     {
       "Name": "opc:CertificateSubject",
       "DataType": "System.String",
-      "Value": "CN=MyGateway/O=myorg/DC=myhost"
+      "Value": "$(Client.CertificateSubject)"
     },
     {
       "Name": "opc:CertificateTrustedPath",
       "DataType": "System.String",
-      "Value": "LocalMachine\\Trust"
+      "Value": ""
     },
     {
       "Name": "opc:ClientCertificate",
@@ -95,16 +105,6 @@
       "Name": "opc:StoreType",
       "DataType": "System.String",
       "Value": ""
-    },
-    {
-      "Name": "FacilityComponent",
-      "DataType": "System.String",
-      "Value": "$(DeviceName)"
-    },
-    {
-      "Name": "FacilityComponentType",
-      "DataType": "System.String",
-      "Value": "$(DeviceType)"
     },
     {
       "Name": "Revision",
@@ -825,7 +825,7 @@
           "Id": "99dcd4ca-6b7f-4117-a415-aaa3f780891b",
           "Name": "ConditionMonitorProcessor",
           "InitialData": [
-            "AlarmState != 0 => 1",
+            "AlarmState == true => 1",
             "=> 200"
           ],
           "Type": "SituationProcessingNode",
@@ -846,7 +846,7 @@
             {
               "Id": "41b1d8e9-c42d-4342-9221-7a702635b0fd",
               "Name": "AlarmState",
-              "DataType": "System.Int32",
+              "DataType": "System.Boolean",
               "Public": true,
               "Properties": [
                 {

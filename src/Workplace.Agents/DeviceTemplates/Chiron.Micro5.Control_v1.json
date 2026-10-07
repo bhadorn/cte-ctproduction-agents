@@ -12,7 +12,7 @@
     {
       "Name": "Client.CertificateSubject",
       "DataType": "System.String",
-      "Value": "CN=Micro5/O=UnifiedAutomation/DC=localhost"
+      "Value": "CN=$(DeviceName)/O=UnifiedAutomation/DC=localhost"
     }
   ],
   "Properties": [
@@ -59,7 +59,7 @@
     {
       "Name": "opc:CertificateSubject",
       "DataType": "System.String",
-      "Value": "$(Client.CertiicateSubject)"
+      "Value": "$(Client.CertificateSubject)"
     },
     {
       "Name": "opc:CertificateTrustedPath",
@@ -396,7 +396,7 @@
             "NCProgramError == true => OutputMachineState=1; OutputMachineStateName=\"Disturbance\"",
             "NCProgramRun == true => OutputMachineState=200; OutputMachineStateName=\"Production\"",
             "NCProgramStop == true => OutputMachineState=300; OutputMachineStateName=\"Production Stopped\"",
-            " => OutputMachineState=100; OutputMachineStateName=\"Setup\""
+            "=> OutputMachineState=100; OutputMachineStateName=\"Setup\""
           ],
           "Type": "SituationProcessingNode",
           "Ports": [
@@ -533,7 +533,7 @@
           "Id": "c45681e3-5158-4ef9-9fd6-61e0df3a27e6",
           "Name": "ConditionMonitorProcessor",
           "InitialData": [
-            "AlarmState != 0 => 1",
+            "AlarmState => 1",
             "=> 200"
           ],
           "Type": "SituationProcessingNode",
@@ -554,7 +554,7 @@
             {
               "Id": "41b1d8e9-c42d-4342-9221-7a702635b0fd",
               "Name": "AlarmState",
-              "DataType": "System.Int32",
+              "DataType": "System.Boolean",
               "Public": true,
               "Properties": [
                 {

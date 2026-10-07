@@ -52,6 +52,15 @@
     },
     {
       "Name": "Manufacturer",
+      "DataType": "System.String",
+      "Value": ""
+    },
+    {
+      "Name": "MachineYearOfConstruction",
+      "DataType": "System.String"
+    },
+    {
+      "Name": "MachineCriticality",
       "DataType": "System.String"
     }
   ],
