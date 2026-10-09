@@ -614,7 +614,7 @@
       {
         "Name": "PortMatchId",
         "DataType": "System.String",
-        "Value": "MachineAlarmingType"
+        "Value": "$(DeviceName).MachineAlarmingType"
       }
     ]
   },
@@ -634,10 +634,11 @@
           "Name": "MachineStateProcessor",
           "InitialData": [
             "MaintenanceState == 1 => OutputMachineState=400; OutputMachineStateName=\"Maintenance\"",
-            "AvailableState <= 0 => OutputMachineState=900; OutputMachineStateName=\"Power Off\"",
-            "RunningState == 5   => OutputMachineState=1; OutputMachineStateName=\"Disturbance\"",
-            "EmergencyState != 0 => OutputMachineState=1; OutputMachineStateName=\"Disturbance\"",
-            "OperationMode != 4 => OutputMachineState=100; OutputMachineStateName=\"Setup\"",
+            "AvailableState <= 0   => OutputMachineState=900; OutputMachineStateName=\"Power Off\"",
+            "StandbyActive         => OutputMachineState=900; OutputMachineStateName=\"Power Off\"",
+            "RunningState == 5     => OutputMachineState=1; OutputMachineStateName=\"Disturbance\"",
+            "EmergencyState != 0   => OutputMachineState=1; OutputMachineStateName=\"Disturbance\"",
+            "OperationMode != 4    => OutputMachineState=100; OutputMachineStateName=\"Setup\"",
             "JobState >= 300 and JobState <= 399 => OutputMachineState=100; OutputMachineStateName=\"Setup\"",
             "OperationMode == 4 and RunningState == 1 and SpindleOverride == 0.0 => OutputMachineState=320; OutputMachineStateName=\"Stopped: Missing Personal\"",
             "OperationMode == 4 and RunningState == 1 and CurrentProgram.Contains(\"warmlauf\", StringComparison.OrdinalIgnoreCase) => OutputMachineState=110; OutputMachineStateName=\"Warmup\"",
@@ -788,6 +789,19 @@
                   "Value": "MaintenanceStateType"
                 }
               ]
+            },
+            {
+              "Id": "bd305575-5c21-4951-af2d-2ae90403eea2",
+              "Name": "StandbyActive",
+              "DataType": "System.Boolean",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "StandbyActiveType"
+                }
+              ]
             }
           ],
           "Properties": [
@@ -925,6 +939,52 @@
             }
           ],
           "Properties": []
+        },
+        {
+          "Id": "bca7f3d1-063f-4a6e-a1c3-436d768e1a5d",
+          "Name": "StandbyDetector",
+          "InitialData": [
+            "TStandbyDetector.cs"
+          ],
+          "SamplingRate": 5.0,
+          "Type": "CSharpScriptProcessingNode",
+          "Ports": [
+            {
+              "Id": "66f69b5c-72ae-4dd5-883c-11edc0da0af0",
+              "Name": "Alarms",
+              "DataType": "HumanOS.Kernel.DataModel.TAbstractEventItem, HumanOS.Kernel.Base",
+              "Protocol": "Messaging",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "$(DeviceName).MachineAlarmingType"
+                }
+              ]
+            },
+            {
+              "Id": "1ffc68f7-1bd2-40aa-9dc3-fb11d6cf148e",
+              "Name": "StandbyActive",
+              "DataType": "System.Boolean",
+              "FlowDirection": "Output",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "StandbyActiveType"
+                }
+              ]
+            }
+          ],
+          "Properties": [
+            {
+              "Name": "DelayTime",
+              "DataType": "System.Int32",
+              "Value": 500
+            }
+          ]
         }
       ],
       "Properties": [
