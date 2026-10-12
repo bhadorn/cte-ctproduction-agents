@@ -1044,7 +1044,7 @@
             },
             {
               "Id": "6ccf3e12-de1b-49f8-bd6a-149a5f203b1d",
-              "Name": "EnergyConsumption",
+              "Name": "TotalEnergy",
               "DataType": "System.Double",
               "Protocol": "Streaming",
               "Public": true,
@@ -1057,7 +1057,26 @@
                 {
                   "Name": "PortMatchId",
                   "DataType": "System.String",
-                  "Value": "EnergyConsumptionType"
+                  "Value": "TotalEnergyType"
+                }
+              ]
+            },
+            {
+              "Id": "f832ee8f-2ab2-476f-b1a3-b367e7fc396f",
+              "Name": "CurrentPower",
+              "DataType": "System.Double",
+              "Protocol": "Streaming",
+              "Public": true,
+              "Properties": [
+                {
+                  "Name": "Description",
+                  "DataType": "System.String",
+                  "Value": "Value must be in kW"
+                },
+                {
+                  "Name": "PortMatchId",
+                  "DataType": "System.String",
+                  "Value": "CurrentPowerType"
                 }
               ]
             }

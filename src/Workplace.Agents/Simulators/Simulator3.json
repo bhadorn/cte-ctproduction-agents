@@ -7,7 +7,7 @@
     "PartCounter":  164,
     "PowerOnTime":  0,
     "RunningState":  2,
-    "EnergyConsumption": 12.44,
+    "TotalEnergy": 12.44,
     "Spindle1":  {
                      "Load":  0,
                      "Temperature":  20,

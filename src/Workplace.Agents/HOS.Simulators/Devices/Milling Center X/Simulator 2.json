@@ -317,8 +317,8 @@
         },
         {
           "Id": "22e2d232-59fc-4815-935c-069c268f573b",
-          "Name": "EnergyConsumption",
-          "Address": "$.EnergyConsumption",
+          "Name": "TotalEnergy",
+          "Address": "$.TotalEnergy",
           "DataType": "System.Double",
           "Unit": "kWh",
           "DataClass": "Stream",
@@ -332,7 +332,7 @@
             {
               "Name": "PortMatchId",
               "DataType": "System.String",
-              "Value": "EnergyConsumptionType"
+              "Value": "TotalEnergyType"
             }
           ]
         }
