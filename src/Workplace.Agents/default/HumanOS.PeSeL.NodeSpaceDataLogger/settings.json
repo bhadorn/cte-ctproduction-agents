@@ -250,6 +250,105 @@
         "UnbindingRuleId": "b4d12b09-b39a-42ee-93e3-4e5fd43d6641",
         "Properties": {}
       }
+    },
+    {
+      "Id": "83989017-8849-4b55-84f9-2e10c0820e51",
+      "Name": "FacilityAlarmLogger",
+      "Connection": "DE891DEF-4478-4A38-BB89-533F669AF645",
+      "ConnectionSecret": "",
+      "DataSets": [
+        {
+          "Id": "f7811712-ff3b-492c-9bd0-57283d8e4997",
+          "Name": "FacilityComponentAlarm",
+          "Fields": [
+            {
+              "Name": "ConditionName",
+              "DataType": "System.String",
+              "Query": "item.ConditionName",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "Message",
+              "DataType": "System.String",
+              "Query": "item.Message",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "SourceName",
+              "DataType": "System.String",
+              "Query": "item.SourceName",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "AlarmType",
+              "DataType": "System.Int32",
+              "Query": "(int)item.AlarmType",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "Severity",
+              "DataType": "System.Int32",
+              "Query": "item.Severity",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "Active",
+              "DataType": "System.Boolean",
+              "Query": "item.Active",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "Occurrence",
+              "DataType": "System.DateTime",
+              "Query": "item.Occurrence",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "Disappearance",
+              "DataType": "System.DateTime",
+              "Query": "item.Disappearance",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "SourceNodeId",
+              "DataType": "System.Guid",
+              "Query": "item.SourceNodeId",
+              "Tag": "",
+              "Properties": {}
+            }
+          ],
+          "NodeFilter": "node.hasProperty<bool>(\"EnableFacilityAlarms\", true)",
+          "Tag": "",
+          "Type": "AlarmEvent",
+          "Properties": {}
+        }
+      ],
+      "DisgardPersistedData": false,
+      "ErrorHandlingPolicy": "ReconnectLogger",
+      "NetworkTimeout": 5000.0,
+      "PayloadDumpEnabled": true,
+      "PayloadDumpFileName": "$(AppConfig:CommonAppPath)\\Dumps\\NodeSpaceDataLogger\\FacilityAlarmLogger.log",
+      "PayloadDumpRetentionTime": 2,
+      "PayloadScriptFile": "TFacilityAlarmPayload_v1.cs",
+      "SamplerType": "OnlyLastValue",
+      "SamplingRate": 0.0,
+      "ProcessOnlyValidData": true,
+      "Properties": {},
+      "ServiceRule": {
+        "BindingRuleId": "762b0088-2ced-4afb-affd-40ad839f6413",
+        "Devices": [],
+        "Drivers": [],
+        "UnbindingRuleId": "28fe385f-df30-4cdd-900d-954abf75b8f5",
+        "Properties": {}
+      }
     }
   ],
   "Properties": {}

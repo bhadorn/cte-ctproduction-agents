@@ -61,9 +61,10 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
         m_dicStreams.Clear();
         m_dicRefIds.Clear();
         JArray jComponents = new JArray();
+        JArray jAlarmSnapshot = new JArray();
         foreach(IGroupRelation DeviceGroup in Kernel.NodeSpace.queryNodesLocally(n => n.hasProperty("WorkplaceId") && n.hasProperty("DeviceId") && n is IGroupRelation))
         {
-          addFacilityComponents(DeviceGroup, jComponents);
+          addFacilityComponents(DeviceGroup, jComponents, jAlarmSnapshot);
         }
 
         JObject jComponentMessage = new JObject();
@@ -74,6 +75,11 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
         JObject jFields = new JObject();
         jFields.Add("Components", jComponents);
         jFields.Add("SessionId", m_SessionId);
+        //The snapshot of the alarm event pools reconciles the alarm events (DesignAlarmTracking.md, 4.2)
+        if (jAlarmSnapshot.Count > 0)
+        {
+          jFields.Add("AlarmSnapshot", jAlarmSnapshot);
+        }
         jComponentMessage.Add("Fields", jFields);
         jMessages.Add(jComponentMessage);
         Logger.writeInfo("...scanning the facility components done.");
@@ -157,7 +163,7 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
     }
     
     ///Adds facility components
-    private void addFacilityComponents(IGroupRelation Group, JArray jCollection)
+    private void addFacilityComponents(IGroupRelation Group, JArray jCollection, JArray jAlarmSnapshot)
     {
       if (Group.hasProperty("FacilityComponentType"))
       {
@@ -199,11 +205,89 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
         {
           m_dicStreams[StreamNode.GlobalId] = Group.GlobalId;
         }
+
+        addAlarmSnapshot(Group, FacilityComponentId, jAlarmSnapshot);
       }
       foreach(IGroupRelation SubGroup in Group.queryNodesLocally(n => n.hasProperty("DeviceId") && n is IGroupRelation))
       {
-        addFacilityComponents(SubGroup, jCollection);
+        addFacilityComponents(SubGroup, jCollection, jAlarmSnapshot);
       }
+    }
+
+    ///Adds the snapshot of the alarm event pools of a facility component (DesignAlarmTracking.md, 4.2).
+    ///An empty alarm list means that no alarm is active. A component without pool or with a controller which
+    ///is not connected is left out: unknown is not the same as no alarm active.
+    private void addAlarmSnapshot(IGroupRelation Group, Guid FacilityComponentId, JArray jSnapshot)
+    {
+      List<TAlarmItem> lstAlarms = new List<TAlarmItem>();
+      bool bHasPool = false;
+      foreach (INode Node in Group.queryNodesLocally(n => n is IAlarmEventPoolNode && n.hasProperty("EnableFacilityAlarms")))
+      {
+        IAlarmEventPoolNode Pool = Node as IAlarmEventPoolNode;
+        if (Pool != null)
+        {
+          bHasPool = true;
+          lstAlarms.AddRange(Pool.PendingAlarms);
+        }
+      }
+
+      if (bHasPool && isControllerConnected(Group))
+      {
+        DateTime ReadTime = DateTime.UtcNow;
+        lstAlarms.Sort((a, b) => string.CompareOrdinal(a.ConditionName, b.ConditionName));
+
+        JArray jAlarms = new JArray();
+        foreach (TAlarmItem Alarm in lstAlarms.Take(c_iMaxSnapshotAlarms))
+        {
+          JObject jAlarm = new JObject();
+          jAlarm["ConditionName"] = Alarm.ConditionName;
+          jAlarm["Message"] = Alarm.Message;
+          jAlarm["SourceName"] = Alarm.SourceName;
+          jAlarm["AlarmType"] = (int)Alarm.AlarmType;
+          jAlarm["Severity"] = Alarm.Severity;
+          jAlarm["Occurrence"] = toIso(Alarm.Occurrence);
+          jAlarms.Add(jAlarm);
+        }
+
+        JObject jEntry = new JObject();
+        jEntry["FacilityComponentId"] = FacilityComponentId;
+        jEntry["TimeStamp"] = toIso(ReadTime);
+        jEntry["Alarms"] = jAlarms;
+        //The platform only opens alarms from a cut list and never closes any
+        if (lstAlarms.Count > c_iMaxSnapshotAlarms)
+        {
+          jEntry["Truncated"] = true;
+        }
+        jSnapshot.Add(jEntry);
+      } //bHasPool && isControllerConnected(Group)
+    }
+
+    ///Checks if the controller of a facility component is connected, based on its Available data node
+    ///(PortMatchId AvailableType, a value greater than 0 means available). Without such a node the
+    ///connection state is unknown.
+    private bool isControllerConnected(IGroupRelation Group)
+    {
+      bool bRetval = false;
+      IDataNode Available = Group.queryNodesLocally(n => n.Name == "Available" && n is IDataNode).FirstOrDefault() as IDataNode;
+      if (Available != null)
+      {
+        try
+        {
+          bRetval = Available.DataState == EDataState.Good && Convert.ToInt32(Available.ObjectValue) > 0;
+        }
+        catch (Exception Exc)
+        {
+          Logger.writeWarning($"Could not read the Available node of '{Group.getProperty<string>("FacilityComponent", "")}'. {Exc.Message}");
+        }
+      }
+      return bRetval;
+    }
+
+    ///Formats a time as UTC in the round trip format
+    private string toIso(DateTime Time)
+    {
+      DateTime UtcTime = Time.Kind == DateTimeKind.Local ? Time.ToUniversalTime() : DateTime.SpecifyKind(Time, DateTimeKind.Utc);
+      return UtcTime.ToString("o");
     }
 
     ///Parses a machine property configured as free text in the Designer into an int, defaulting to 0 when absent or not a valid number
@@ -216,6 +300,9 @@ namespace HumanOS.PeSeL.NodeSpaceDataLogger.Script
       }
       return iRetval;
     }
+
+    ///Maximum number of alarms of one snapshot entry
+    private const int c_iMaxSnapshotAlarms = 200;
 
     ///Stopwatch to reduce registration messages
     private Stopwatch Watch {get;} = new Stopwatch();

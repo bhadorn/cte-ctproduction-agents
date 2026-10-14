@@ -5,11 +5,6 @@
   "Address": "..\\..\\..\\Simulators\\Simulator3.json",
   "Properties": [
     {
-      "Name": "Description",
-      "DataType": "System.String",
-      "Value": ""
-    },
-    {
       "Name": "FacilityComponent",
       "DataType": "System.String",
       "Value": "$(DeviceName)"
@@ -20,12 +15,17 @@
       "Value": "$(DeviceType)"
     },
     {
-      "Name": "MachineCriticality",
-      "DataType": "System.String",
-      "Value": "10"
+      "Name": "Revision",
+      "DataType": "System.Int32",
+      "Value": 0
     },
     {
-      "Name": "MachineInventoryNumber",
+      "Name": "Type",
+      "DataType": "System.String",
+      "Value": "Controller"
+    },
+    {
+      "Name": "MachineType",
       "DataType": "System.String"
     },
     {
@@ -37,7 +37,7 @@
       "DataType": "System.String"
     },
     {
-      "Name": "MachineType",
+      "Name": "MachineInventoryNumber",
       "DataType": "System.String"
     },
     {
@@ -46,19 +46,18 @@
       "Value": "1900"
     },
     {
-      "Name": "Manufacturer",
+      "Name": "MachineCriticality",
+      "DataType": "System.String",
+      "Value": "10"
+    },
+    {
+      "Name": "Description",
       "DataType": "System.String",
       "Value": ""
     },
     {
-      "Name": "Type",
-      "DataType": "System.String",
-      "Value": "Controller"
-    },
-    {
-      "Name": "Revision",
-      "DataType": "System.Int32",
-      "Value": 0
+      "Name": "SupplierName",
+      "DataType": "System.String"
     }
   ],
   "DataNodes": [
@@ -453,16 +452,29 @@
   "AlarmEventPool": {
     "Id": "26d4fa8e-4b7f-452a-8162-8628ada27dba",
     "Name": "AlarmEventPool",
-    "Disabled": true,
     "Tasks": [
       {
         "Id": "16c4e206-42e3-4f66-bdb6-bbcb72629c87",
         "Name": "AlarmTask",
-        "Address": "",
+        "Address": "$.Alarms",
         "Properties": []
       }
     ],
-    "Properties": []
+    "HistoryMode": {
+      "Retention": 720,
+      "SamplingRate": 2000,
+      "HistoryTableName": "",
+      "IdField": "",
+      "TaggedFields": [],
+      "TrackedFields": []
+    },
+    "Properties": [
+      {
+        "Name": "EnableFacilityAlarms",
+        "DataType": "System.Boolean",
+        "Value": "true"
+      }
+    ]
   },
   "Agents": [],
   "Skills": [],

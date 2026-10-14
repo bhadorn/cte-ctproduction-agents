@@ -1,5 +1,6 @@
 {
     "AlarmState":  0,
+    "Alarms":  [],
     "CurrentToolId":  "",
     "MainProgram":  "program1.nc",
     "OperationMode":  1,

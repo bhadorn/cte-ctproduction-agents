@@ -413,16 +413,29 @@
   "AlarmEventPool": {
     "Id": "6faaade4-f2c3-4ee7-86b3-196aadac3bba",
     "Name": "AlarmEventPool",
-    "Disabled": true,
     "Tasks": [
       {
         "Id": "16c4e206-42e3-4f66-bdb6-bbcb72629c87",
         "Name": "AlarmTask",
-        "Address": "",
+        "Address": "$.Alarms",
         "Properties": []
       }
     ],
-    "Properties": []
+    "HistoryMode": {
+      "Retention": 720,
+      "SamplingRate": 2000,
+      "HistoryTableName": "",
+      "IdField": "",
+      "TaggedFields": [],
+      "TrackedFields": []
+    },
+    "Properties": [
+      {
+        "Name": "EnableFacilityAlarms",
+        "DataType": "System.Boolean",
+        "Value": "true"
+      }
+    ]
   },
   "Agents": [],
   "Skills": [],
