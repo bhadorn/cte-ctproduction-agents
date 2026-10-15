@@ -192,6 +192,17 @@
     "5300c261-6443-4d85-9b8d-6fb34a6576de/SimulatorControl_v1/ControllerProcessors/MachineStateProcessor": "aa7d6419-2f1e-450f-89c8-44eed05611ef",
     "5300c261-6443-4d85-9b8d-6fb34a6576de/SimulatorControl_v1/ControllerProcessors/ConditionMonitorProcessor": "3627a560-77ff-4739-ada3-f4cd9568d147",
     "5300c261-6443-4d85-9b8d-6fb34a6576de/SimulatorControl_v1/ControllerProcessors/FacilityComponentStreamProcessor": "e37e0ee8-a52e-491c-a726-70de5d2e6b41",
-    "5300c261-6443-4d85-9b8d-6fb34a6576de/SimulatorControl_v1/ControllerProcessors/SpindleComponentStreamProcessor": "510972d7-53c9-4d4b-b095-beda4176312e"
+    "5300c261-6443-4d85-9b8d-6fb34a6576de/SimulatorControl_v1/ControllerProcessors/SpindleComponentStreamProcessor": "510972d7-53c9-4d4b-b095-beda4176312e",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1": "620c6c8e-dca5-4f0a-9bec-72a353e47038",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/Available": "dfcff479-741f-45fa-9261-b9541f09b2b9",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/SignOfLife": "b36e88dd-4a1f-4e4d-8395-aa5a8d90bfef",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/FacilityState": "08b27bbd-745b-472b-a5ef-b570fe564ac1",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/FacilityComponentStream": "2b3bf9ec-a2d2-4e45-a282-53b074544138",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/Controller": "529c9f2b-5042-416f-aa11-0748ec3a30c3",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/Controller/AlarmState": "aa9c2b22-9f33-41da-b286-e52b3fc8c211",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/AlarmEventPool": "ac76a1ce-4cb4-462a-b671-a7be22f02216",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/ControllerProcessors": "970c487b-77cf-4b11-bed6-b3de040c1a62",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/ControllerProcessors/ConditionMonitorProcessor": "048ff74d-704c-44ed-86fe-15e1f463e80b",
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/ControllerProcessors/FacilityComponentStreamProcessor": "6b5853aa-f7a6-4202-ae49-8e7f04d04007"
   }
 }

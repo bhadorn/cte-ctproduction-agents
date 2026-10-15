@@ -230,9 +230,80 @@
           "Tag": "",
           "Type": "DataNode",
           "Properties": {}
+        },
+        {
+          "Id": "b386819f-6d21-4015-b451-779a84443986",
+          "Name": "FacilityComponentAlarm",
+          "Fields": [
+            {
+              "Name": "ConditionName",
+              "DataType": "System.String",
+              "Query": "item.ConditionName",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "Message",
+              "DataType": "System.String",
+              "Query": "item.Message",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "SourceName",
+              "DataType": "System.String",
+              "Query": "item.SourceName",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "AlarmType",
+              "DataType": "System.Int32",
+              "Query": "(int)item.AlarmType",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "Severity",
+              "DataType": "System.Int32",
+              "Query": "item.Severity",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "Active",
+              "DataType": "System.Boolean",
+              "Query": "item.Active",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "Occurrence",
+              "DataType": "System.DateTime",
+              "Query": "item.Occurrence",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "Disappearance",
+              "DataType": "System.DateTime",
+              "Query": "item.Disappearance",
+              "Tag": "",
+              "Properties": {}
+            },
+            {
+              "Name": "SourceNodeId",
+              "DataType": "System.Guid",
+              "Query": "item.SourceNodeId",
+              "Tag": "",
+              "Properties": {}
+            }
+          ],
+          "NodeFilter": "node.hasProperty<bool>(\"EnableFacilityAlarms\", true)",
+          "Tag": "",
+          "Properties": {}
         }
       ],
-      "DisgardPersistedData": true,
       "NetworkTimeout": 5000.0,
       "PayloadDumpEnabled": true,
       "PayloadDumpFileName": "$(AppConfig:CommonAppPath)\\Dumps\\NodeSpaceDataLogger\\FacilityStreamLogger.log",

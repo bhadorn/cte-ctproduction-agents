@@ -41,21 +41,20 @@
       "DataType": "System.String"
     },
     {
-      "Name": "Description",
-      "DataType": "System.String",
-      "Value": ""
-    },
-    {
-      "Name": "Manufacturer",
-      "DataType": "System.String",
-      "Value": ""
-    },
-    {
       "Name": "MachineYearOfConstruction",
       "DataType": "System.String"
     },
     {
       "Name": "MachineCriticality",
+      "DataType": "System.String"
+    },
+    {
+      "Name": "Description",
+      "DataType": "System.String",
+      "Value": ""
+    },
+    {
+      "Name": "SupplierName",
       "DataType": "System.String"
     }
   ],
@@ -451,16 +450,29 @@
   "AlarmEventPool": {
     "Id": "0c4312f5-1dae-4864-8698-9251c4482c17",
     "Name": "AlarmEventPool",
-    "Disabled": true,
     "Tasks": [
       {
         "Id": "16c4e206-42e3-4f66-bdb6-bbcb72629c87",
         "Name": "AlarmTask",
-        "Address": "",
+        "Address": "$.Alarms",
         "Properties": []
       }
     ],
-    "Properties": []
+    "HistoryMode": {
+      "Retention": 720,
+      "SamplingRate": 2000,
+      "HistoryTableName": "",
+      "IdField": "",
+      "TaggedFields": [],
+      "TrackedFields": []
+    },
+    "Properties": [
+      {
+        "Name": "EnableFacilityAlarms",
+        "DataType": "System.Boolean",
+        "Value": "true"
+      }
+    ]
   },
   "Agents": [],
   "Skills": [],

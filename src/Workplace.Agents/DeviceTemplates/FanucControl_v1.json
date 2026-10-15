@@ -592,6 +592,11 @@
         "Name": "PortMatchId",
         "DataType": "System.String",
         "Value": "MachineAlarmingType"
+      },
+      {
+        "Name": "EnableFacilityAlarms",
+        "DataType": "System.Boolean",
+        "Value": "true"
       }
     ]
   },
