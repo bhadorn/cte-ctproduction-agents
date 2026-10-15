@@ -182,12 +182,6 @@
               "Id": "6a55e234-c4d9-4f79-94d8-6dd26b9258f6",
               "Name": "TFacilityComponentPayload_v2.cs",
               "Description": ""
-            },
-            {
-              "Path": "TFacilityAlarmPayload_v1.cs",
-              "Id": "e0e9b745-17fc-46f4-bcc8-693fc758fe24",
-              "Name": "TFacilityAlarmPayload_v1.cs",
-              "Description": ""
             }
           ],
           "Path": "HumanOS.PeSeL.NodeSpaceDataLogger",
