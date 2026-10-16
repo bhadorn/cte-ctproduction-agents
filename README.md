@@ -2,14 +2,14 @@
 
 Collection of HumanOS Agents used to extend ctProduction Platform.
 
-The agent require a valid HumanOS License. Get the license directly from [CyberTech Engineering Sales](mailto:info@cybertech.swiss).
+The agents require a valid HumanOS license. Get the license directly from [CyberTech Engineering Sales](mailto:info@cybertech.swiss).
 
 ## Releases
 
 This repository is a release mirror. The agents are developed in CyberTech's ctProduction repository and
 published here automatically when a change to them is merged there: one commit `Release <version>` and the
-tag `v<version>`. The version is `<major>.<minor>.<build>`: major.minor is the ctProduction product version the agents belong
-to, the build number is the pipeline number of the merge.
+tag `v<version>`. The version is `<major>.<minor>.<build>`: major.minor is the ctProduction product version
+the agents belong to, the build number is the pipeline number of the merge.
 
 Commits pushed directly to this repository are not part of the development repository and are not
 carried back; they block the next release until CyberTech has taken them over. Please send changes to
