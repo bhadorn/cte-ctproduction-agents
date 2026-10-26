@@ -26,6 +26,21 @@ namespace HumanOS.UHAL.HeidenhainControl.Scripts
   /// </summary>
   public class TStandbyDetector : TAbstractProcessingScriptObject
   {
+    #region Constants
+
+    /// <summary>
+    /// Source name of alarms of the PLC error group (DNC_ERROR_GROUP.DNC_EG_PLC)
+    /// </summary>
+    private const string PlcGroupName = "DNC_EG_PLC";
+
+    /// <summary>
+    /// Message text of the Feierabend-Abschaltung, compared case-insensitively and without hyphens/whitespace
+    /// (any error group, independent of the alarm number)
+    /// </summary>
+    private const string StandbyMessageText = "FEIERABENDABSCHALTUNG";
+
+    #endregion Constants
+
     #region Implementation of TAbstractProcessingScriptObject
 
     ///<see cref="TAbstractProcessingScriptObject"/>
@@ -48,7 +63,18 @@ namespace HumanOS.UHAL.HeidenhainControl.Scripts
     {
       string nstrCondition = Item.ConditionName?.Trim();
 
-      return nstrCondition != null && m_setStandbyConditions.Contains(nstrCondition);
+      return hasStandbyMessageText(Item) ||
+             (nstrCondition != null &&
+              (m_setStandbyConditions.Contains(nstrCondition) ||
+               (string.Equals(Item.SourceName, PlcGroupName, StringComparison.OrdinalIgnoreCase) &&
+                m_setStandbyPlcConditions.Contains(nstrCondition))));
+    }
+
+    private static bool hasStandbyMessageText(TAlarmItem Item)
+    {
+      return Item.Message != null &&
+             new string(Item.Message.Where(c => c != '-' && !char.IsWhiteSpace(c)).ToArray())
+               .Contains(StandbyMessageText, StringComparison.OrdinalIgnoreCase);
     }
 
     /// <summary>
@@ -57,6 +83,14 @@ namespace HumanOS.UHAL.HeidenhainControl.Scripts
     /// </summary>
     private static readonly HashSet<string> m_setStandbyConditions = new HashSet<string>(
       new[] { 182, 4014, 7014 }.Select(iNumber => $"Alarm {iNumber}"),
+      StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Condition names ("Alarm &lt;number&gt;") of the PLC alarms (error group PLC) that signal standby
+    /// (62 and 700854 = "700854 Feierabend-Abschaltung!", class Emerg. Stop)
+    /// </summary>
+    private static readonly HashSet<string> m_setStandbyPlcConditions = new HashSet<string>(
+      new[] { 62, 700854 }.Select(iNumber => $"Alarm {iNumber}"),
       StringComparer.OrdinalIgnoreCase);
 
     private bool? m_nbLastStandbyActive;
