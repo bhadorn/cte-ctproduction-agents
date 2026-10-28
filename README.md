@@ -23,6 +23,7 @@ carried back; they block the next release until CyberTech has taken them over. P
 - Traub OPC-UA Template
 - [Heidenhain](https://doc.cybertech.swiss/runtime/Manuals/HumanOS.UHAL.HeidenhainControl/) (iTNC530, TNC64x, TNC7 native)
 - [Simulators](https://doc.cybertech.swiss/runtime/Manuals/HumanOS.UHAL.FileReader/) for Machine Controls and Robots
+- [Excel-Reader](./doc/excel-reader/Excel-Reader.md): syncs the maintenance orders of an Excel file into ctProduction maintenance jobs
 
 ## How to Switch the License
 

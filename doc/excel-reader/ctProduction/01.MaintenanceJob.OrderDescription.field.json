@@ -1,0 +1,52 @@
+{
+    "CollectionId":  "18797c62-1f80-421e-9e1c-8a0faa98cfa7",
+    "EntityName":  "ModelField",
+    "ExportedBy":  null,
+    "ExportedAt":  null,
+    "Entities":  [
+                     {
+                         "CollectionId":  "18797c62-1f80-421e-9e1c-8a0faa98cfa7",
+                         "Id":  "c4bf30f2-ce45-455e-bb26-014e2a6cd2fa",
+                         "TimeStamp":  null,
+                         "Fields":  {
+                                        "Acronym":  "",
+                                        "ArraySize":  0,
+                                        "AutoGeneratorPattern":  "",
+                                        "BuiltIn":  false,
+                                        "DataType":  "System.String",
+                                        "DefaultValue":  "",
+                                        "DependOnFields":  [
+
+                                                           ],
+                                        "Description":  "Description of the maintenance order (Excel column Auftrag Bezeichnung).",
+                                        "DisplayName":  "Order description",
+                                        "DisplayRank":  20,
+                                        "EditMode":  "Changeable",
+                                        "EnabledExpression":  "",
+                                        "EntitySelectionExpression":  "",
+                                        "Icon":  "",
+                                        "Id":  "c4bf30f2-ce45-455e-bb26-014e2a6cd2fa",
+                                        "InputMethod":  "Manual",
+                                        "IsKey":  false,
+                                        "IsTemplate":  false,
+                                        "JoinOperator":  "None",
+                                        "Length":  0,
+                                        "LifeCycleState":  1,
+                                        "ModelId":  "b42394d1-130a-485c-8a7e-7bfd82396a08",
+                                        "Name":  "OrderDescription",
+                                        "NonPersistant":  false,
+                                        "Policy":  "",
+                                        "ProvidedForLinks":  false,
+                                        "ReferencedCollectionId":  "00000000-0000-0000-0000-000000000000",
+                                        "ReferencedFieldName":  "",
+                                        "ReferenceType":  "Unspecified",
+                                        "Required":  false,
+                                        "TemplateId":  "00000000-0000-0000-0000-000000000000",
+                                        "Uniqueness":  "None",
+                                        "Units":  "",
+                                        "ValidationSchema":  null,
+                                        "VisibilityExpression":  ""
+                                    }
+                     }
+                 ]
+}

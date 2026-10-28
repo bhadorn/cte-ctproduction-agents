@@ -1,0 +1,53 @@
+{
+    "CollectionId":  "d1caff1f-95f2-4c13-91b5-92ea5575ac8d",
+    "EntityName":  "PipelineTemplate",
+    "ExportedBy":  null,
+    "ExportedAt":  null,
+    "Entities":  [
+                     {
+                         "CollectionId":  "d1caff1f-95f2-4c13-91b5-92ea5575ac8d",
+                         "Id":  "594d2e5f-797c-473f-a1a6-fe6a56c6bf60",
+                         "TimeStamp":  null,
+                         "Fields":  {
+                                        "BuiltIn":  false,
+                                        "ContinueOnJobError":  false,
+                                        "DataInputTemplate":  "[\r\n{%- assign jobs = collection[\"b42394d1-130a-485c-8a7e-7bfd82396a08\"] | query: \"OrderNumber\", \"!=\", \"\" %}\r\n{%- for job in jobs %}\r\n  {\r\n    \"CollectionId\": \"b42394d1-130a-485c-8a7e-7bfd82396a08\",\r\n    \"Id\": \"{{ job.Id }}\",\r\n    \"Fields\": {\r\n      \"OrderNumber\": {{ job.OrderNumber | json }},\r\n      \"Operation\": {{ job.Operation | json }},\r\n      \"FacilityComponentId\": \"{{ job.FacilityComponentId }}\",\r\n      \"State\": {{ job.State }},\r\n      \"IsCancelled\": {{ job.IsCancelled | downcase }},\r\n      \"MaintenanceTaskId\": {{ job.MaintenanceTaskId | json }}\r\n    }\r\n  },\r\n{%- endfor %}\r\n{%- assign components = collection[\"6ccc7179-9125-4b4b-baa4-9849351c1187\"] | query: \"InventoryNumber\", \"!=\", \"\" %}\r\n{%- for component in components %}\r\n  {\r\n    \"CollectionId\": \"6ccc7179-9125-4b4b-baa4-9849351c1187\",\r\n    \"Id\": \"{{ component.Id }}\",\r\n    \"Fields\": {\r\n      \"InventoryNumber\": {{ component.InventoryNumber | json }},\r\n      \"WorkplaceId\": \"{{ component.WorkplaceId }}\"\r\n    }\r\n  },\r\n{%- endfor %}\r\n]",
+                                        "Description":  "Reconciles a maintenance-order Excel sheet against MaintenanceJob.",
+                                        "DisableConcurrency":  false,
+                                        "Id":  "594d2e5f-797c-473f-a1a6-fe6a56c6bf60",
+                                        "IsTemplate":  false,
+                                        "LifeCycleState":  1,
+                                        "MaxDuration":  "00:10:00",
+                                        "MaxWaitingTime":  "00:10:00",
+                                        "Name":  "Pipeline.MaintenanceSync.Sync",
+                                        "TemplateId":  "00000000-0000-0000-0000-000000000000",
+                                        "Jobs":  [
+                                                     {
+                                                         "CollectionId":  "54ab9a9c-2ef5-4d3f-ab93-6c68629b377a",
+                                                         "Id":  "7865930b-3576-4770-a8ed-5932429aa6fd",
+                                                         "TimeStamp":  null,
+                                                         "Fields":  {
+                                                                        "ArgumentsTemplate":  "",
+                                                                        "BuiltIn":  false,
+                                                                        "CollectDataBeforeJobExecution":  false,
+                                                                        "DataInputTemplate":  "",
+                                                                        "DataOutputTemplate":  "",
+                                                                        "Description":  "Runs the Excel sync on the Excel-Reader gateway.",
+                                                                        "DynamicSkillSelection":  false,
+                                                                        "Id":  "7865930b-3576-4770-a8ed-5932429aa6fd",
+                                                                        "IsTemplate":  false,
+                                                                        "LifeCycleState":  1,
+                                                                        "Name":  "SyncJob",
+                                                                        "OperationScriptName":  "Platform.MaintenanceSync.cs",
+                                                                        "PipelineTemplateId":  "594d2e5f-797c-473f-a1a6-fe6a56c6bf60",
+                                                                        "Sequence":  0,
+                                                                        "SkillId":  "9cf292c6-e00b-417f-84e3-00ff754f9ab8",
+                                                                        "SkillSelection":  "",
+                                                                        "TemplateId":  "00000000-0000-0000-0000-000000000000"
+                                                                    }
+                                                     }
+                                                 ]
+                                    }
+                     }
+                 ]
+}

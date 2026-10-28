@@ -1,0 +1,38 @@
+{
+    "CollectionId":  "c9ff4748-01e4-4fe0-b297-e99df3d4066b",
+    "EntityName":  "ModelAction",
+    "ExportedBy":  null,
+    "ExportedAt":  null,
+    "Entities":  [
+                     {
+                         "CollectionId":  "c9ff4748-01e4-4fe0-b297-e99df3d4066b",
+                         "Id":  "598bc5a3-a57b-427f-92bd-7d3f2570fda6",
+                         "TimeStamp":  null,
+                         "Fields":  {
+                                        "Arguments":  null,
+                                        "BuiltIn":  false,
+                                        "Description":  "Reconciles a maintenance-order Excel sheet against known MaintenanceJob records.",
+                                        "DialogTitle":  "",
+                                        "DisplayName":  "$Sync",
+                                        "ExecutionPolicy":  "POLICY_Supervisor",
+                                        "Icon":  "sync",
+                                        "Id":  "598bc5a3-a57b-427f-92bd-7d3f2570fda6",
+                                        "IsTemplate":  false,
+                                        "LifeCycleState":  1,
+                                        "ModelId":  "b42394d1-130a-485c-8a7e-7bfd82396a08",
+                                        "Name":  "sync",
+                                        "PipelineTemplateId":  "00000000-0000-0000-0000-000000000000",
+                                        "PlaceInSubMenu":  false,
+                                        "PreConditionExpression":  "",
+                                        "PreConditionMessage":  "",
+                                        "Prompt":  "",
+                                        "Script":  "",
+                                        "SelectionMode":  "None",
+                                        "SynchPipelineCall":  false,
+                                        "TemplateId":  "00000000-0000-0000-0000-000000000000",
+                                        "VisibleRankOnDetailsView":  0,
+                                        "VisibleRankOnListView":  0
+                                    }
+                     }
+                 ]
+}

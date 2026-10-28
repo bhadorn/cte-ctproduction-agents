@@ -203,6 +203,10 @@
     "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/AlarmEventPool": "ac76a1ce-4cb4-462a-b671-a7be22f02216",
     "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/ControllerProcessors": "970c487b-77cf-4b11-bed6-b3de040c1a62",
     "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/ControllerProcessors/ConditionMonitorProcessor": "048ff74d-704c-44ed-86fe-15e1f463e80b",
-    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/ControllerProcessors/FacilityComponentStreamProcessor": "6b5853aa-f7a6-4202-ae49-8e7f04d04007"
+    "fdce1b26-8a99-40be-be5e-4fae372383fd/SimulatorRobot_v1/ControllerProcessors/FacilityComponentStreamProcessor": "6b5853aa-f7a6-4202-ae49-8e7f04d04007",
+    "dc89beab-c280-43af-a626-99681beefffc/Excel-Reader": "13cfcabc-e3a4-40e4-aba1-00526eb8e2b5",
+    "dc89beab-c280-43af-a626-99681beefffc/Excel-Reader/SheetData": "b6f2cad5-8061-4cb5-91e6-0b8aa873ce77",
+    "dc89beab-c280-43af-a626-99681beefffc/Excel-Reader/Actor": "773610bc-3b5d-4e97-af8a-366e6b5b6852",
+    "dc89beab-c280-43af-a626-99681beefffc/Excel-Reader/MaintenanceSync": "9cf292c6-e00b-417f-84e3-00ff754f9ab8"
   }
 }

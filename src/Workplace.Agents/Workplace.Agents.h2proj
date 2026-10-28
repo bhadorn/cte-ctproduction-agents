@@ -69,6 +69,13 @@
       "Id": "887370c9-aa4d-4a46-bee0-437d76814cc1",
       "Name": "Chiron.Micro5.Control_v1",
       "Description": ""
+    },
+    {
+      "DriverId": "94cafec2-7910-41f6-8185-c35ca768faba",
+      "Path": "Excel-Reader.json",
+      "Id": "e3be0aa1-2fae-4e98-a7a0-0d830bfeb264",
+      "Name": "Excel-Reader",
+      "Description": ""
     }
   ],
   "SecretDatabase": {
@@ -475,6 +482,83 @@
         "Processing": [],
         "Rules": [],
         "Workflows": [],
+        "Path": "Scripts",
+        "Name": "Scripts"
+      }
+    },
+    {
+      "Path": "Excel-Reader",
+      "Id": "d8f5cb17-ab92-4ee2-9ee7-09f1abb0f77d",
+      "Name": "Excel-Reader",
+      "Description": "",
+      "DirectoryPublishPath": "",
+      "LicenseRefreshIntervalHours": 24,
+      "OutPath": "$(Project.Directory)\\Build\\$(Target.Name)\\",
+      "PublishScript": "",
+      "PublishScriptArguments": "",
+      "PlatformLogMinimumLevel": "Warning",
+      "PlatformLogSecretId": "",
+      "PlatformLogUrl": "",
+      "PlatformToken": "",
+      "Runtime": "HumanOS.IoT.Runtime win-x86",
+      "RuntimeVersion": "2.12",
+      "ServiceDescription": "",
+      "ServiceDisplayName": "HumanOS.IoT.Gateway for $(Target.Name)",
+      "ServiceName": "HumanOS.IoT.Gateway.$(Target.Name)",
+      "ServiceStartType": "Automatic",
+      "SharedNodeSpacePluginId": "0dae9067-44eb-40b9-9385-dd6efb353e11",
+      "AppSettings": {
+        "HumanOS.LocalNodeSpace.Type": "HumanOS.Kernel.DataModel.Space.TInMemoryNodeSpace, HumanOS.Kernel",
+        "HumanOS.Repository.Type": "",
+        "HumanOS.Repository.Connection": "",
+        "HumanOS.SharedNodeSpace.Type": "HumanOS.PeMiL.MQTTMessageBus.TSharedNodeSpaceHub, HumanOS.PeMiL.MQTTMessageBus",
+        "HumanOS.SharedNodeSpace.Address": "localhost",
+        "AppConfig.LogMinimumLevel": "Information",
+        "Serilog.WriteTo[?(@.Name == 'File')].Args.path": "$(AppConfig:CommonAppPath)Logs\\$(HumanOS:ServiceName)-.log",
+        "AppConfig.LogRetentionDays": "7",
+        "SecretManager.Path": "$(AppSettingsDir)Secrets\\",
+        "CertificateManager.Path": "$(AppSettingsDir)Config\\CertificateSources\\",
+        "HumanOS.ServiceId": "d8f5cb17-ab92-4ee2-9ee7-09f1abb0f77d",
+        "HumanOS.ServiceName": "HumanOS.IoT.Gateway.$(Target.Name)",
+        "HumanOS.RuntimeVersion": "2.12",
+        "HumanOS.SharedNodeSpace.MasterSystemControllerId": "150023f1-2619-450a-a3ea-df47be294799",
+        "HumanOS.SharedNodeSpace.MasterAgentOrchestratorId": "150023f1-2619-450a-a3ea-df47be294799"
+      },
+      "VaultKeyEnvironmentVariableName": "HumanOSVaultKey",
+      "DataModel": {
+        "Objects": [],
+        "Rules": [],
+        "Schema": [],
+        "Path": "DataModel",
+        "Name": "DataModel"
+      },
+      "Devices": [
+        {
+          "Address": "..\\..\\..\\MaintenanceOrders.xlsx",
+          "DeviceTemplateId": "e3be0aa1-2fae-4e98-a7a0-0d830bfeb264",
+          "DriverId": "94cafec2-7910-41f6-8185-c35ca768faba",
+          "SubDevices": [],
+          "Type": "MaintenanceOrdersReader",
+          "Variables": [],
+          "Path": "DemoExcelReader.json",
+          "Id": "dc89beab-c280-43af-a626-99681beefffc",
+          "Name": "DemoExcelReader",
+          "Description": ""
+        }
+      ],
+      "Plugins": [],
+      "Scripts": {
+        "Commands": [],
+        "Processing": [],
+        "Rules": [],
+        "Workflows": [
+          {
+            "Path": "Platform.MaintenanceSync.cs",
+            "Id": "62c77db8-524f-4980-9a87-b356d11e15ea",
+            "Name": "Platform.MaintenanceSync.cs",
+            "Description": ""
+          }
+        ],
         "Path": "Scripts",
         "Name": "Scripts"
       }

@@ -1,0 +1,31 @@
+{
+    "CollectionId":  "7bf2542f-9e10-4076-a52e-14d59a424ed5",
+    "EntityName":  "Task",
+    "ExportedBy":  null,
+    "ExportedAt":  null,
+    "Entities":  [
+                     {
+                         "CollectionId":  "7bf2542f-9e10-4076-a52e-14d59a424ed5",
+                         "Id":  "e2ca0602-8916-45b4-8a1f-daf74e681c45",
+                         "TimeStamp":  null,
+                         "Fields":  {
+                                        "Name":  "Task.MaintenanceJob.ExcelSync",
+                                        "Description":  "Runs the sync of the Excel file against the maintenance jobs. Start it with Run in the task list. The trigger is set so far ahead that it never starts by itself.",
+                                        "ActionName":  "sync",
+                                        "Arguments":  null,
+                                        "EntitySelectionExpression":  "",
+                                        "ModelId":  "b42394d1-130a-485c-8a7e-7bfd82396a08",
+                                        "LifeCycleState":  1,
+                                        "TenantId":  "00000000-0000-0000-0000-000000000000",
+                                        "UserId":  "00000000-0000-0000-0000-000000000000",
+                                        "TriggerConfig":  {
+                                                              "Mode":  "Sampler",
+                                                              "Interval":  3650,
+                                                              "IntervalUnit":  "Day",
+                                                              "InitialDelay":  "3650.00:00:00",
+                                                              "Comment":  "Manual task: first automatic run in 10 years"
+                                                          }
+                                    }
+                     }
+                 ]
+}

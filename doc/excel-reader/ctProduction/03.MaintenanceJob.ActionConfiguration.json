@@ -1,0 +1,53 @@
+{
+    "CollectionId":  "505eda80-a750-4cbd-bed8-d2fcf771f4e4",
+    "EntityName":  "Model",
+    "ExportedBy":  null,
+    "ExportedAt":  null,
+    "Entities":  [
+                     {
+                         "CollectionId":  "505eda80-a750-4cbd-bed8-d2fcf771f4e4",
+                         "Id":  "b42394d1-130a-485c-8a7e-7bfd82396a08",
+                         "TimeStamp":  null,
+                         "Fields":  {
+                                        "ActionConfiguration":  {
+                                                                    "start":  {
+                                                                                  "ExecutionPolicy":  "POLICY_Operator",
+                                                                                  "PipelineTemplateId":  "1a658f01-c753-4683-aceb-7f0a02ee95ca"
+                                                                              },
+                                                                    "pause":  {
+                                                                                  "ExecutionPolicy":  "POLICY_Operator",
+                                                                                  "PipelineTemplateId":  "1a658f01-c753-4683-aceb-7f0a02ee95ca"
+                                                                              },
+                                                                    "stop":  {
+                                                                                 "ExecutionPolicy":  "POLICY_Operator",
+                                                                                 "PipelineTemplateId":  "1a658f01-c753-4683-aceb-7f0a02ee95ca"
+                                                                             },
+                                                                    "create":  {
+                                                                                   "ExecutionPolicy":  "POLICY_Supervisor",
+                                                                                   "PipelineTemplateId":  "00000000-0000-0000-0000-000000000000"
+                                                                               },
+                                                                    "clone":  {
+                                                                                  "ExecutionPolicy":  "POLICY_Supervisor",
+                                                                                  "PipelineTemplateId":  "00000000-0000-0000-0000-000000000000"
+                                                                              },
+                                                                    "delete":  {
+                                                                                   "ExecutionPolicy":  "POLICY_Supervisor",
+                                                                                   "PipelineTemplateId":  "00000000-0000-0000-0000-000000000000"
+                                                                               },
+                                                                    "update":  {
+                                                                                   "ExecutionPolicy":  "POLICY_Supervisor",
+                                                                                   "PipelineTemplateId":  "00000000-0000-0000-0000-000000000000"
+                                                                               },
+                                                                    "link:/Forms/$(Id)":  {
+                                                                                              "ExecutionPolicy":  "POLICY_Operator",
+                                                                                              "PipelineTemplateId":  "00000000-0000-0000-0000-000000000000"
+                                                                                          },
+                                                                    "sync":  {
+                                                                                 "ExecutionPolicy":  "POLICY_Supervisor",
+                                                                                 "PipelineTemplateId":  "594d2e5f-797c-473f-a1a6-fe6a56c6bf60"
+                                                                             }
+                                                                }
+                                    }
+                     }
+                 ]
+}

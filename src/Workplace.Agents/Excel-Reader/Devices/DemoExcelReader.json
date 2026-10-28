@@ -1,0 +1,99 @@
+{
+  "Id": "dc89beab-c280-43af-a626-99681beefffc",
+  "Name": "DemoExcelReader",
+  "DriverId": "94cafec2-7910-41f6-8185-c35ca768faba",
+  "Address": "..\\..\\..\\MaintenanceOrders.xlsx",
+  "Properties": [
+    {
+      "Name": "Type",
+      "DataType": "System.String",
+      "Value": "MaintenanceOrdersReader"
+    },
+    {
+      "Name": "MachineType",
+      "DataType": "System.String"
+    },
+    {
+      "Name": "MachineName",
+      "DataType": "System.String"
+    },
+    {
+      "Name": "MachineSerialNumber",
+      "DataType": "System.String"
+    },
+    {
+      "Name": "MachineInventoryNumber",
+      "DataType": "System.String"
+    },
+    {
+      "Name": "MachineYearOfConstruction",
+      "DataType": "System.String"
+    },
+    {
+      "Name": "MachineCriticality",
+      "DataType": "System.String"
+    },
+    {
+      "Name": "Description",
+      "DataType": "System.String",
+      "Value": ""
+    },
+    {
+      "Name": "SupplierName",
+      "DataType": "System.String"
+    }
+  ],
+  "DataNodes": [
+    {
+      "Id": "b6f2cad5-8061-4cb5-91e6-0b8aa873ce77",
+      "Name": "SheetData",
+      "Address": "xlsx:$.Tabelle1",
+      "DataType": "System.String",
+      "Unit": "",
+      "Access": {
+        "Read": true,
+        "ReadConversion": {},
+        "Receive": true,
+        "WriteConversion": {}
+      },
+      "Properties": []
+    }
+  ],
+  "ConstantNodes": [],
+  "Commands": [],
+  "Groups": [],
+  "Agents": [
+    {
+      "Id": "773610bc-3b5d-4e97-af8a-366e6b5b6852",
+      "Name": "Actor",
+      "Type": "GenericActor",
+      "Skills": [
+        "9cf292c6-e00b-417f-84e3-00ff754f9ab8"
+      ],
+      "Properties": [
+        {
+          "Name": "opc-ua:Ignore",
+          "DataType": "System.Boolean",
+          "Value": "true"
+        },
+        {
+          "Name": "Skills",
+          "DataType": "System.Guid[]",
+          "Value": "9cf292c6-e00b-417f-84e3-00ff754f9ab8"
+        }
+      ]
+    }
+  ],
+  "Skills": [
+    {
+      "Id": "9cf292c6-e00b-417f-84e3-00ff754f9ab8",
+      "Name": "MaintenanceSync",
+      "Properties": []
+    }
+  ],
+  "TaskProcessors": [],
+  "EntityTypes": [],
+  "ProcessingNetworks": [],
+  "Rules": [],
+  "SubDevices": []
+}
