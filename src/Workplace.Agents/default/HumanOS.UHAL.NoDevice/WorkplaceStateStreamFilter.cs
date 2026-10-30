@@ -31,13 +31,14 @@ namespace HumanOS.IoT.Designer.Library.Scripts
       double fMaxChangeOverTime = Processor.getProperty<double>("MaxChangeOverTime");
       if (PendingStopState != null && StopWatch.Elapsed.TotalMinutes > fMaxChangeOverTime)
       {
-        Logger.writeDebug($"Stop exceeds the expected changeover time of {fMaxChangeOverTime} ms. Send stop.");
+        Logger.writeDebug($"Stop exceeds the expected changeover time of {fMaxChangeOverTime} min. Send stop.");
         Processor.setProperty<TGenericEntity>("OutputPort", PendingStopState);
         PendingStopState = null;
       }
     
+      // The node is sampled on a timer, so the input is null until the first state arrives
       TGenericEntity Entity = Processor.getProperty<TGenericEntity>("WorkplaceStateStreamFilter_InputPort");
-      if (Entity.getValue<Guid>("Id") != LastEntityId)
+      if (Entity != null && Entity.getValue<Guid>("Id") != LastEntityId)
       {
         LastEntityId = Entity.getValue<Guid>("Id");
       
