@@ -2,12 +2,12 @@
 id: ctproduction-agents-excel-reader-import
 title: "Excel-Reader: ctProduction configuration"
 subject: "Configuration to import into ctProduction for the Excel-Reader sync of maintenance jobs"
-keywords: [ctProduction, MaintenanceJob, sync action, pipeline template, Excel-Reader, Workplace.Agents, import]
+keywords: [ctProduction, MaintenanceJob, sync action, pipeline template, Excel-Reader, Maintenance.Agents, HOS.MaintenanceImport, import]
 ---
 
 # ctProduction configuration for the Excel-Reader
 
-The numbered files in this folder are **import files** in the entity export format of the platform. Import them in the order of their numbers into a running platform with ctProduction. They add the sync to the existing `MaintenanceJob` model; nothing else of your model is replaced. Use a **test tenant** first. The target that feeds the sync is the target `Excel-Reader` of `src/Workplace.Agents`, described in [Excel-Reader.md](../Excel-Reader.md).
+The numbered files in this folder are **import files** in the entity export format of the platform. Import them in the order of their numbers into a running platform with ctProduction. They add the sync to the existing `MaintenanceJob` model; nothing else of your model is replaced. Use a **test tenant** first. The target that feeds the sync is the target `HOS.MaintenanceImport` of `src/Maintenance.Agents`, described in [Excel-Reader.md](../Excel-Reader.md).
 
 | File                                         | What it imports                                                                                                              |
 | :------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------- |
@@ -53,11 +53,11 @@ File 03 contains the whole `ActionConfiguration` of `MaintenanceJob` of the ctPr
 "sync": { "ExecutionPolicy": "POLICY_Supervisor", "PipelineTemplateId": "594d2e5f-797c-473f-a1a6-fe6a56c6bf60" }
 ```
 
-Check after the import that the pipeline template refers to the skill `MaintenanceSync` of the gateway (`SkillId` in file 04 equals the id of the skill in `src/Workplace.Agents/Excel-Reader/Devices/DemoExcelReader.json`) and that `OperationScriptName` is `Platform.MaintenanceSync.cs`. If you rename the script or generate new ids, change both sides.
+Check after the import that the pipeline template refers to the skill `MaintenanceSync` of the gateway (`SkillId` in file 04 equals the id of the skill in `src/Maintenance.Agents/HOS.MaintenanceImport/Devices/DemoExcelReader.json`) and that `OperationScriptName` is `Platform.MaintenanceSync.cs`. If you rename the script or generate new ids, change both sides.
 
 ## Workplace and equipment
 
-The sync creates a job for a row of the Excel file only if the column `Equipment` equals the `InventoryNumber` of a facility component that belongs to a workplace. The workbook `src/Workplace.Agents/MaintenanceOrders.xlsx` uses `A-18221`, the robot of the workplace `Milling Center X` of the target `HOS.Simulators`. Start the gateway of that target (and every other gateway of the platform) before the first sync, so that the platform knows the workplace and its components. To use another workplace, give one of its facility components an `InventoryNumber` and use it in the column `Equipment`.
+The sync creates a job for a row of the Excel file only if the column `Equipment` equals the `InventoryNumber` of a facility component that belongs to a workplace. The workbook `src/Maintenance.Agents/MaintenanceOrders.xlsx` uses `A-18221`, the robot of the workplace `Milling Center X` of the target `HOS.Simulators`. Start the gateway of that target (and every other gateway of the platform) before the first sync, so that the platform knows the workplace and its components. To use another workplace, give one of its facility components an `InventoryNumber` and use it in the column `Equipment`.
 
 ## Check the import
 
@@ -71,4 +71,4 @@ The task runs in the context of the system (empty user and tenant), like the sta
 
 ## Fixed ids
 
-The collection id `b42394d1-130a-485c-8a7e-7bfd82396a08` (`MaintenanceJob`) and `6ccc7179-9125-4b4b-baa4-9849351c1187` (`FacilityComponent`) are model ids of ctProduction and are used by the script unchanged. The ids of the device, node, skill, agent and the new field belong to this example only. The ones you meet while testing: skill `MaintenanceSync` `9cf292c6-e00b-417f-84e3-00ff754f9ab8`, pipeline template `Pipeline.MaintenanceSync.Sync` `594d2e5f-797c-473f-a1a6-fe6a56c6bf60`, task `Task.MaintenanceJob.ExcelSync` `e2ca0602-8916-45b4-8a1f-daf74e681c45`.
+The collection id `b42394d1-130a-485c-8a7e-7bfd82396a08` (`MaintenanceJob`) and `6ccc7179-9125-4b4b-baa4-9849351c1187` (`FacilityComponent`) are model ids of ctProduction and are used by the script unchanged. The ids of the device, node, skill, agent and the new field belong to this example only. The script does not use the device id: it finds the device by its type `ExcelReader`. The ones you meet while testing: skill `MaintenanceSync` `9cf292c6-e00b-417f-84e3-00ff754f9ab8`, pipeline template `Pipeline.MaintenanceSync.Sync` `594d2e5f-797c-473f-a1a6-fe6a56c6bf60`, task `Task.MaintenanceJob.ExcelSync` `e2ca0602-8916-45b4-8a1f-daf74e681c45`.

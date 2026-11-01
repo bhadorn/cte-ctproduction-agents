@@ -35,6 +35,9 @@ namespace HumanOS.IoT.Designer.Library.Scripts
   {
     #region Constants
 
+    // Value of the device property "Type" that marks the Excel reader device; the device id differs per installation.
+    private const string ExcelReaderDeviceType = "ExcelReader";
+
     private const string SheetDataNodeName = "SheetData";
 
     private const int JobStateDone = 900;
@@ -359,13 +362,20 @@ namespace HumanOS.IoT.Designer.Library.Scripts
     // Reads the sheet through the runtime FileReader's xlsx: addressing. A bare 'xlsx:$.Tabelle1'
     // address (no row/column suffix) resolves to the whole sheet as one JSON array.
     // bInvokeReadCommand forces a fresh read from the driver rather than a possibly-stale cached value.
+    // The device is found by its property Type = "ExcelReader", not by its id, which differs per installation.
     private Task<JArray> readExcelRowsAsync(IKernelAccess Kernel, CancellationToken Token)
     {
-      INode nNode = Kernel.NodeSpace.queryNode(Node => Node.hasProperty("DeviceId", m_ExcelReaderDeviceId) &&
-                                                       Node.Name == SheetDataNodeName);
+      IGroupRelation nDevice = Kernel.NodeSpace.queryNode(Node => Node is IGroupRelation &&
+                                                                  Node.hasProperty("Type", ExcelReaderDeviceType)) as IGroupRelation;
+      if (nDevice == null)
+      {
+        throw new InvalidOperationException($"No device with Type '{ExcelReaderDeviceType}' found.");
+      }
+
+      INode nNode = nDevice.queryNode(Node => Node.Name == SheetDataNodeName && Node is IDataNode<string>);
       if (nNode == null)
       {
-        throw new InvalidOperationException($"Data node '{SheetDataNodeName}' not found on device '{m_ExcelReaderDeviceId}'.");
+        throw new InvalidOperationException($"Data node '{SheetDataNodeName}' not found on device '{nDevice.Name}'.");
       }
 
       IDataNode<string> DataNode = (IDataNode<string>)nNode;
@@ -382,8 +392,6 @@ namespace HumanOS.IoT.Designer.Library.Scripts
     {
       return ((string)jRow[strColumn] ?? "").Trim();
     }
-
-    private static readonly Guid m_ExcelReaderDeviceId = Guid.Parse("dc89beab-c280-43af-a626-99681beefffc");
 
     private static readonly Guid m_FacilityComponentCollectionId = Guid.Parse("6ccc7179-9125-4b4b-baa4-9849351c1187");
 

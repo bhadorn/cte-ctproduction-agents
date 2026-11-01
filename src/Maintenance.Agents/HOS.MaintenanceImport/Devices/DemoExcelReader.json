@@ -1,5 +1,5 @@
 {
-  "Id": "dc89beab-c280-43af-a626-99681beefffc",
+  "Id": "189d78fd-e068-462d-8c07-75b5e430a7be",
   "Name": "DemoExcelReader",
   "DriverId": "94cafec2-7910-41f6-8185-c35ca768faba",
   "Address": "..\\..\\..\\MaintenanceOrders.xlsx",
@@ -7,7 +7,7 @@
     {
       "Name": "Type",
       "DataType": "System.String",
-      "Value": "MaintenanceOrdersReader"
+      "Value": "ExcelReader"
     },
     {
       "Name": "MachineType",
@@ -39,13 +39,13 @@
       "Value": ""
     },
     {
-      "Name": "SupplierName",
+      "Name": "Manufacturer",
       "DataType": "System.String"
     }
   ],
   "DataNodes": [
     {
-      "Id": "b6f2cad5-8061-4cb5-91e6-0b8aa873ce77",
+      "Id": "3904c3c5-6529-4fa4-a806-dff8e2963ddc",
       "Name": "SheetData",
       "Address": "xlsx:$.Tabelle1",
       "DataType": "System.String",
@@ -64,7 +64,7 @@
   "Groups": [],
   "Agents": [
     {
-      "Id": "773610bc-3b5d-4e97-af8a-366e6b5b6852",
+      "Id": "3e39777b-c864-4608-bfd5-6c73a8e1b4cb",
       "Name": "Actor",
       "Type": "GenericActor",
       "Skills": [
